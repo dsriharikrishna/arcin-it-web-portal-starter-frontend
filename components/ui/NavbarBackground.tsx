@@ -34,7 +34,7 @@ interface NavbarBackgroundProps {
 }
 
 export default function NavbarBackground({
-  gradientClassName = "bg-gradient-to-r from-slate-100 via-slate-200 to-slate-900",
+  gradientClassName = "bg-gradient-to-r from-slate-50 via-slate-200 to-slate-800",
   patternOpacity = 60,
   showPattern = true,
   className,

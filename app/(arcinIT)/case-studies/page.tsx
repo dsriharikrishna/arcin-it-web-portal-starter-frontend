@@ -1,40 +1,82 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { PageHero, PageSection, AnimatedCard } from "@/components/pages";
-import {
-  SmoothLandingContainer,
-  SmoothLandingItem,
-} from "@/components/animations/SmoothLandingBox";
+import { PageHero } from "@/components/pages";
+import CaseStudyCard from "@/components/pages/CaseStudyCard";
 
 const CASE_STUDIES = [
-  { title: "Premium Fleet Maintenance", desc: "How we streamlined servicing for a 50+ vehicle corporate fleet." },
-  { title: "Luxury Brand Specialization", desc: "Our approach to maintaining high-end European vehicles." },
-  { title: "Rapid Brake System Overhaul", desc: "Emergency brake repair completed within 24 hours." },
+  {
+    title: "Pets Care & Training App",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.",
+    image: "https://images.unsplash.com/photo-1541569863344-9c59530462aa?w=800&q=80", // Placeholder for app UI
+    tags: ["Mobile App", "E-Commerce", "SaaS Platform"],
+    path: "/case-studies/pets-care-training-app",
+  },
+  {
+    title: "Claims Automation Platform",
+    desc: "We built an AI-first platform that combines computer vision, natural language processing, and machine learning to automate the entire claims journey from document intake to payment processing.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    tags: ["Mobile App", "E-Commerce", "SaaS Platform"],
+    path: "/case-studies/claims-automation-platform",
+  },
+  {
+    title: "DriveMech",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.",
+    image: "https://images.unsplash.com/photo-1555421689-4917415114e3?w=800&q=80",
+    tags: ["Mobile App", "E-Commerce", "SaaS Platform"],
+    path: "/case-studies/drivemech",
+  },
+  {
+    title: "Claims Automation Platform",
+    desc: "We built an AI-first platform that combines computer vision, natural language processing, and machine learning to automate the entire claims journey from document intake to payment processing.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    tags: ["Mobile App", "E-Commerce", "SaaS Platform"],
+    path: "/case-studies/claims-automation-platform",
+  },
+  {
+    title: "DriveMech",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.",
+    image: "https://images.unsplash.com/photo-1555421689-4917415114e3?w=800&q=80",
+    tags: ["Mobile App", "E-Commerce", "SaaS Platform"],
+    path: "/case-studies/drivemech",
+  },
+  {
+    title: "Pets Care & Training App",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.",
+    image: "https://images.unsplash.com/photo-1541569863344-9c59530462aa?w=800&q=80",
+    tags: ["Mobile App", "E-Commerce", "SaaS Platform"],
+    path: "/case-studies/pets-care-training-app",
+  },
 ];
 
 export default function CaseStudiesPage() {
   return (
     <>
-      <PageHero
-        title="Case Studies"
-        subtitle="Real stories of how we've helped customers and businesses achieve better vehicle reliability."
-      />
-      <PageSection title="Success Stories">
-        <SmoothLandingContainer staggerDelay={0.1}>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {CASE_STUDIES.map((c, i) => (
-              <SmoothLandingItem key={c.title} variant="slide-up" distance={24}>
-                <AnimatedCard
-                  title={c.title}
-                  description={c.desc}
+      <div className="bg-black min-h-screen">
+        <PageHero
+          title="Case Studies"
+          subtitle="Real stories of how we've helped customers and businesses achieve better vehicle reliability."
+          className="bg-black border-b border-white/10"
+          titleClassName="text-white"
+          subtitleClassName="text-slate-400"
+        />
+        <section className="py-20 sm:py-24 bg-black">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {CASE_STUDIES.map((study, i) => (
+                <CaseStudyCard
+                  key={i}
+                  title={study.title}
+                  description={study.desc}
+                  imageSrc={study.image}
+                  tags={study.tags}
                   index={i}
+                  path={study.path}
                 />
-              </SmoothLandingItem>
-            ))}
+              ))}
+            </div>
           </div>
-        </SmoothLandingContainer>
-      </PageSection>
+        </section>
+      </div>
     </>
   );
 }

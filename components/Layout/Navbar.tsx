@@ -31,6 +31,9 @@ interface NavbarProps {
   logoProps?: React.ComponentProps<typeof NavLogo>;
 }
 
+import MobileMenu from "@/components/Layout/MobileMenu";
+import Image from "next/image";
+
 export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, logoProps }: NavbarProps) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -39,63 +42,50 @@ export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, logoProps }: Navb
     href === "/" ? pathname === "/" : pathname?.startsWith(href);
 
   return (
-    <header className="fixed w-full top-0 z-50 relative">
-      <NavbarBackground />
+    <>
+      <header className="fixed w-full top-0 z-50 bg-transparent">
+        <NavbarBackground />
 
-      <nav
-        className="relative mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8"
-        aria-label="Global"
-      >
-        <div className="flex-shrink-0">
-          <NavLogo srLabel="ArcinIT" {...logoProps} />
-        </div>
+        <nav
+          className="relative mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8"
+          aria-label="Global"
+        >
+          <div className="flex-shrink-0">
+            <Image
+              src="/Arcin_logo_Name.png"
+              alt="ArcinIT Logo"
+              width={100}
+              height={100}
+              className="object-contain bg-transparent "
+            />          
+          </div>
 
-        {/* Desktop nav links */}
-        <div className="hidden lg:flex items-center gap-8">
-          {navItems.map(({ href, label }) => (
-            <NavLink
-              key={href}
-              href={href}
-              isActive={isActive(href)}
-              activeIndicatorClassName="bg-white"
-            >
-              {label}
-            </NavLink>
-          ))}
-        </div>
-
-        {/* Hamburger menu button */}
-        <div className="flex-shrink-0">
-          <HamburgerButton
-            onClick={() => setMobileOpen((o) => !o)}
-            isOpen={mobileOpen}
-            ariaLabel={mobileOpen ? "Close menu" : "Open menu"}
-          />
-        </div>
-      </nav>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="lg:hidden relative bg-slate-900/95 backdrop-blur border-t border-slate-700">
-          <div className="px-4 py-4 space-y-1">
+          {/* Desktop nav links */}
+          <div className="hidden lg:flex items-center gap-8">
             {navItems.map(({ href, label }) => (
-              <Link
+              <NavLink
                 key={href}
                 href={href}
-                onClick={() => setMobileOpen(false)}
-                className={clsx(
-                  "block px-4 py-2 rounded-lg text-sm font-medium",
-                  isActive(href)
-                    ? "text-blue-400 bg-blue-900/30"
-                    : "text-slate-300 hover:text-white hover:bg-slate-800"
-                )}
+                isActive={isActive(href)}
+                activeIndicatorClassName="bg-white"
               >
                 {label}
-              </Link>
+              </NavLink>
             ))}
           </div>
-        </div>
-      )}
-    </header>
+
+          {/* Hamburger menu button */}
+          <div className="flex-shrink-0">
+            <HamburgerButton
+              onClick={() => setMobileOpen((o) => !o)}
+              isOpen={mobileOpen}
+              ariaLabel={mobileOpen ? "Close menu" : "Open menu"}
+            />
+          </div>
+        </nav>
+      </header>
+
+      <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
+    </>
   );
 }

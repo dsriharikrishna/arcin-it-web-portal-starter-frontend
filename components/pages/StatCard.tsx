@@ -29,15 +29,15 @@ export default function StatCard({
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
       className={clsx(
-        "p-6 rounded-2xl bg-white border border-slate-200/80 shadow-sm",
+        "p-4 rounded-2xl bg-white border border-slate-200/80 shadow-sm",
         "flex flex-col gap-4",
         className
       )}
     >
-      <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-blue-600 shrink-0">
+      <div className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-blue-600 shrink-0">
         {icon}
       </div>
-      <p className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+      <p className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
         {value}
         <span className="text-blue-600"> +</span>
       </p>
