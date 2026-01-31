@@ -8,6 +8,7 @@ import {
   SmoothLandingItem,
 } from "@/components/animations/SmoothLandingBox";
 import NavLogo from "@/components/ui/NavLogo";
+import Image from "next/image";
 
 const COMPANY_LINKS = [
   { href: "/", label: "Home" },
@@ -20,8 +21,8 @@ const COMPANY_LINKS = [
 ];
 
 const RECENT_NEWS = [
-  { title: "Lorem ipsum dolor sit amet, consectetur.", date: "8 Nov, 2025", image: "/images/news-placeholder.jpg" },
-  { title: "Lorem ipsum dolor sit amet, consectetur.", date: "8 Nov, 2025", image: "/images/news-placeholder.jpg" },
+  { title: "Lorem ipsum dolor sit amet, consectetur.", date: "8 Nov, 2025", image: "/FooterImage.png" },
+  { title: "Lorem ipsum dolor sit amet, consectetur.", date: "8 Nov, 2025", image: "/FooterImage.png" },
 ];
 
 const SOCIAL_LINKS = [
@@ -66,11 +67,14 @@ export default function Footer() {
                 <div className="mb-4 w-fit">
                   <div className="p-3 bg-white rounded-lg">
                     <Link href="/">
-                      <NavLogo />
+                    <Image
+                      src="/Footer_Logo.png"
+                      alt="Logo"
+                      width={100}
+                      height={100}
+                      className="object-contain bg-transparent "
+                    />
                     </Link>
-                    <p className="text-[10px] text-blue-600 font-medium mt-1 tracking-wide">
-                      INFINI TECH SOFT
-                    </p>
                   </div>
                 </div>
                 <p className="text-sm text-slate-300 text-[15px] leading-relaxed mb-5 max-w-sm">
@@ -178,9 +182,15 @@ export default function Footer() {
                 <div className="space-y-4">
                   {RECENT_NEWS.map((item, i) => (
                     <div key={i} className="flex gap-3 group">
-                      <div className="w-16 h-16 shrink-0 rounded-lg bg-slate-600/50 overflow-hidden">
+                      <div className="w-14 h-14 shrink-0 rounded-lg bg-slate-600/50 overflow-hidden">
                         <div className="w-full h-full bg-slate-500/50 flex items-center justify-center text-slate-400 text-xs">
-                          Image
+                          <Image
+                            src={item.image}
+                            alt="News"
+                            width={100}
+                            height={100}
+                            className="object-contain bg-transparent "
+                          />
                         </div>
                       </div>
                       <div>

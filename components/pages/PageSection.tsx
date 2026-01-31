@@ -55,7 +55,7 @@ export default function PageSection({
         delay,
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
-      className={clsx("py-16 sm:py-20", className)}
+      className={clsx("py-12 sm:py-16", className)}
     >
       <div
         className={clsx(

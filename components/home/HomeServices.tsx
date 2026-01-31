@@ -87,7 +87,7 @@ export default function HomeServices() {
     }, [emblaApi, updateScrollButtons]);
 
     return (
-        <section className="py-16 sm:py-24 bg-gradient-to-b from-slate-50 to-blue-50/30">
+        <section className="py-12 sm:py-16 bg-gradient-to-b from-slate-50 to-blue-50/30">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-10">
                     <div className="lg:max-w-xl">

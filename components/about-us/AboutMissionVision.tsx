@@ -8,7 +8,7 @@ import clsx from "clsx";
 interface MissionCardProps {
     title: string;
     description: string;
-    icon: React.ElementType;
+    icon: React.ElementType<{ className?: string }>;
     delay?: number;
 }
 

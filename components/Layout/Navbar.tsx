@@ -44,7 +44,10 @@ export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, logoProps }: Navb
   return (
     <>
       <header className="fixed w-full top-0 z-50 bg-transparent">
-        <NavbarBackground />
+        <NavbarBackground
+          gradientClassName="bg-transparent"
+          showPattern={false}
+        />
 
         <nav
           className="relative mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8"
@@ -57,7 +60,7 @@ export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, logoProps }: Navb
               width={100}
               height={100}
               className="object-contain bg-transparent "
-            />          
+            />
           </div>
 
           {/* Desktop nav links */}
