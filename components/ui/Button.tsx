@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import Link from "next/link";
 import clsx from "clsx";
 
 type Variant =
@@ -28,6 +29,8 @@ type ButtonProps = {
   disabled?: boolean;
   fullWidth?: boolean;
   title?: string;
+  /** When provided, renders as Link instead of button */
+  href?: string;
 };
 
 // Base text sizing
@@ -67,7 +70,7 @@ const variantStyles = {
   secondary:
     "bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-1 focus:ring-gray-500 focus:ring-offset-1",
 
-  // ✔ Gradient already matches DriveMech brand
+  // ✔ Gradient brand styling
   gradient:
     "bg-gradient-to-r from-orange-500 to-orange-300 text-white hover:opacity-90 focus:ring-1 focus:ring-orange-500 focus:ring-offset-1 shadow-lg shadow-orange-500/30",
 
@@ -110,27 +113,39 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
   fullWidth = false,
   title,
+  href,
 }) => {
-  // Check if this is an icon-only button
   const isIconOnly = !children && (startIcon || endIcon);
   const isIconVariant = variant.startsWith("icon-");
+  const baseClasses = clsx(
+    "inline-flex items-center justify-center gap-2 transition-colors focus:outline-none",
+    "disabled:opacity-50 disabled:pointer-events-none cursor-pointer rounded-lg",
+    baseSizeStyles[size],
+    isIconOnly || isIconVariant ? iconSizeStyles[size] : sizeStyles[size],
+    roundedStyles[rounded],
+    variantStyles[variant],
+    fullWidth && "w-full",
+    disabled && "opacity-50 cursor-not-allowed",
+    className
+  );
+
+  if (href) {
+    return (
+      <Link href={href} className={baseClasses}>
+        {startIcon && !isIconOnly && <span className="me-2">{startIcon}</span>}
+        {isIconOnly ? startIcon || endIcon : children}
+        {endIcon && !isIconOnly && <span className="ms-2">{endIcon}</span>}
+      </Link>
+    );
+  }
+
   return (
     <button
       type={type}
       onClick={onClick}
       disabled={disabled}
       title={title}
-      className={clsx(
-        "inline-flex items-center justify-center gap-2 transition-colors focus:outline-none",
-        "disabled:opacity-50 disabled:pointer-events-none cursor-pointer rounded-lg",
-        baseSizeStyles[size],
-        isIconOnly || isIconVariant ? iconSizeStyles[size] : sizeStyles[size],
-        roundedStyles[rounded],
-        variantStyles[variant],
-        fullWidth && "w-full",
-        disabled && "opacity-50 cursor-not-allowed",
-        className
-      )}
+      className={baseClasses}
     >
       {startIcon && !isIconOnly && <span className="me-2">{startIcon}</span>}
       {isIconOnly ? startIcon || endIcon : children}

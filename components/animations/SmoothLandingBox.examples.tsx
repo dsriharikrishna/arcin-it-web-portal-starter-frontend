@@ -129,7 +129,7 @@ export const CardGridExample = () => (
 export const HeroExample = () => (
   <>
     <SmoothLandingBox delay={0} variant="fade" duration={0.8}>
-      <h1>Welcome to DriveMech</h1>
+      <h1>Welcome to ArcinIT</h1>
     </SmoothLandingBox>
 
     <SmoothLandingBox delay={0.3} variant="slide-up" distance={30}>
@@ -147,7 +147,7 @@ export const SidebarExample = () => (
   <aside className="sidebar">
     {/* Logo */}
     <SmoothLandingBox delay={0} variant="fade">
-      <div className="logo">DriveMech</div>
+      <div className="logo">ArcinIT</div>
     </SmoothLandingBox>
 
     {/* Navigation items with stagger */}

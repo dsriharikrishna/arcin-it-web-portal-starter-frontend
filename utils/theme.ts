@@ -1,4 +1,4 @@
-// Theme definition for drivemech_starter_frontend
+// Theme definition for arcin-it-web-portal
 // You can expand this as needed for your design system
 
 export const theme = {
