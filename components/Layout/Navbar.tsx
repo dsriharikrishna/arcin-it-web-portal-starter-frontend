@@ -33,9 +33,11 @@ interface NavbarProps {
 
 import MobileMenu from "@/components/Layout/MobileMenu";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, logoProps }: NavbarProps) {
   const pathname = usePathname();
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const isActive = (href: string) =>
@@ -46,14 +48,14 @@ export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, logoProps }: Navb
       <header className="fixed w-full top-0 z-50 bg-transparent">
         <NavbarBackground
           gradientClassName="bg-transparent"
-          showPattern={false}
+          showPattern={true}
         />
 
         <nav
           className="relative mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8"
           aria-label="Global"
         >
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 bg-transparent" onClick={() => router.push("/")}>
             <Image
               src="/Arcin_logo_Name.png"
               alt="ArcinIT Logo"
@@ -70,7 +72,9 @@ export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, logoProps }: Navb
                 key={href}
                 href={href}
                 isActive={isActive(href)}
-                activeIndicatorClassName="bg-white"
+                activeIndicatorClassName="bg-blue-800"
+                activeClassName="text-slate-900 font-bold"
+                inactiveClassName="text-slate-600 hover:text-blue-700 font-medium"
               >
                 {label}
               </NavLink>
