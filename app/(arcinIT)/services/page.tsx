@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ServiceCard } from "@/components/pages";
+import { PageHero } from "@/components/pages";
+import ServiceCard from "@/components/services/ServiceCard";
 import {
   Landmark,
   ShieldCheck,
@@ -61,37 +62,13 @@ export default function ServicesPage() {
   return (
     <section className="py-20 sm:py-28 bg-[#F8FAFF]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Section */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-16 sm:mb-20">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl"
-          >
-            <span className="inline-block py-1.5 px-4 rounded-full bg-blue-100 text-blue-700 text-sm font-semibold mb-6">
-              Our Services
-            </span>
-            <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 tracking-tight leading-[1.15]">
-              End-to-End <span className="font-extrabold">Technology Solutions</span>
-            </h1>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-xl text-slate-600 text-lg leading-relaxed lg:pl-8 lg:border-l lg:border-blue-200"
-          >
-            <p className="mb-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
-              odio. Praesent libero. Sed cursus ante dapibus diam.
-            </p>
-            <p>
-              Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum
-              lacinia arcu eget nulla.
-            </p>
-          </motion.div>
-        </div>
+        {/* Hero Section */}
+        <PageHero
+          title="End-to-End Technology Solutions"
+          subtitle="Comprehensive IT management and consultancy services tailored to your business needs. We help you navigate the digital landscape with confidence."
+          backgroundImage="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1600&q=80"
+          className="mb-16 sm:mb-20 rounded-3xl"
+        />
 
         {/* Services Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">

@@ -1,7 +1,7 @@
 "use client";
 
 import { PageHero } from "@/components/pages";
-import CaseStudyCard from "@/components/pages/CaseStudyCard";
+import CaseStudyCard from "@/components/case-studies/CaseStudyCard";
 
 const CASE_STUDIES = [
   {
@@ -51,13 +51,11 @@ const CASE_STUDIES = [
 export default function CaseStudiesPage() {
   return (
     <>
-      <div className="bg-black min-h-screen">
+      <div className="bg-black">
         <PageHero
           title="Case Studies"
-          subtitle="Real stories of how we've helped customers and businesses achieve better vehicle reliability."
-          className="bg-black border-b border-white/10"
-          titleClassName="text-white"
-          subtitleClassName="text-slate-400"
+          subtitle="Explore how we've helped businesses transform and grow with our innovative solutions."
+          backgroundImage="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&q=80"
         />
         <section className="py-20 sm:py-24 bg-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

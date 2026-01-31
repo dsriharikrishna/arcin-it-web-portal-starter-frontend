@@ -65,14 +65,9 @@ export default function Footer() {
               <div className="lg:pr-4">
                 <div className="mb-4 w-fit">
                   <div className="p-3 bg-white rounded-lg">
-                    <NavLogo
-                      href="/"
-                      brandPrimary="Arcin"
-                      brandSecondary="IT"
-                      primaryClassName="text-slate-800"
-                      secondaryClassName="text-blue-600"
-                      className="[&>svg]:w-8 [&>svg]:h-8"
-                    />
+                    <Link href="/">
+                      <NavLogo />
+                    </Link>
                     <p className="text-[10px] text-blue-600 font-medium mt-1 tracking-wide">
                       INFINI TECH SOFT
                     </p>

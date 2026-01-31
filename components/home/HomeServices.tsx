@@ -2,7 +2,6 @@
 
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
-import { ServiceCard } from "@/components/pages";
 import {
     Building2,
     ChevronLeft,
@@ -12,6 +11,7 @@ import {
     Ship,
     ShoppingCart,
 } from "lucide-react";
+import ServiceCard from "../services/ServiceCard";
 
 const HOME_SERVICES = [
     {

@@ -11,9 +11,7 @@ export default function CareersPage() {
         <PageHero
           title="Careers"
           subtitle="Join our team and help shape the future of technology. We're always looking for talented individuals."
-          className="bg-black border-b border-white/10"
-          titleClassName="text-white"
-          subtitleClassName="text-slate-400"
+          backgroundImage="https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1600&q=80"
         />
         <CareersBenefits />
         <CareersPositions />

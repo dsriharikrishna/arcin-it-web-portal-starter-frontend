@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import clsx from "clsx";
+import Image from "next/image";
 
 interface PageHeroProps {
   title: string;
@@ -9,6 +10,7 @@ interface PageHeroProps {
   className?: string;
   titleClassName?: string;
   subtitleClassName?: string;
+  backgroundImage?: string;
 }
 
 export default function PageHero({
@@ -17,6 +19,7 @@ export default function PageHero({
   className,
   titleClassName,
   subtitleClassName,
+  backgroundImage,
 }: PageHeroProps) {
   return (
     <motion.section
@@ -24,17 +27,32 @@ export default function PageHero({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={clsx(
-        "py-16 sm:py-24 lg:py-32 bg-gradient-to-br from-slate-50 to-slate-100",
+        "relative py-20 sm:py-32 lg:py-40 overflow-hidden",
+        !backgroundImage && "bg-gradient-to-br from-slate-50 to-slate-100",
         className
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {backgroundImage && (
+        <>
+          <Image
+            src={backgroundImage}
+            alt={title}
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/60" />
+        </>
+      )}
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className={clsx(
-            "text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight",
+            "text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight",
+            backgroundImage ? "text-white" : "text-slate-900",
             titleClassName
           )}
         >
@@ -46,7 +64,8 @@ export default function PageHero({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className={clsx(
-              "mt-4 text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto",
+              "mt-6 text-lg sm:text-xl max-w-2xl mx-auto",
+              backgroundImage ? "text-slate-200" : "text-slate-600",
               subtitleClassName
             )}
           >
@@ -57,3 +76,4 @@ export default function PageHero({
     </motion.section>
   );
 }
+
