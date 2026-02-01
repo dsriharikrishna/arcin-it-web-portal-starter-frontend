@@ -19,7 +19,7 @@ export default function ContactUsPage() {
         title="Contact Us"
         subtitle="Let's Build Something Amazing Together"
         description="Ready to transform your business? Our experts are here to help you navigate your digital journey."
-        backgroundImage="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1600&q=80"
+        backgroundImage="/contact-hero.png"
       />
       <ContactSection />
     </section>
