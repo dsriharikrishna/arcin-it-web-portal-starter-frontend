@@ -15,7 +15,8 @@ export default function HomePage() {
   return (
     <>
       <HomeHero />
-      <HomeStats />
+      
+     <div className="my-10"><HomeStats /></div>
       <HomeAbout />
       <HomeServices />
       <HomeProcess />
