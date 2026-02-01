@@ -14,7 +14,9 @@ interface PageSectionProps {
   delay?: number;
 }
 
-export default function PageSection({
+import React from "react";
+
+function PageSection({
   children,
   title,
   subtitle,
@@ -82,3 +84,5 @@ export default function PageSection({
     </motion.section>
   );
 }
+
+export default React.memo(PageSection);

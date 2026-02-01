@@ -30,18 +30,21 @@ export default function StatCard({
       }}
       className={clsx(
         "p-4 rounded-2xl bg-white border border-slate-200/80 shadow-sm",
-        "flex flex-col gap-4",
+        "flex flex-col md:flex-row gap-4",
         className
       )}
     >
-      <div className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-blue-600 shrink-0">
+      <div className="flex-1 w-full h-full rounded-xl bg-slate-100 flex items-center justify-center text-blue-600 shrink-0">
         {icon}
+        
       </div>
+     <div className="flex-1 flex flex-col gap-1">
       <p className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
         {value}
         <span className="text-blue-600"> +</span>
       </p>
       <p className="text-slate-600 font-medium">{label}</p>
+     </div>
     </motion.div>
   );
 }

@@ -37,9 +37,31 @@ const HOW_WE_WORK = [
     },
 ];
 
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+        },
+    },
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.5,
+            ease: [0.25, 0.46, 0.45, 0.94],
+        },
+    },
+};
+
 export default function HomeProcess() {
     return (
-        <section className="py-16 sm:py-24 bg-slate-900">
+        <section className="py-16 sm:py-24 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -48,27 +70,30 @@ export default function HomeProcess() {
                     transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
                     className="text-center mb-12"
                 >
-                    <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-                        How We Work
-                    </h2>
-                    <p className="mt-4 text-slate-400 max-w-2xl mx-auto">
-                        A structured approach that ensures successful delivery and long-term partnership
-                    </p>
+                    <div className="flex flex-col items-center justify-center gap-2">
+                        <p className="text-md font-bold text-slate-700 tracking-tight bg-gray-200 p-1 rounded-lg">
+                            How We Work
+                        </p>
+                        <h2 className="text-4xl font-bold text-slate-900 tracking-tight">Our Proven Methodology</h2>
+                        <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
+                            A structured approach that ensures successful delivery and long-term partnership
+                        </p>
+                    </div>
+
                 </motion.div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-                    {HOW_WE_WORK.map((step, i) => {
+                <motion.div
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-30px" }}
+                >
+                    {HOW_WE_WORK.map((step) => {
                         const Icon = step.icon;
                         return (
                             <motion.div
                                 key={step.title}
-                                initial={{ opacity: 0, y: 24 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-30px" }}
-                                transition={{
-                                    duration: 0.5,
-                                    delay: i * 0.08,
-                                    ease: [0.25, 0.46, 0.45, 0.94],
-                                }}
+                                variants={itemVariants}
                                 className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col gap-4 bg-gradient-to-b from-white to-slate-50/80"
                             >
                                 <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
@@ -79,7 +104,7 @@ export default function HomeProcess() {
                             </motion.div>
                         );
                     })}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

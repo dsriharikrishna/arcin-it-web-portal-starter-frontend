@@ -14,6 +14,7 @@ type Variant =
   | "icon-edit"
   | "icon-delete"
   | "icon-ghost"
+  | "primary-blue-gradient"
   | "custom";
 
 type ButtonProps = {
@@ -98,6 +99,8 @@ const variantStyles = {
   "icon-ghost":
     "text-gray-600 hover:bg-gray-100 focus:ring-1 focus:ring-gray-500",
   custom: "",
+  "primary-blue-gradient":
+    "bg-gradient-to-r from-blue-500 to-blue-300 text-white hover:opacity-90 focus:ring-1 focus:ring-blue-500 focus:ring-offset-1 shadow-lg shadow-blue-500/30",
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -119,7 +122,7 @@ const Button: React.FC<ButtonProps> = ({
   const isIconVariant = variant.startsWith("icon-");
   const baseClasses = clsx(
     "inline-flex items-center justify-center gap-2 transition-colors focus:outline-none",
-    "disabled:opacity-50 disabled:pointer-events-none cursor-pointer rounded-lg",
+    "disabled:opacity-50 disabled:pointer-events-none cursor-pointer",
     baseSizeStyles[size],
     isIconOnly || isIconVariant ? iconSizeStyles[size] : sizeStyles[size],
     roundedStyles[rounded],
@@ -154,4 +157,4 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export default Button;
+export default React.memo(Button);

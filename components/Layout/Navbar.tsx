@@ -2,8 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import Link from "next/link";
-import clsx from "clsx";
 import NavbarBackground from "@/components/ui/NavbarBackground";
 import NavLogo from "@/components/ui/NavLogo";
 import NavLink from "@/components/ui/NavLink";
@@ -45,14 +43,14 @@ export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, logoProps }: Navb
 
   return (
     <>
-      <header className="fixed w-full top-0 z-50 bg-transparent">
+      <header className="fixed w-full top-0 z-50 bg-transparent border-b border-gray-200">
         <NavbarBackground
           gradientClassName="bg-transparent"
           showPattern={true}
         />
 
         <nav
-          className="relative mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8"
+          className="relative mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8 "
           aria-label="Global"
         >
           <div className="flex-shrink-0 bg-transparent" onClick={() => router.push("/")}>

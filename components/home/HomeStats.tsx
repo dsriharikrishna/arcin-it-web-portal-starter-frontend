@@ -2,54 +2,98 @@
 
 import { motion } from "framer-motion";
 import { Award, Headset, Puzzle, Users } from "lucide-react";
+import Image from "next/image";
 
 const STATS = [
-    { value: "450 +", label: "Happy Clients", icon: Users },
-    { value: "10 +", label: "Team Members", icon: Puzzle },
-    { value: "10 +", label: "Years in Business", icon: Award },
-    { value: "24/7 +", label: "Customer Support", icon: Headset },
+  { value: "450+", label: "Happy Clients", Image: "/stats/HappyClients.png" },
+  { value: "10+", label: "Team Members", Image: "/stats/TeamMembers.png" },
+  { value: "10+", label: "Years in Business", Image: "/stats/Bussiness.png" },
+  { value: "24/7+", label: "Customer Support", Image: "/stats/CustomerSupport.png" },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0, scale: 0.96 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: "easeOut" },
+  },
+};
+
 export default function HomeStats() {
-    return (
-        <section className="py-12 sm:py-16 bg-[#F8FAFF]">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className="bg-[#E0E7FF] rounded-2xl p-4 sm:p-6 lg:p-8 flex flex-col sm:flex-row flex-wrap items-center justify-between gap-8 lg:gap-12"
+  return (
+    <section className="py-10 ">
+      <div className="max-w-full mx-auto px-4 bg-[#E9EFFF]">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="
+            container mx-auto
+            bg-[#E9EFFF]
+            px-6 py-6
+            flex flex-col
+            sm:flex-row
+            items-center
+            justify-between
+            gap-6
+            w-7xl
+          "
+        >
+          {STATS.map((stat) => {
+            const Icon = stat.Image;
+            return (
+              <motion.div
+                key={stat.label}
+                variants={itemVariants}
+                className="
+                  flex items-center gap-4
+                  w-full sm:w-auto
+                  justify-center p-2
+                "
+              >
+                {/* Icon Box */}
+                <div
+                  className="
+                    w-16 h-16
+                    rounded-xl
+                    bg-white
+                    flex items-center justify-center
+                    text-indigo-600
+                    shadow-sm
+                  "
                 >
-                    {STATS.map((stat, i) => {
-                        const Icon = stat.icon;
-                        return (
-                            <motion.div
-                                key={stat.label}
-                                initial={{ opacity: 0, y: 10 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{
-                                    duration: 0.4,
-                                    delay: 0.2 + i * 0.1,
-                                    ease: [0.25, 0.46, 0.45, 0.94],
-                                }}
-                                className="flex items-center gap-4"
-                            >
-                                <div className="w-9 h-9 rounded-xl bg-white p-2 flex items-center justify-center text-blue-600 shadow-sm shrink-0">
-                                    <Icon className="w-8 h-8" />
-                                </div>
-                                <div className="flex flex-col">
-                                    <p className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-                                        {stat.value}
-                                    </p>
-                                    <p className="text-slate-600 font-medium mt-1">{stat.label}</p>
-                                </div>
-                            </motion.div>
-                        );
-                    })}
-                </motion.div>
-            </div>
-        </section>
-    );
+                  <Image src={Icon} alt={stat.label} width={40} height={40} />
+                </div>
+
+                {/* Text */}
+                <div className="text-left">
+                  <p className="text-2xl font-bold text-slate-900 leading-tight">
+                    {stat.value}
+                  </p>
+                  <p className="text-sm text-slate-600 mt-0.5">
+                    {stat.label}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </div>
+    </section>
+  );
 }

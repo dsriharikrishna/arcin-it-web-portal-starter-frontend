@@ -60,7 +60,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -20, scale: 0.95 }}
                         transition={{ duration: 0.2, ease: "easeOut" }}
-                        className="fixed top-[72px] right-4 w-[calc(100vw-32px)] sm:w-[340px] bg-[#EBF3FF] z-[70] rounded-3xl shadow-2xl border border-white/60 overflow-y-auto max-h-[calc(100vh-100px)] origin-top-right ring-1 ring-black/5"
+                        className="fixed top-[72px] right-4 w-[calc(100vw-32px)] sm:w-[340px] bg-[#EBF3FF] z-[70] rounded-lg shadow-xl border border-white/60 overflow-y-auto max-h-[calc(100vh-100px)] origin-top-right ring-1 ring-black/5"
                         style={{
                             scrollbarWidth: 'thin',
                             scrollbarColor: '#CBD5E1 transparent'

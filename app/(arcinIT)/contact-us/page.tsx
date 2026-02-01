@@ -1,9 +1,15 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { PageHero } from "@/components/pages";
 import ContactForm from "@/components/contact/ContactForm";
 import ContactInfo from "@/components/contact/ContactInfo";
-import ContactMap from "@/components/contact/ContactMap";
+
+// Lazy load the map, disable SSR as maps often need window/document
+const ContactMap = dynamic(() => import("@/components/contact/ContactMap"), {
+  ssr: false,
+  loading: () => <div className="h-[300px] sm:h-[400px] lg:h-[500px] bg-blue-50 rounded-3xl animate-pulse" />
+});
 
 export default function ContactUsPage() {
   return (

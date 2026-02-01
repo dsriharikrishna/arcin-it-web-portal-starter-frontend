@@ -3,86 +3,100 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import clsx from "clsx";
-import Button from "@/components/ui/Button";
 
-interface CaseStudyCardProps {
-    title: string;
-    description: string;
-    imageSrc: string;
-    tags: string[];
-    index?: number;
-    className?: string;
-    path?: string;
+interface Props {
+  title: string;
+  description: string;
+  imageSrc: string;
+  tags: string[];
+  path: string;
+  index: number;
 }
 
 export default function CaseStudyCard({
-    title,
-    description,
-    imageSrc,
-    tags,
-    index = 0,
-    className,
-    path,
-}: CaseStudyCardProps) {
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-30px" }}
-            transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-                ease: [0.25, 0.46, 0.45, 0.94],
-            }}
-            className={clsx(
-                "flex flex-col bg-[#EBF3FF] rounded-3xl overflow-hidden hover:shadow-xl transition-shadow duration-300",
-                className
-            )}
-        >
-            {/* Image Section */}
-            <div className="relative aspect-[4/3] w-full bg-slate-100 p-8 flex items-center justify-center overflow-hidden">
-                {/* Decorative background circle if needed, or just the image */}
-                <Image
-                    src={imageSrc}
-                    alt={title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-            </div>
+  title,
+  description,
+  imageSrc,
+  tags,
+  path,
+  index,
+}: Props) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.45, delay: index * 0.06 }}
+      className="
+        bg-[#F3F6FF]
+        rounded-2xl
+        p-4
+        flex flex-col
+        gap-4
+        border border-blue-100
+        hover:shadow-lg
+        transition
+      "
+    >
+      {/* IMAGE */}
+      <div className="relative h-40 rounded-xl overflow-hidden bg-white">
+        <Image
+          src={imageSrc}
+          alt={title}
+          fill
+          className="object-cover"
+        />
+      </div>
 
-            {/* Content Section */}
-            <div className="p-6 sm:p-8 flex flex-col flex-1">
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1">
-                    {description}
-                </p>
+      {/* CONTENT */}
+      <div className="flex flex-col gap-2 flex-1">
+        <h3 className="text-sm font-semibold text-slate-900">
+          {title}
+        </h3>
 
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                    {tags.map((tag) => (
-                        <span
-                            key={tag}
-                            className={clsx(
-                                "px-3 py-1.5 text-xs font-medium rounded-lg",
-                                "bg-[#DAFBE1] text-[#1E5B2D]" // Light green variation matched from image approx or similar nice contrast
-                            )}
-                        >
-                            {tag}
-                        </span>
-                    ))}
-                </div>
+        <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
+          {description}
+        </p>
 
-                {/* Action Button */}
-                <Button
-                    variant="outline"
-                    href={path}
-                    className="w-full justify-center border-blue-200 text-blue-600 hover:bg-blue-50 py-2.5"
-                >
-                    View More
-                </Button>
-            </div>
-        </motion.div>
-    );
+        {/* TAGS */}
+        <div className="flex flex-wrap gap-2 pt-1">
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              className="
+                px-2 py-1
+                rounded-full
+                text-[10px]
+                font-medium
+                bg-white
+                border border-blue-200
+                text-blue-600
+              "
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* CTA */}
+      <Link
+        href={path}
+        className="
+          mt-auto
+          w-full
+          text-center
+          text-sm
+          py-2
+          rounded-lg
+          border border-blue-400
+          text-blue-600
+          hover:bg-blue-50
+          transition
+        "
+      >
+        View More
+      </Link>
+    </motion.div>
+  );
 }

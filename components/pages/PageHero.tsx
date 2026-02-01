@@ -11,6 +11,7 @@ interface PageHeroProps {
   titleClassName?: string;
   subtitleClassName?: string;
   backgroundImage?: string;
+  description?: string;
 }
 
 export default function PageHero({
@@ -20,6 +21,7 @@ export default function PageHero({
   titleClassName,
   subtitleClassName,
   backgroundImage,
+  description,
 }: PageHeroProps) {
   return (
     <motion.section
@@ -40,36 +42,51 @@ export default function PageHero({
             fill
             className="object-cover"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/60" />
         </>
       )}
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.h1
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center gap-4">
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className={clsx(
-            "text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight",
+            "text-lg sm:text-xl font-bold tracking-tight",
             backgroundImage ? "text-white" : "text-slate-900",
             titleClassName
           )}
         >
           {title}
-        </motion.h1>
+        </motion.p>
         {subtitle && (
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className={clsx(
-              "mt-6 text-lg sm:text-xl max-w-2xl mx-auto",
+              "text-lg sm:text-2xl max-w-2xl mx-auto",
               backgroundImage ? "text-slate-200" : "text-slate-600",
               subtitleClassName
             )}
           >
             {subtitle}
+          </motion.p>
+        )}
+        {description && (
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className={clsx(
+              "text-sm sm:text-md max-w-2xl mx-auto text-gray-300",
+              backgroundImage ? "text-slate-200" : "text-slate-600",
+              subtitleClassName
+            )}
+          >
+            {description}
           </motion.p>
         )}
       </div>

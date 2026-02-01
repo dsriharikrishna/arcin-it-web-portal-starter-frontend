@@ -14,7 +14,9 @@ interface AnimatedCardProps {
   children?: React.ReactNode;
 }
 
-export default function AnimatedCard({
+import React from "react";
+
+function AnimatedCard({
   title,
   description,
   href,
@@ -66,3 +68,5 @@ export default function AnimatedCard({
     </motion.div>
   );
 }
+
+export default React.memo(AnimatedCard);

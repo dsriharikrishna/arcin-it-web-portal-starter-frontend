@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import clsx from "clsx";
 import Button from "@/components/ui/Button";
+import React from "react";
 
 interface ServiceCardProps {
   title: string;
@@ -13,10 +13,9 @@ interface ServiceCardProps {
   href?: string;
   icon?: React.ReactNode;
   index?: number;
-  className?: string;
 }
 
-export default function ServiceCard({
+function ServiceCard({
   title,
   description,
   imageSrc,
@@ -24,47 +23,71 @@ export default function ServiceCard({
   href = "/services",
   icon,
   index = 0,
-  className,
 }: ServiceCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-30px" }}
+      viewport={{ once: true }}
       transition={{
         duration: 0.5,
-        delay: index * 0.05,
+        delay: index * 0.06,
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
-      className={clsx(
-        "flex flex-col rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden",
-        "hover:shadow-lg hover:border-blue-200 transition-all duration-300 shrink-0",
-        className
-      )}
+      className="
+        rounded-3xl
+        bg-[#F3F6FF]
+        border border-blue-100
+        overflow-hidden
+        hover:shadow-xl
+        transition-all
+      "
     >
-      <div className="relative aspect-[16/10] w-full bg-slate-100">
+      {/* IMAGE */}
+      <div className="relative h-[190px] m-4 rounded-2xl overflow-hidden">
         <Image
           src={imageSrc}
           alt={imageAlt}
           fill
           className="object-cover"
-          sizes="(max-width: 768px) 85vw, 380px"
+          sizes="360px"
         />
+
         {icon && (
-          <div className="absolute top-3 left-3 w-10 h-10 rounded-lg bg-white/90 flex items-center justify-center text-blue-600 shadow-sm">
+          <div className="
+            absolute top-4 left-4
+            w-11 h-11
+            rounded-full
+            bg-white/80 backdrop-blur
+            flex items-center justify-center
+            text-blue-600
+          ">
             {icon}
           </div>
         )}
       </div>
-      <div className="p-5 flex flex-col flex-1">
-        <h3 className="text-lg font-semibold text-slate-900">{title}</h3>
-        <p className="mt-2 text-slate-600 text-sm line-clamp-3 flex-1">{description}</p>
-        <div className="mt-4">
-          <Button variant="outline" size="md" rounded="lg" href={href}>
-            Know More
-          </Button>
-        </div>
+
+      {/* CONTENT */}
+      <div className="px-6 pb-6">
+        <h3 className="text-lg font-semibold text-slate-900">
+          {title}
+        </h3>
+
+        <p className="mt-2 text-sm text-slate-600 leading-relaxed line-clamp-3">
+          {description}
+        </p>
+
+        <Button
+          variant="outline"
+          size="md"
+          href={href}
+          className="mt-5 w-full"
+        >
+          Know More
+        </Button>
       </div>
     </motion.div>
   );
 }
+
+export default React.memo(ServiceCard);

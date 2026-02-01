@@ -1,5 +1,7 @@
 "use client";
 
+import React from "react";
+
 import clsx from "clsx";
 
 // Abstract circuit/network pattern SVG
@@ -33,7 +35,7 @@ interface NavbarBackgroundProps {
   className?: string;
 }
 
-export default function NavbarBackground({
+export default React.memo(function NavbarBackground({
   gradientClassName = "bg-gradient-to-r from-slate-50 via-slate-200 to-slate-800",
   patternOpacity = 60,
   showPattern = true,
@@ -55,4 +57,4 @@ export default function NavbarBackground({
       )}
     </div>
   );
-}
+});
