@@ -8,6 +8,7 @@ import Link from "next/link";
 interface MobileMenuProps {
     isOpen: boolean;
     onClose: () => void;
+    navItems: { href: string; label: string }[];
 }
 
 const SocialLink = ({ href, icon: Icon }: { href: string; icon: any }) => (
@@ -43,7 +44,7 @@ const InputField = ({ placeholder, type = "text", as = "input" }: { placeholder:
     );
 };
 
-export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+export default function Menu({ isOpen, onClose, navItems }: MobileMenuProps) {
     return (
         <AnimatePresence>
             {isOpen && (
@@ -74,6 +75,27 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                             >
                                 <X className="w-4 h-4" />
                             </button>
+
+                            {/* Navigation Items */}
+                            <div className="mb-6">
+                                <h2 className="text-lg font-bold text-slate-900 mb-4">Menu</h2>
+                                <nav className="flex flex-col gap-2">
+                                    {navItems && navItems.map((item) => (
+                                        <Link
+                                            key={item.href}
+                                            href={item.href}
+                                            onClick={onClose}
+                                            className="px-4 py-3 rounded-xl bg-white text-slate-700 hover:bg-blue-500 hover:text-white transition-colors font-medium text-sm flex items-center justify-between group"
+                                        >
+                                            {item.label}
+                                            <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                                        </Link>
+                                    ))}
+                                </nav>
+                            </div>
+
+                            {/* Divider */}
+                            <div className="h-px bg-slate-200 my-4" />
 
                             {/* Request A Quote */}
                             <div className="mt-1">

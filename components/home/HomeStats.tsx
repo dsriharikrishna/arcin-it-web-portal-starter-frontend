@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, Headset, Puzzle, Users } from "lucide-react";
 import Image from "next/image";
 
 const STATS = [
@@ -35,63 +34,70 @@ const itemVariants = {
 
 export default function HomeStats() {
   return (
-    <section className="py-10 ">
-      <div className="max-w-full mx-auto px-4 bg-[#E9EFFF]">
+    <section className="py-6 bg-[#E9EFFF]">
+      <div className="max-w-7xl mx-auto px-4">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           className="
-            container mx-auto
+            grid
+            grid-cols-2
+            sm:grid-cols-2
+            md:grid-cols-4
+            gap-4
+            sm:gap-6
             bg-[#E9EFFF]
-            px-6 py-6
-            flex flex-col
-            sm:flex-row
-            items-center
-            justify-between
-            gap-6
-            w-7xl
           "
         >
-          {STATS.map((stat) => {
-            const Icon = stat.Image;
-            return (
-              <motion.div
-                key={stat.label}
-                variants={itemVariants}
+          {STATS.map((stat) => (
+            <motion.div
+              key={stat.label}
+              variants={itemVariants}
+              className="
+                flex flex-col sm:flex-row
+                items-center
+                sm:items-start
+                gap-3
+                sm:gap-4
+                bg-transparent
+                p-3
+                rounded-xl
+                text-center sm:text-left
+              "
+            >
+              {/* Icon */}
+              <div
                 className="
-                  flex items-center gap-4
-                  w-full sm:w-auto
-                  justify-center p-2
+                  w-12 h-12
+                  sm:w-14 sm:h-14
+                  rounded-xl
+                  bg-white
+                  flex items-center justify-center
+                  shadow-sm
                 "
               >
-                {/* Icon Box */}
-                <div
-                  className="
-                    w-16 h-16
-                    rounded-xl
-                    bg-white
-                    flex items-center justify-center
-                    text-indigo-600
-                    shadow-sm
-                  "
-                >
-                  <Image src={Icon} alt={stat.label} width={40} height={40} />
-                </div>
+                <Image
+                  src={stat.Image}
+                  alt={stat.label}
+                  width={32}
+                  height={32}
+                  className="sm:w-9 sm:h-9"
+                />
+              </div>
 
-                {/* Text */}
-                <div className="text-left">
-                  <p className="text-2xl font-bold text-slate-900 leading-tight">
-                    {stat.value}
-                  </p>
-                  <p className="text-sm text-slate-600 mt-0.5">
-                    {stat.label}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+              {/* Text */}
+              <div>
+                <p className="text-xl sm:text-2xl font-bold text-slate-900 leading-tight">
+                  {stat.value}
+                </p>
+                <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
+                  {stat.label}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

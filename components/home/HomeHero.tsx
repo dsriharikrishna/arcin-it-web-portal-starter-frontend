@@ -8,9 +8,8 @@ export default function HomeHero() {
     return (
         <section className="relative py-20 sm:py-32 lg:py-48 overflow-hidden min-h-[90vh] flex items-center">
             {/* Background Image */}
-            {/* Background Image */}
             <Image
-                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80"
+                src="/home-hero.png"
                 alt="Digital Innovation"
                 fill
                 className="object-cover"

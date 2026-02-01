@@ -30,44 +30,39 @@ const CONTACT_DETAILS = [
 ];
 
 export default function ContactInfo() {
-    return (
-        <div className="space-y-6">
-            <div className="mb-2">
-                <h3 className="text-xl font-bold text-slate-900">
-                    Hi! We are always here to help you.
-                </h3>
-            </div>
+  return (
+    <div className="bg-gradient-to from-[#FFFFFF] to-[#D9E5FF] p-4 rounded-xl w-full border border-slate-100 shadow-sm flex flex-col gap-4 h-full">
+      <div>
+        <h3 className="text-lg font-bold text-slate-900">
+          We’re here to help
+        </h3>
+        <p className="text-sm text-slate-500 mt-1">
+          Reach us anytime through the channels below.
+        </p>
+      </div>
 
-            <div className="space-y-4">
-                {CONTACT_DETAILS.map((item, index) => {
-                    const Icon = item.icon;
-                    return (
-                        <div
-                            key={index}
-                            className="flex items-start gap-4 p-5 rounded-2xl bg-[#F0F5FF] border border-[#E1EAFE] hover:border-blue-200 transition-colors"
-                        >
-                            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-blue-600 shadow-sm shrink-0">
-                                <Icon className="w-5 h-5" />
-                            </div>
-                            <div>
-                                <p className="text-sm text-slate-500 font-medium mb-1">
-                                    {item.label}
-                                </p>
-                                {item.href && item.href !== "#" ? (
-                                    <a
-                                        href={item.href}
-                                        className="text-slate-900 font-bold hover:text-blue-600 transition-colors"
-                                    >
-                                        {item.value}
-                                    </a>
-                                ) : (
-                                    <p className="text-slate-900 font-bold">{item.value}</p>
-                                )}
-                            </div>
-                        </div>
-                    );
-                })}
+      <div className="flex flex-col gap-4">
+        {CONTACT_DETAILS.map((item, i) => {
+          const Icon = item.icon;
+          return (
+            <div
+              key={i}
+              className="flex gap-4 p-4 rounded-xl bg-[#F0F5FF] border border-[#E1EAFE] hover:border-blue-300 transition"
+            >
+              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-blue-600 shadow-sm">
+                <Icon className="w-5 h-5" />
+              </div>
+
+              <div className="flex flex-col">
+                <span className="text-xs text-slate-500">{item.label}</span>
+                <span className="text-sm font-semibold text-slate-900">
+                  {item.value}
+                </span>
+              </div>
             </div>
-        </div>
-    );
+          );
+        })}
+      </div>
+    </div>
+  );
 }

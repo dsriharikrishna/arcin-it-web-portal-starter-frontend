@@ -13,9 +13,9 @@ export default function AboutUsPage() {
     <>
       <PageHero
         title="About Us"
-        subtitle="Your Trusted Technology Partner"
+        subtitle="Your Trusted Technology Partner"
         description="We are a team of passionate developers and designers dedicated to building innovative and user-friendly web applications."
-        backgroundImage="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=80"
+        backgroundImage="/about-us/about-us-hero.png"
       />
       <HomeAbout />
       <HomeStats />

@@ -7,7 +7,7 @@ const HomeAbout = dynamic(() => import("@/components/home/HomeAbout"));
 const HomeServices = dynamic(() => import("@/components/home/HomeServices"));
 const HomeProcess = dynamic(() => import("@/components/home/HomeProcess"));
 const HomeProjects = dynamic(() => import("@/components/home/HomeProjects"));
-const HomeWhyChooseUs = dynamic(() => import("@/components/home/HomeWhyChooseUs"));
+// const HomeWhyChooseUs = dynamic(() => import("@/components/home/HomeWhyChooseUs"));
 const HomeIndustries = dynamic(() => import("@/components/home/HomeIndustries"));
 const HomeDigital = dynamic(() => import("@/components/home/HomeDigital"));
 

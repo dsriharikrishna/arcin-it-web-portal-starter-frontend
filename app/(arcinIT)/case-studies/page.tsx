@@ -1,7 +1,6 @@
 "use client";
 
 import { PageHero } from "@/components/pages";
-import CaseStudyCard from "@/components/case-studies/CaseStudyCard";
 import CaseStudiesSection from "@/components/case-studies/CaseStudiesSection";
 
 
@@ -10,8 +9,9 @@ export default function CaseStudiesPage() {
     <>
         <PageHero
           title="Case Studies"
-          subtitle="Explore how we've helped businesses transform and grow with our innovative solutions."
-          backgroundImage="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&q=80"
+          subtitle="Results That Speak for Themselves"
+          description="Explore how we've helped enterprises across industries achieve transformational outcomes through technology."
+          backgroundImage="/case-studies/case-study-hero.png"
         />
         <CaseStudiesSection />
       

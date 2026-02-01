@@ -7,6 +7,10 @@ import NavLogo from "@/components/ui/NavLogo";
 import NavLink from "@/components/ui/NavLink";
 import HamburgerButton from "@/components/ui/HamburgerButton";
 
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import Menu from "./Menu";
+
 export interface NavItem {
   href: string;
   label: string;
@@ -29,9 +33,6 @@ interface NavbarProps {
   logoProps?: React.ComponentProps<typeof NavLogo>;
 }
 
-import MobileMenu from "@/components/Layout/MobileMenu";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, logoProps }: NavbarProps) {
   const pathname = usePathname();
@@ -57,15 +58,15 @@ export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, logoProps }: Navb
             <Image
               src="/Arcin_logo_Name.png"
               alt="ArcinIT Logo"
-              width={100}
-              height={100}
-              className="object-contain bg-transparent "
+              width={140}
+              height={140}
+              className="object-contain bg-transparent"
             />
           </div>
 
           {/* Desktop nav links */}
-          <div className="hidden lg:flex items-center gap-8">
-            {navItems.map(({ href, label }) => (
+          <div className="flex items-end gap-4">
+            <div className="hidden lg:flex items-end gap-8">{navItems.map(({ href, label }) => (
               <NavLink
                 key={href}
                 href={href}
@@ -76,11 +77,8 @@ export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, logoProps }: Navb
               >
                 {label}
               </NavLink>
-            ))}
-          </div>
+            ))}</div>
 
-          {/* Hamburger menu button */}
-          <div className="flex-shrink-0">
             <HamburgerButton
               onClick={() => setMobileOpen((o) => !o)}
               isOpen={mobileOpen}
@@ -90,7 +88,7 @@ export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, logoProps }: Navb
         </nav>
       </header>
 
-      <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
+      <Menu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} navItems={navItems} />
     </>
   );
 }
