@@ -5,7 +5,7 @@ import Button from "@/components/ui/Button";
 
 export default function HomeDigital() {
   return (
-    <section className="py-16 sm:py-20 bg-white text-center">
+    <section className="py-8 sm:py-20 bg-white text-center">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-6">
 
         {/* HEADING */}
@@ -29,32 +29,20 @@ export default function HomeDigital() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
 
             <Button
-              variant="primary-blue"
-              size="md"
+              variant="primary-blue-gradient"
+              size="lg"
               rounded="lg"
               href="/contact-us"
-              className="
-                px-6
-                bg-gradient-to-r from-blue-500 to-indigo-600
-                hover:from-blue-600 hover:to-indigo-700
-                text-white
-                border-0
-              "
+              className="shadow-lg shadow-blue-200"
             >
               Schedule a Consultation
             </Button>
 
             <Button
-              variant="outline"
-              size="md"
+              variant="outline-blue"
+              size="lg"
               rounded="lg"
               href="/services"
-              className="
-                px-6
-                border border-blue-400
-                text-blue-500
-                hover:bg-blue-50
-              "
             >
               Explore Our Services
             </Button>

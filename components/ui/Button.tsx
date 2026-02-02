@@ -15,6 +15,7 @@ type Variant =
   | "icon-delete"
   | "icon-ghost"
   | "primary-blue-gradient"
+  | "outline-blue"
   | "custom";
 
 type ButtonProps = {
@@ -60,6 +61,7 @@ const roundedStyles = {
   md: "rounded-lg",
   lg: "rounded-xl",
   full: "rounded-full",
+  none: "rounded-none",
 };
 
 const variantStyles = {
@@ -100,7 +102,10 @@ const variantStyles = {
     "text-gray-600 hover:bg-gray-100 focus:ring-1 focus:ring-gray-500",
   custom: "",
   "primary-blue-gradient":
-    "bg-gradient-to-r from-blue-500 to-blue-300 text-white hover:opacity-90 focus:ring-1 focus:ring-blue-500 focus:ring-offset-1 shadow-lg shadow-blue-500/30",
+    "bg-gradient-to-r from-blue-400 to-blue-700 hover:from-blue-500 hover:to-blue-800 text-white shadow-lg shadow-blue-200 focus:ring-1 focus:ring-blue-500 focus:ring-offset-1",
+
+  "outline-blue":
+    "border-[1.5px] border-blue-400 text-blue-500 hover:bg-blue-50 hover:text-blue-600 bg-transparent focus:ring-1 focus:ring-blue-500 focus:ring-offset-1",
 };
 
 const Button: React.FC<ButtonProps> = ({

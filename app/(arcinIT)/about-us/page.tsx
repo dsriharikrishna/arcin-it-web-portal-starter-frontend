@@ -18,7 +18,7 @@ export default function AboutUsPage() {
         backgroundImage="/about-us/about-us-hero.png"
       />
       <HomeAbout />
-      <HomeStats />
+      <HomeStats isHome={false}/>
       <AboutMissionVision />
       <AboutValues />
       <AboutSolutions />
