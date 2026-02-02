@@ -32,9 +32,9 @@ const itemVariants = {
   },
 };
 
-export default function HomeStats() {
+export default function HomeStats({isHome}: {isHome: boolean}) {
   return (
-    <section className="py-6 bg-[#E9EFFF]">
+    <section className={`py-6 bg-[#E9EFFF] ${isHome ? "max-w-7xl mx-auto px-4 rounded-xl" : ""}`} >
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           variants={containerVariants}
@@ -62,7 +62,7 @@ export default function HomeStats() {
                 gap-3
                 sm:gap-4
                 bg-transparent
-                p-3
+                p-4
                 rounded-xl
                 text-center sm:text-left
               "
@@ -81,9 +81,9 @@ export default function HomeStats() {
                 <Image
                   src={stat.Image}
                   alt={stat.label}
-                  width={32}
-                  height={32}
-                  className="sm:w-9 sm:h-9"
+                  width={46}
+                  height={46}
+                  className="sm:w-12 sm:h-12"
                 />
               </div>
 

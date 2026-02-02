@@ -3,19 +3,12 @@
 import { SmoothLandingBox } from "@/components/animations/SmoothLandingBox";
 import Button from "@/components/ui/Button";
 import Image from "next/image";
+import Navbar from "../Layout/Navbar";
 
 export default function HomeHero() {
     return (
-        <section className="relative py-20 sm:py-32 lg:py-48 overflow-hidden min-h-[90vh] flex items-center">
-            {/* Background Image */}
-            <Image
-                src="/home-hero.png"
-                alt="Digital Innovation"
-                fill
-                className="object-cover"
-                priority
-                sizes="100vw"
-            />
+        <div className="relative py-20 sm:py-32 lg:py-48 overflow-hidden min-h-[90vh] flex items-center bg-hero">
+           
             <div className="absolute inset-0 bg-black/40" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
@@ -42,6 +35,6 @@ export default function HomeHero() {
                     </div>
                 </SmoothLandingBox>
             </div>
-        </section>
+        </div>
     );
 }

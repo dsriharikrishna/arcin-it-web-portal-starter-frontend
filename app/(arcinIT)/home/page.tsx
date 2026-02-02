@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import HomeHero from "@/components/home/HomeHero";
 import HomeStats from "@/components/home/HomeStats";
+import HomeHeroNavbar from "@/components/home/HomeHeroNavbar";
 
 // Lazy load below-the-fold components
 const HomeAbout = dynamic(() => import("@/components/home/HomeAbout"));
@@ -14,9 +15,8 @@ const HomeDigital = dynamic(() => import("@/components/home/HomeDigital"));
 export default function HomePage() {
   return (
     <>
-      <HomeHero />
-      
-     <div className="my-10"><HomeStats /></div>
+      {/* <HomeHeroNavbar /> */}
+      <HomeStats isHome={true} />
       <HomeAbout />
       <HomeServices />
       <HomeProcess />
