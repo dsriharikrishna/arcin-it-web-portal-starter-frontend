@@ -9,64 +9,59 @@ import {
     ChevronLeft,
     ChevronRight,
     Landmark,
-    Shield,
+    ShieldCheck,
     Ship,
     ShoppingCart,
+    Truck,
+    Rocket,
+    Stethoscope,
 } from "lucide-react";
 import clsx from "clsx";
 import ServiceCard from "../services/ServiceCard";
 import { Button } from "../ui";
 
-const HOME_SERVICES = [
+const SERVICES = [
     {
-        title: "Banking & Financial Services",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
-        imageSrc:
-            "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=80",
-        imageAlt: "Banking and finance",
-        href: "/services",
-        icon: Building2,
-    },
-    {
-        title: "Insurance & Reinsurance",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
-        imageSrc:
-            "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&q=80",
-        imageAlt: "Insurance",
-        href: "/services",
-        icon: Shield,
-    },
-    {
-        title: "Government Digital Services",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
-        imageSrc:
-            "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80",
-        imageAlt: "Government digital",
-        href: "/services",
+        label: "Banking & Financial Services",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
         icon: Landmark,
+        image: "/services/banking.png",
     },
     {
-        title: "Retail & E-Commerce",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
-        imageSrc:
-            "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80",
-        imageAlt: "Retail and e-commerce",
-        href: "/services",
+        label: "Insurance & Reinsurance",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
+        icon: ShieldCheck,
+        image: "/services/insurance.png",
+    },
+    {
+        label: "Government Digital Services",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
+        icon: Building2,
+        image: "/services/government.png",
+    },
+    {
+        label: "Retail & E-Commerce",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
         icon: ShoppingCart,
+        image: "/services/retail.png",
     },
     {
-        title: "Logistics",
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
-        imageSrc:
-            "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80",
-        imageAlt: "Logistics",
-        href: "/services",
-        icon: Ship,
+        label: "Logistics & Transportation",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
+        icon: Truck,
+        image: "/services/logistics.png",
+    },
+    {
+        label: "Start-ups & Tech Innovators",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
+        icon: Rocket,
+        image: "/services/startup.png",
+    },
+    {
+        label: "Healthcare & Education",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
+        icon: Stethoscope,
+        image: "/services/healthcare.png",
     },
 ];
 
@@ -96,7 +91,7 @@ export default function HomeServices() {
     }, [emblaApi, updateButtons]);
 
     return (
-        <section className="py-16 bg-gradient-to-b from-[#F8FAFF] to-[#EEF3FF] container mx-auto">
+        <section className="py-16 bg-gradient-to-b from-[#F8FAFF] to-[#EEF3FF] w-full">
             <div className="max-w-7xl mx-auto px-4">
 
                 {/* HEADER */}
@@ -162,15 +157,18 @@ export default function HomeServices() {
                 {/* CAROUSEL */}
                 <div ref={emblaRef} className="overflow-hidden">
                     <div className="flex gap-8">
-                        {HOME_SERVICES.map((service, i) => {
+                        {SERVICES.map((service, i) => {
                             const Icon = service.icon;
                             return (
                                 <div
-                                    key={service.title}
+                                    key={service.label}
                                     className="flex-[0_0_88%] sm:flex-[0_0_360px]"
                                 >
                                     <ServiceCard
-                                        {...service}
+                                        title={service.label}
+                                        description={service.desc}
+                                        imageSrc={service.image}
+                                        imageAlt={service.label}
                                         icon={<Icon className="w-5 h-5" />}
                                         index={i}
                                     />

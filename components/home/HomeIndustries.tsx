@@ -1,34 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-    Briefcase,
-    Building,
-    Calendar,
-    Cloud,
-    FileBarChart,
-    Gamepad2,
-    GraduationCap,
-    HeartPulse,
-    ShoppingBag,
-    Store,
-    Truck,
-    UtensilsCrossed,
-} from "lucide-react";
+import Image from "next/image";
 
 const INDUSTRIES = [
-    { name: "Real estate", icon: Building },
-    { name: "Tours & Travels", icon: Briefcase },
-    { name: "Education", icon: GraduationCap },
-    { name: "Transport", icon: Truck },
-    { name: "Event", icon: Calendar },
-    { name: "eCommerce", icon: ShoppingBag },
-    { name: "Game", icon: Gamepad2 },
-    { name: "Healthcare", icon: HeartPulse },
-    { name: "Finance", icon: FileBarChart },
-    { name: "Restaurant", icon: UtensilsCrossed },
-    { name: "On-Demand", icon: Cloud },
-    { name: "Grocery", icon: Store },
+    { name: "Real estate", iconSrc: "/svgs/Real- Estate.svg" },
+    { name: "Tours & Travels", iconSrc: "/svgs/Tours-and-Travel.svg" },
+    { name: "Education", iconSrc: "/svgs/Eduaction.svg" },
+    { name: "Transport", iconSrc: "/svgs/Transport.svg" },
+    { name: "Event", iconSrc: "/svgs/Event.svg" },
+    { name: "eCommerce", iconSrc: "/svgs/E-Commerse.svg" },
+    { name: "Game", iconSrc: "/svgs/Game.svg" },
+    { name: "Healthcare", iconSrc: "/svgs/Health Care.svg" },
+    { name: "Finance", iconSrc: "/svgs/Finance.svg" },
+    { name: "Restaurant", iconSrc: "/svgs/Restraaunt.svg" },
+    { name: "On-Demand", iconSrc: "/svgs/On Demand.svg" },
+    { name: "Grocery", iconSrc: "/svgs/Grocery.svg" },
 ];
 
 const containerVariants = {
@@ -56,7 +43,7 @@ const itemVariants = {
 
 export default function HomeIndustries() {
     return (
-        <section className="py-16 sm:py-24 bg-[#F8FAFF]">
+        <section className="py-8 bg-[#F8FAFF]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -80,15 +67,20 @@ export default function HomeIndustries() {
                     viewport={{ once: true, margin: "-50px" }}
                 >
                     {INDUSTRIES.map((industry) => {
-                        const Icon = industry.icon;
                         return (
                             <motion.div
                                 key={industry.name}
                                 variants={itemVariants}
                                 className="flex items-center gap-4 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 hover:shadow-md transition-all duration-300"
                             >
-                                <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-blue-600 shadow-sm shrink-0">
-                                    <Icon className="w-6 h-6" />
+                                <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0">
+                                    <Image
+                                        src={industry.iconSrc}
+                                        alt={industry.name}
+                                        width={48}
+                                        height={48}
+                                        className="object-contain p-1"
+                                    />
                                 </div>
                                 <span className="font-medium text-lg text-slate-800">{industry.name}</span>
                             </motion.div>

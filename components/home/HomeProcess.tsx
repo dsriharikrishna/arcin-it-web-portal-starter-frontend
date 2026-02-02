@@ -1,39 +1,33 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-    Compass,
-    Hammer,
-    HeartHandshake,
-    PenTool,
-    TrendingUp,
-} from "lucide-react";
+import Image from "next/image";
 
 const HOW_WE_WORK = [
     {
         title: "Discover",
         description: "We analyze your business challenges, goals, and technical landscape to create a strategic roadmap",
-        icon: Compass,
+        iconSrc: "/svgs/Discover.svg",
     },
     {
         title: "Design",
         description: "Our architects craft solutions with optimal user experience, scalability, and security in mind",
-        icon: PenTool,
+        iconSrc: "/svgs/Design.svg",
     },
     {
         title: "Build",
         description: "Agile development with continuous integration ensures rapid, quality delivery",
-        icon: Hammer,
+        iconSrc: "/svgs/Build.svg",
     },
     {
         title: "Scale",
         description: "We deploy and optimize your solutions for maximum performance and growth",
-        icon: TrendingUp,
+        iconSrc: "/svgs/Scale.svg",
     },
     {
         title: "Support",
         description: "24/7 monitoring, maintenance, and continuous improvement keep you ahead",
-        icon: HeartHandshake,
+        iconSrc: "/svgs/Support.svg",
     },
 ];
 
@@ -74,7 +68,7 @@ export default function HomeProcess() {
                         <p className="text-md font-bold text-slate-700 tracking-tight bg-gray-200 p-1 rounded-lg">
                             How We Work
                         </p>
-                        <h2 className="text-4xl font-bold text-slate-900 tracking-tight">Our Proven Methodology</h2>
+                        <h2 className="text-4xl font-medium text-gray-600 tracking-tight">Our Proven <span className="text-gray-800 font-bold">Methodology</span></h2>
                         <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
                             A structured approach that ensures successful delivery and long-term partnership
                         </p>
@@ -89,17 +83,23 @@ export default function HomeProcess() {
                     viewport={{ once: true, margin: "-30px" }}
                 >
                     {HOW_WE_WORK.map((step) => {
-                        const Icon = step.icon;
                         return (
                             <motion.div
                                 key={step.title}
                                 variants={itemVariants}
-                                className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col gap-4 bg-gradient-to-b from-white to-slate-50/80"
+                                className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col gap-4 bg-gradient-to-b from-white to-slate-50/80"
                             >
-                                <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
-                                    <Icon className="w-6 h-6" />
+                                <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0">
+                                    <Image
+                                        src={step.iconSrc}
+                                        alt={step.title}
+                                        width={48}
+                                        height={48}
+                                        className="w-full h-full object-contain"
+                                    />
                                 </div>
                                 <h3 className="text-lg font-semibold text-blue-600">{step.title}</h3>
+
                                 <p className="text-slate-600 text-sm leading-relaxed">{step.description}</p>
                             </motion.div>
                         );
