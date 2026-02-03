@@ -1,138 +1,131 @@
 export const bankingFinancialServicesData = [
     {
         id: 1,
-        title: "Central Digital",
-        subtitle: "Unified Mobile Banking Experience",
-        description: "Integrating every tool a banker needs into a single digital ecosystem. We design mobile banking apps that offer seamless navigation, secure transactions, and personalized user experiences.",
-        features: [
-            "Intuitive user interface",
-            "Real-time transaction updates",
-            "Multi-currency support",
-            "Biometric authentication"
-        ],
-        image: "/services/banking/central-digital.png"
+        title: "Driving Digital Transformation in Banking & Financial Services",
+        description:
+            "The banking and financial services industry is evolving rapidly. Customers demand seamless digital experiences, while regulators require stronger compliance and security.",
+        benefits:
+            "We help banks modernize legacy systems, improve customer engagement, and build secure, future-ready digital platforms that support long-term growth.",
+        image: "/services/banking/central-digital.png",
     },
     {
         id: 2,
-        title: "Unified Digital Banking Platform",
-        subtitle: "All-in-One Banking Solution",
-        description: "We create comprehensive digital banking platforms that bring together account management, payments, loans, investments, and customer support into one unified interface.",
+        title: "Unified Digital Banking Platforms",
+        description:
+            "We build end-to-end digital banking platforms that support retail, business, and corporate banking with consistent user experiences across all channels.",
         features: [
-            "Seamless account linking",
-            "Instant fund transfers",
-            "Investment portfolio tracking",
-            "24/7 customer chat support",
-            "Automated bill payments",
-            "Personalized financial insights",
-            "Multi-device synchronization"
+            "Mobile and online banking solutions",
+            "Account and transaction management",
+            "Digital payments and fund transfers",
+            "Loan origination and servicing systems",
+            "Integrated dashboards and reporting tools",
         ],
-        benefits: "Our platform simplifies banking operations, reduces costs, and enhances customer satisfaction by providing a cohesive digital experience.",
-        image: "/services/banking/unified-platform.png"
+        benefits:
+            "Our platforms simplify system complexity while accelerating innovation and time to market.",
+        image: "/services/banking/unified-platform.png",
     },
     {
         id: 3,
         title: "Customer-Centric Financial Experiences",
-        subtitle: "Personalized Banking Solutions",
-        description: "Using AI and machine learning, we create customer experiences that are tailored to individual financial needs and behaviors.",
+        description:
+            "Using data-driven insights and intelligent automation, we design personalized financial experiences that improve engagement and customer loyalty.",
         features: [
-            "Personalized product recommendations",
-            "Spending insights and budgeting tools",
-            "Predictive financial planning",
-            "Smart notifications and alerts",
-            "Customizable dashboard views"
+            "Personalized banking experiences",
+            "Omni-channel digital interactions",
+            "Targeted customer communication",
+            "Improved engagement and retention",
         ],
-        benefits: "By understanding customer behavior and preferences, we help banks deliver more relevant services and build stronger customer relationships.",
-        image: "/services/banking/customer-centric.png"
+        benefits:
+            "Banks can differentiate themselves through meaningful, personalized digital interactions.",
+        image: "/services/banking/customer-centric.png",
     },
     {
         id: 4,
-        title: "Intelligent Fraud Detection Powered by AI",
-        subtitle: "Advanced Security & Risk Management",
-        description: "We implement AI-driven fraud detection systems that identify suspicious activities in real-time, protecting both banks and their customers from financial crimes.",
+        title: "Intelligent Financial Services Powered by Data & AI",
+        description:
+            "We leverage advanced analytics and AI to help financial institutions unlock insights, automate processes, and make smarter decisions.",
         features: [
-            "Real-time fraud monitoring",
-            "Behavioral analytics",
-            "Transaction pattern recognition",
-            "Risk scoring algorithms",
-            "Automated alert systems",
-            "Machine learning models for threat detection"
+            "Fraud detection and risk analysis",
+            "Predictive customer insights",
+            "Automated financial workflows",
+            "Real-time performance monitoring",
         ],
-        benefits: "Our AI-powered solutions reduce false positives, improve detection accuracy, and provide banks with actionable insights to prevent fraud before it happens.",
-        image: "/services/banking/fraud-detection.png"
+        benefits:
+            "AI-driven insights improve efficiency, reduce risk, and enable faster response to market changes.",
+        image: "/services/banking/fraud-detection.png",
     },
     {
         id: 5,
-        title: "Scalable and Compliant Payment Platforms",
-        subtitle: "Secure Payment Processing",
-        description: "We build payment platforms that handle high transaction volumes while maintaining PCI-DSS compliance and regulatory standards across multiple jurisdictions.",
+        title: "Secure & Compliant Financial Platforms",
+        description:
+            "Security and compliance are built into every solution we deliver, ensuring trust across customers, partners, and regulators.",
         features: [
-            "Multi-payment gateway integration",
-            "PCI-DSS compliance",
-            "Real-time payment processing",
-            "Cross-border transaction support",
-            "Automated reconciliation",
-            "Fraud prevention tools"
+            "Enterprise-grade security controls",
+            "Identity and access management",
+            "Secure authentication mechanisms",
+            "Data encryption and protection",
+            "Compliance-ready system design",
         ],
-        benefits: "Our platforms ensure secure, fast, and compliant payment processing while providing the scalability needed to grow with your business.",
-        image: "/services/banking/payment-platforms.png"
+        benefits:
+            "We help institutions meet regulatory requirements while safeguarding sensitive financial data.",
+        image: "/services/banking/security-compliance.png",
     },
     {
         id: 6,
-        title: "Modern Payment Solutions for Institutions",
-        subtitle: "Next-Generation Payment Infrastructure",
-        description: "We develop cutting-edge payment solutions that support digital wallets, contactless payments, QR codes, and cryptocurrency transactions.",
+        title: "Modern Payment & Financial Platform Services",
+        description:
+            "Our payment platforms support secure, scalable digital payments and modern financial interactions across all channels.",
         features: [
-            "Digital wallet integration",
-            "Contactless payment support",
-            "QR code payments",
-            "Cryptocurrency transactions",
-            "Instant settlement",
-            "Multi-channel payment acceptance",
-            "Advanced encryption"
+            "Digital payment solutions and wallets",
+            "Card issuance and lifecycle management",
+            "Secure transaction processing",
+            "Fintech and third-party integrations",
         ],
-        benefits: "Stay ahead of the curve with payment solutions that meet evolving customer expectations and emerging payment technologies.",
-        image: "/services/banking/modern-payments.png"
+        benefits:
+            "Enable faster innovation while ensuring reliability, scalability, and security.",
+        image: "/services/banking/modern-payments.png",
     },
     {
         id: 7,
-        title: "Secure Blockchain Solutions at Scale",
-        subtitle: "Distributed Ledger Technology",
-        description: "We implement blockchain technology to create transparent, secure, and efficient systems for transactions, smart contracts, and digital identity verification.",
+        title: "Cloud-Ready and Scalable Financial Solutions",
+        description:
+            "Our solutions are built on modern, cloud-enabled architectures that support scalability, resilience, and high performance. Financial institutions can respond quickly to changing customer expectations and evolving regulatory requirements.",
         features: [
-            "Distributed ledger implementation",
-            "Smart contract development",
-            "Digital identity verification",
-            "Immutable transaction records",
-            "Cross-border settlement",
-            "Tokenization services"
+            "Faster deployment and elastic scalability",
+            "Cost-effective cloud infrastructure",
+            "High availability and system reliability",
+            "Support for hybrid and multi-cloud environments",
         ],
-        benefits: "Blockchain technology reduces intermediaries, lowers costs, and increases transparency while maintaining the highest security standards.",
-        image: "/services/banking/blockchain.png"
+        benefits:
+            "Cloud-native architectures help institutions innovate faster, reduce infrastructure costs, and maintain operational resilience at scale.",
+        image: "/services/banking/cloud-solutions.png",
     }
+
 ];
 
+
 export const whyChooseBankingServices = {
-    title: "Why Choose Arcin IT for Banking & Financial Services",
-    description: "We combine industry expertise with cutting-edge technology to deliver measurable results.",
+    badge: "Why Choose Us",
+    title: "Why Choose Arcinit for Banking & Financial Services",
+    
+    description:
+        "Arcinit combines deep industry knowledge with modern technology skills to help financial institutions succeed in a digital-first world.",
     points: [
         {
-            title: "Deep Industry Expertise",
-            description: "Our team has extensive experience in banking and financial services, understanding the unique challenges and regulatory requirements of the industry."
+            title: "Proven experience in banking and financial services",
         },
         {
-            title: "Cutting-Edge Technology",
-            description: "We leverage the latest technologies including AI, blockchain, and cloud computing to build innovative solutions that give you a competitive edge."
+            title: "Secure, compliance-focused solutions",
         },
         {
-            title: "Security-First Approach",
-            description: "Security is at the core of everything we build. We implement industry-leading security practices and compliance standards to protect your data and your customers."
+            title: "Customer-focused digital design",
         },
         {
-            title: "Proven Track Record",
-            description: "We have successfully delivered digital transformation projects for leading financial institutions, helping them modernize their operations and improve customer satisfaction."
-        }
-    ]
+            title: "Scalable, future-ready platforms",
+        },
+    ],
 };
+
 
 export const bankingCTA = {
     title: "Partner with Arcin IT for Digital Banking Transformation",
@@ -148,15 +141,21 @@ export const bankingCTA = {
 };
 
 export const bankingOverview = {
-    title: "Banking & Financial Services",
-    subtitle: "Digital Banking Solutions for Modern Financial Institutions",
-    description: "Arcin IT develops end-to-end digital solutions that help banking and financial institutions deliver better services to customers, improve operational efficiency, and stay competitive in the digital age. From mobile banking apps to AI-powered fraud detection, we build solutions that transform how financial services are delivered."
+    title: "Simplifying Digital Banking with Arcinit  ",
+    subtitle: "Below are the key areas where Arcinit simplifies banking and financial services technology. ",
+    description: "Arcinit makes digital banking transformation easier by breaking down complex financial processes into clear, manageable steps. Instead of offering disconnected solutions, Arcinit focuses on simplifying digital banking systems, improving operational clarity, and enabling smarter financial operations. This approach helps institutions modernize with confidence. "
 };
+
+export const heroSection = {
+    subtitle: "Smart, AI-Powered Solutions for Modern Banking",
+    title: "Digital Banking & Financial Services Technology Solutions by Arclinit"
+}
 
 // Combined export for easy import
 export default {
     overview: bankingOverview,
     services: bankingFinancialServicesData,
     whyChoose: whyChooseBankingServices,
-    cta: bankingCTA
+    cta: bankingCTA,
+    hero: heroSection
 };
