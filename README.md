@@ -13,9 +13,9 @@ An official web portal for Arcin IT, trusted partner in technology and innovatio
 
 ## Project Structure
 
-This project follows the Next.js App Router structure:
+This project follows the Next.js App Router structure with a `src/` directory:
 
--   `app/(arcinIT)`: Main route group containing the primary pages:
+-   `src/app/(arcinIT)`: Main route group containing the primary pages:
     -   `home`: Landing page
     -   `about-us`: Company information, mission, and vision
     -   `services`: Details about IT services offered
@@ -23,11 +23,16 @@ This project follows the Next.js App Router structure:
     -   `careers`: Job openings and culture
     -   `contact-us`: Contact forms and location info
     -   `support`: Customer support resources
--   `components`: Reusable UI components
-    -   `components/ui`: Generic UI elements (Buttons, Cards, etc.)
+-   `src/components`: Reusable UI components
+    -   `components/ui`: Generic UI elements (CustomButtons, Cards, etc.)
     -   `components/Layout`: Layout components (Navbar, Footer, MobileMenu)
     -   `components/home`, `components/about-us`, etc.: Page-specific components
--   `utils`: Helper functions and theme configurations
+-   `src/data`: Static data and content for pages
+-   `src/hooks`: Custom React hooks
+-   `src/types`: TypeScript type definitions
+-   `src/utils`: Helper functions and theme configurations
+-   `src/styles`: Global CSS styles
+-   `src/constants`: Application constants
 -   `public`: Static assets (images, fonts, icons)
 
 ## Getting Started
