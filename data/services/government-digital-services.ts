@@ -1,197 +1,172 @@
-export const governmentDigitalServicesData = [
-    {
-        id: 1,
-        title: "E-Government Portals and Platforms",
-        subtitle: "Unified Digital Government Services",
-        description: "We develop comprehensive e-government portals that provide citizens with easy access to government services, information, and resources through a single digital platform.",
-        features: [
-            "Citizen self-service portals",
-            "Online application processing",
-            "Document management systems",
-            "Payment gateway integration",
-            "Multi-language support",
-            "Accessibility compliance",
-            "Mobile-responsive design"
-        ],
-        benefits: "Improve citizen satisfaction, reduce administrative burden, and increase transparency through digital service delivery.",
-        image: "/services/government/e-government.png"
-    },
-    {
-        id: 2,
-        title: "Citizen-Centric Digital Public Services",
-        subtitle: "User-Friendly Government Solutions",
-        description: "We create intuitive digital services designed around citizen needs, making it easier for people to interact with government agencies and access essential services.",
-        features: [
-            "User-centered design",
-            "Simplified application processes",
-            "Real-time status tracking",
-            "Digital identity verification",
-            "Secure document storage",
-            "Automated notifications",
-            "24/7 service availability"
-        ],
-        benefits: "Enhance citizen engagement, reduce wait times, and improve service delivery efficiency.",
-        image: "/services/government/citizen-centric.png"
-    },
-    {
-        id: 3,
-        title: "Technologies Powering Our Digital Government Solutions",
-        subtitle: "Modern Technology Stack",
-        description: "We leverage cutting-edge technologies to build scalable, secure, and efficient digital government platforms.",
-        technologies: [
-            "Cloud infrastructure (AWS, Azure, GCP)",
-            "AI and machine learning",
-            "Blockchain for secure records",
-            "IoT for smart city initiatives",
-            "Big data analytics",
-            "Mobile-first development",
-            "API-driven architecture"
-        ],
-        benefits: "Future-proof solutions that can scale with growing citizen demands and evolving technology landscape.",
-        image: "/services/government/technologies.png"
-    },
-    {
-        id: 4,
-        title: "Secure & Compliant Government IT Solutions",
-        subtitle: "Security and Compliance First",
-        description: "We build government IT systems with the highest security standards and full compliance with regulatory requirements to protect sensitive citizen data.",
-        features: [
-            "End-to-end encryption",
-            "Multi-factor authentication",
-            "Role-based access control",
-            "Audit trails and logging",
-            "GDPR and data privacy compliance",
-            "Disaster recovery planning",
-            "Regular security assessments"
-        ],
-        benefits: "Ensure data security, maintain citizen trust, and meet all regulatory compliance requirements.",
-        image: "/services/government/security.png"
-    }
+export const governmentOverview = {
+  title: "Digital Solutions for Government Organizations",
+  subtitle: "Digital Transformation for Government & Public Institutions",
+  description:
+    "Arcinit empowers governments and public sector organizations to deliver transparent, efficient, and citizen-centric digital services. We help institutions modernize legacy systems and adopt secure, scalable, and future-ready digital platforms that improve governance and public trust.",
+};
+
+export const governmentTransformation = {
+  title: "Digital Transformation Services for Government & Public Institutions",
+  description:
+    "Governments today need to offer fast, accessible, and dependable digital public services. Our digital government solutions help institutions move from manual and fragmented processes to integrated, data-driven systems that improve efficiency, accountability, and citizen trust.",
+  outcomes: [
+    "Faster service delivery through digital workflows",
+    "Improved citizen experience with self-service platforms",
+    "Greater transparency and process visibility",
+    "Reduced operational costs and manual effort",
+    "Secure and compliant government systems",
+  ],
+  image: "/services/government/digital-transformation.png",
+};
+
+export const governmentServices = [
+  {
+    id: 1,
+    title: "Citizen-Centric Digital Public Services",
+    description:
+      "We design digital services that prioritize usability, accessibility, and inclusion, enabling citizens to easily access government services anytime, anywhere.",
+    features: [
+      "Single-window access to multiple services",
+      "Application tracking and real-time status updates",
+      "Secure digital payments and receipts",
+      "Mobile-first and multilingual design",
+      "Feedback and grievance management systems",
+    ],
+    image: "/services/government/citizen-services.png",
+  },
+  {
+    id: 2,
+    title: "Technologies Powering Digital Government Solutions",
+    description:
+      "We use modern, scalable technologies to build reliable and future-ready digital public service platforms.",
+    features: [
+      "Cloud-based government platforms",
+      "AI-driven automation and analytics",
+      "Secure API and integration frameworks",
+      "Data analytics and reporting dashboards",
+      "Scalable microservices architectures",
+    ],
+    image: "/services/government/government-tech.png",
+  },
+  {
+    id: 3,
+    title: "Secure & Compliant Government IT Solutions",
+    description:
+      "Security, privacy, and compliance are fundamental to our digital government solutions. We follow best practices to safeguard sensitive government and citizen data.",
+    features: [
+      "Role-based access control",
+      "Data encryption and secure authentication",
+      "Audit trails and monitoring",
+      "Compliance with government IT and data protection standards",
+    ],
+    image: "/services/government/security-compliance.png",
+  },
 ];
 
-export const digitalGovernmentServices = {
-    title: "Our Digital Government & e-Governance Services",
-    services: [
-        {
-            id: 1,
-            title: "Digital Identity Management",
-            description: "We develop secure digital identity systems that enable citizens to access government services with a single verified identity, reducing fraud and improving convenience.",
-            icon: "identity"
-        },
-        {
-            id: 2,
-            title: "Smart City Solutions",
-            description: "We create integrated smart city platforms that connect IoT devices, data analytics, and citizen services to improve urban living and resource management.",
-            icon: "smart-city"
-        },
-        {
-            id: 3,
-            title: "Open Data Platforms",
-            description: "We build open data portals that make government data accessible to citizens, researchers, and businesses, promoting transparency and innovation.",
-            icon: "open-data"
-        },
-        {
-            id: 4,
-            title: "Government ERP Solutions",
-            description: "We implement comprehensive ERP systems that streamline government operations, from finance and HR to procurement and asset management.",
-            icon: "erp"
-        },
-        {
-            id: 5,
-            title: "Grievance and Feedback Systems",
-            description: "We develop platforms that enable citizens to submit complaints, track resolution status, and provide feedback on government services.",
-            icon: "feedback"
-        },
-        {
-            id: 6,
-            title: "License, Permit and Tax Services",
-            description: "We create digital systems for license issuance, permit applications, and tax collection, making these processes faster and more transparent.",
-            icon: "license"
-        }
-    ]
+export const eGovernanceServices = {
+  title: "Our Digital Government & e-Governance Services",
+  services: [
+    {
+      id: "01",
+      title: "e-Governance Solution Development",
+      description:
+        "We build secure and scalable e-governance platforms that enable efficient public service delivery and transparent governance.",
+    },
+    {
+      id: "02",
+      title: "Government Web Portal Development",
+      description:
+        "Design and development of responsive, secure, and accessible government portals for information dissemination and citizen interaction.",
+    },
+    {
+      id: "03",
+      title: "Government Mobile App Development",
+      description:
+        "Mobile applications that enable citizens to access services, submit requests, and track applications anytime, anywhere.",
+    },
+    {
+      id: "04",
+      title: "Custom Software Development for Government",
+      description:
+        "Tailored software solutions for departmental workflows, regulatory systems, and internal government operations.",
+    },
+    {
+      id: "05",
+      title: "Government Workflow Automation",
+      description:
+        "Digitization and automation of government processes to improve efficiency, reduce delays, and minimize manual intervention.",
+    },
+    {
+      id: "06",
+      title: "System Integration & API Development",
+      description:
+        "Secure integration of government systems and third-party services to ensure seamless data exchange across departments.",
+    },
+  ],
 };
 
 export const governmentApproach = {
-    title: "Our Approach to Government Digital Transformation",
-    steps: [
-        {
-            id: 1,
-            title: "Discovery & Planning",
-            description: "We analyze current processes, identify pain points, and develop a comprehensive digital transformation roadmap.",
-            icon: "discovery"
-        },
-        {
-            id: 2,
-            title: "Design & Development",
-            description: "We create user-centric designs and build scalable solutions using agile methodologies for faster delivery.",
-            icon: "design"
-        },
-        {
-            id: 3,
-            title: "Security & Integration",
-            description: "We implement robust security measures and integrate with existing government systems seamlessly.",
-            icon: "security"
-        },
-        {
-            id: 4,
-            title: "Training & Support",
-            description: "We provide comprehensive training for staff and ongoing support to ensure successful adoption.",
-            icon: "training"
-        }
-    ]
+  title: "Our Approach to Government Digital Transformation",
+  steps: [
+    {
+      title: "Discovery & Planning",
+      description:
+        "Understanding institutional goals, regulatory requirements, and citizen needs.",
+    },
+    {
+      title: "Design & Development",
+      description:
+        "Creating intuitive, accessible, and secure digital solutions.",
+    },
+    {
+      title: "Deployment & Integration",
+      description:
+        "Smooth rollout with existing systems and infrastructure.",
+    },
+    {
+      title: "Support & Optimization",
+      description:
+        "Ongoing maintenance, performance monitoring, and continuous improvements.",
+    },
+  ],
 };
 
-export const whyChooseGovernmentServices = {
-    title: "Why Choose Arcin IT as Your Digital Government Technology Partner",
-    description: "We combine deep understanding of government operations with cutting-edge technology expertise to deliver transformative digital solutions.",
-    points: [
-        {
-            title: "Government Sector Expertise",
-            description: "Our team has extensive experience working with government agencies, understanding their unique challenges, workflows, and regulatory requirements."
-        },
-        {
-            title: "Security & Compliance Focus",
-            description: "We prioritize security and compliance in every solution, ensuring protection of sensitive citizen data and adherence to government standards."
-        },
-        {
-            title: "Citizen-Centric Approach",
-            description: "We design solutions with citizens in mind, creating intuitive interfaces and seamless experiences that improve public service delivery."
-        },
-        {
-            title: "Scalable Architecture",
-            description: "Our platforms are built to handle millions of users and can scale to meet growing demands as more services move online."
-        },
-        {
-            title: "Proven Track Record",
-            description: "We have successfully delivered digital transformation projects for government agencies, improving efficiency and citizen satisfaction."
-        }
-    ]
+export const whyChooseGovernment = {
+  id: "1",
+  title: "Why Choose Arcinit as Your Digital Government Technology Partner",
+  description: "Arcinit is a trusted partner for government digital transformation, delivering secure, scalable, and citizen-centric solutions that improve public trust and service efficiency.",
+  points: [
+    "Expertise in delivering digital solutions for government organizations",
+    "Strong focus on security, compliance, and reliability",
+    "Citizen-first design and user experience approach",
+    "Scalable solutions that support long-term digital transformation",
+    "Dedicated support and continuous improvement",
+  ],
+  image: "/services/government/why-choose.png",
 };
 
 export const governmentCTA = {
-    title: "Build Smarter Digital Government Services",
-    description: "Arcin IT helps government agencies transform their services and improve citizen experience. Let's build the future of public service delivery together.",
-    primaryButton: {
-        text: "Schedule a Consultation",
-        href: "/contact-us"
-    },
-    secondaryButton: {
-        text: "Contact Our Experts",
-        href: "/contact-us"
-    }
+  title: "Transform Public Services with Arcinit",
+  description:
+    "Whether you are a central government body, state authority, or public institution, Arcinit helps you build secure, scalable, and citizen-focused digital government solutions.",
+  primaryButton: {
+    text: "Schedule a Consultation",
+    href: "/contact-us",
+  },
+  secondaryButton: {
+    text: "Explore Our Services",
+    href: "/services/government",
+  },
 };
 
-export const governmentOverview = {
-    title: "Digital Solutions for Government Organizations",
-    description: "Arcin IT develops end-to-end digital solutions that help government organizations deliver better services to citizens, improve operational efficiency, and enhance transparency. Our e-governance platforms are designed to meet the unique needs of public sector organizations, from local municipalities to national agencies. We combine cutting-edge technology with deep understanding of government processes to create solutions that truly make a difference in citizens' lives."
+const governmentData = {
+  overview: governmentOverview,
+  transformation: governmentTransformation,
+  services: governmentServices,
+  eGovernance: eGovernanceServices,
+  approach: governmentApproach,
+  whyChoose: whyChooseGovernment,
+  cta: governmentCTA,
 };
 
-// Combined export for easy import
-export default {
-    overview: governmentOverview,
-    services: governmentDigitalServicesData,
-    eGovernanceServices: digitalGovernmentServices,
-    approach: governmentApproach,
-    whyChoose: whyChooseGovernmentServices,
-    cta: governmentCTA
-};
+export default governmentData;

@@ -1,52 +1,70 @@
 import ServiceHero from "@/components/services/ServiceHero";
 import ServiceDetails from "@/components/services/ServiceDetails";
-import WhyChooseSection from "@/components/services/WhyChooseSectionBanking";
-import IndustriesSection from "@/components/services/IndustriesSection";
 import HomeDigital from "@/components/home/HomeDigital";
 import governmentData from "@/data/services/government-digital-services";
+import ServiceHeader from "@/components/services/ServiceHeader";
+import EGovernanceServices from "@/components/services/EGovernanceServices";
+import GovernmentApproach from "@/components/services/GovernmentApproach";
+import WhyChooseSectionGovernment from "@/components/services/WhyChooseSectionGovernment";
 
 export default function GovernmentDigitalServicesPage() {
-    const { overview, services, whyChoose, industries, cta } = governmentData;
+    const {
+        overview,
+        services,
+        eGovernance,
+        approach,
+        whyChoose,
+        cta
+    } = governmentData;
 
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen flex flex-col gap-6">
             {/* Hero Section */}
             <ServiceHero
                 title={overview.title}
-                description={overview.description}
                 subtitle={overview.subtitle}
-                image="/services/hero-placeholder.png"
             />
 
-            {/* Service Details */}
-            <ServiceDetails services={services} />
-
-            {/* Industries We Serve */}
-            {industries && (
-                <IndustriesSection
-                    title={industries.title}
-                    industries={
-                        industries.industries || industries.providers || []
-                    }
+            <div className="flex flex-col gap-12">
+                <ServiceHeader
+                    title={overview.title}
+                    description={overview.description}
                 />
-            )}
 
-            {/* Why Choose Section */}
-            <WhyChooseSection
-                title={whyChoose.title}
-                description={whyChoose.description}
-                points={whyChoose.points}
-            />
+                {/* Service Details */}
+                <ServiceDetails services={services} />
 
-            {/* CTA Section */}
-            {cta && (
-                <HomeDigital
-                    heading={cta.title}
-                    description={cta.description}
-                    ctaText={cta.primaryButton?.text}
-                    ctaLink={cta.primaryButton?.href}
+                {/* E-Governance Services */}
+                <EGovernanceServices
+                    title={eGovernance.title}
+                    services={eGovernance.services}
                 />
-            )}
+
+                {/* Approach Section */}
+                <GovernmentApproach
+                    title={approach.title}
+                    steps={approach.steps}
+                />
+
+                {/* Why Choose Section */}
+                <WhyChooseSectionGovernment
+                    id={whyChoose.id}
+                    title={whyChoose.title}
+                    description={whyChoose.description}
+                    points={whyChoose.points}
+                    image={whyChoose.image}
+                />
+
+                {/* CTA Section */}
+                {cta && (
+                    <HomeDigital
+                        heading={cta.title}
+                        description={cta.description}
+                        ctaText={cta.primaryButton?.text}
+                        ctaLink={cta.primaryButton?.href}
+                    />
+                )}
+            </div>
         </div>
     );
 }
