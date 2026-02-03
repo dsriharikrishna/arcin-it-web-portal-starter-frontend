@@ -15,7 +15,7 @@ export default function ArcinITLayout({
 
   return (
     <div className="min-h-screen w-full">
-      {isHomePage ? <HomeHeroNavbar /> : <Navbar />}
+      {!isHomePage && <Navbar />}
       <main className="">
         {children}
       </main>

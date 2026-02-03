@@ -10,6 +10,7 @@ import {
   Stethoscope,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import Button from "@/components/ui/Button";
 
 const SERVICES = [
   {
@@ -17,42 +18,49 @@ const SERVICES = [
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
     icon: Landmark,
     image: "/services/banking.png",
+    slug: "banking-financial-services",
   },
   {
     label: "Insurance & Reinsurance",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
     icon: ShieldCheck,
     image: "/services/insurance.png",
+    slug: "insurance-reinsurance",
   },
   {
     label: "Government Digital Services",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
     icon: Building2,
     image: "/services/government.png",
+    slug: "government-digital-services",
   },
   {
     label: "Retail & E-Commerce",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
     icon: ShoppingCart,
     image: "/services/retail.png",
+    slug: "retail-e-commerce",
   },
   {
     label: "Logistics & Transportation",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
     icon: Truck,
     image: "/services/logistics.png",
+    slug: "logistics-transportation",
   },
   {
     label: "Start-ups & Tech Innovators",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
     icon: Rocket,
     image: "/services/startup.png",
+    slug: "startups-tech-innovators",
   },
   {
     label: "Healthcare & Education",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
     icon: Stethoscope,
     image: "/services/healthcare.png",
+    slug: "healthcare-education",
   },
 ];
 
@@ -62,6 +70,7 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto px-4 flex flex-col gap-12">
 
         {/* HEADER */}
+        {/* ... (Header content skipped for brevity) ... */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
           <div className="flex flex-col gap-3 max-w-xl">
             <span className="inline-block w-fit px-4 py-1.5 rounded-full text-sm font-medium bg-[#E6ECFF] text-blue-700">
@@ -128,19 +137,15 @@ export default function ServicesSection() {
                 </div>
 
                 {/* CTA */}
-                <button className="
-                  mt-auto
-                  w-full
-                  text-sm
-                  py-2
-                  rounded-lg
-                  border border-blue-400
-                  text-blue-600
-                  hover:bg-blue-50
-                  transition
-                ">
+                <Button
+                  href={`/services/${s.slug}`}
+                  variant="outline"
+                  size="sm"
+                  className="mt-auto w-full border-blue-400 text-blue-600 hover:bg-blue-50"
+                  rounded="lg"
+                >
                   Know More
-                </button>
+                </Button>
               </motion.div>
             );
           })}

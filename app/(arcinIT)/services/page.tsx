@@ -21,7 +21,6 @@ export default function ServicesPage() {
       <AboutSolutions />
       <HomeDigital />
 
-
     </>
   );
 }
