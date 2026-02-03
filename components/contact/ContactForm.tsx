@@ -14,22 +14,56 @@ export default function ContactForm() {
         message: "",
     });
 
-    const validation = useCallback(()=>{
-        if(!formData.firstName || !formData.lastName || !formData.email || !formData.message){
+    const validation = useCallback(() => {
+        if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
             return false;
         }
-        if(!formData.email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)){
+        if (!formData.email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
             return false;
         }
         return true;
-    },[formData])
+    }, [formData])
 
-    const submit = useCallback((e:React.FormEvent<HTMLFormElement>) => {
+    const submit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if(!validation()){
+        if (!validation()) {
+            // Show error toast if available
+            if (typeof window !== 'undefined') {
+                window.addToast?.('Please fill in all required fields correctly', 'error');
+            }
             return;
         }
-        console.log(formData);
+
+        try {
+            // TODO: Replace with actual API endpoint
+            // const response = await fetch('/api/contact', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(formData)
+            // });
+
+            // Simulate successful submission
+            console.info('Form submitted:', formData);
+
+            // Show success message
+            if (typeof window !== 'undefined') {
+                window.addToast?.('Message sent successfully! We\'ll get back to you soon.', 'success');
+            }
+
+            // Reset form
+            setFormData({
+                firstName: "",
+                lastName: "",
+                email: "",
+                website: "",
+                message: "",
+            });
+        } catch (error) {
+            console.error('Form submission error:', error);
+            if (typeof window !== 'undefined') {
+                window.addToast?.('Failed to send message. Please try again.', 'error');
+            }
+        }
     }, [formData, validation])
     return (
         <div className="bg-gradient-to from-[#FFFFFF] to-[#D9E5FF] rounded-2xl p-6 shadow-sm border border-slate-100 w-full flex flex-col gap-4">
@@ -45,18 +79,18 @@ export default function ContactForm() {
             </div>
 
             {/* Form */}
-            <form className="flex flex-col gap-3" onSubmit={(e)=>submit(e)}>
+            <form className="flex flex-col gap-3" onSubmit={(e) => submit(e)}>
                 <div className="grid sm:grid-cols-2 gap-2">
-                    <Input label="First Name" value={formData.firstName} onChange={(e)=>setFormData({...formData,firstName:e.target.value})} required />
-                    <Input label="Last Name" value={formData.lastName} onChange={(e)=>setFormData({...formData,lastName:e.target.value})} required />
+                    <Input label="First Name" value={formData.firstName} onChange={(e) => setFormData({ ...formData, firstName: e.target.value })} required />
+                    <Input label="Last Name" value={formData.lastName} onChange={(e) => setFormData({ ...formData, lastName: e.target.value })} required />
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-2">
-                    <Input label="Email" type="email" value={formData.email} onChange={(e)=>setFormData({...formData,email:e.target.value})} required />
-                    <Input label="Website" type="url" />
+                    <Input label="Email" type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} required />
+                    <Input label="Website" type="url" value={formData.website} onChange={(e) => setFormData({ ...formData, website: e.target.value })} />
                 </div>
 
-               <TextAreaInput label="Message" value={formData.message} onChange={(e)=>setFormData({...formData,message:e.target.value})} required />
+                <TextAreaInput label="Message" value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} required />
 
                 {/* Trust note */}
                 <p className="text-xs text-slate-400">

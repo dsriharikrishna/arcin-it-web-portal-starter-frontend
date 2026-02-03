@@ -1,5 +1,4 @@
-"use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CheckCircle, WarningCircle, Info, Warning, X } from "phosphor-react";
 
@@ -17,7 +16,21 @@ export default function ToastManager() {
   const [toasts, setToasts] = useState<Toast[]>([]);
   const [, setQueue] = useState<Toast[]>([]);
 
-  const addToast = (message: string, type: ToastType = "success") => {
+  const removeToast = useCallback((id: number) => {
+    setToasts((prev) => prev.filter((toast) => toast.id !== id));
+
+    setQueue((q) => {
+      if (q.length > 0) {
+        const [next, ...rest] = q;
+        setToasts([next]);
+        setTimeout(() => removeToast(next.id), 2500);
+        return rest;
+      }
+      return q;
+    });
+  }, []);
+
+  const addToast = useCallback((message: string, type: ToastType = "success") => {
     const id = ++toastId;
     const newToast = { id, message, type };
 
@@ -32,28 +45,14 @@ export default function ToastManager() {
         return prev;
       }
     });
-  };
-
-  const removeToast = (id: number) => {
-    setToasts((prev) => prev.filter((toast) => toast.id !== id));
-
-    setQueue((q) => {
-      if (q.length > 0) {
-        const [next, ...rest] = q;
-        setToasts([next]);
-        setTimeout(() => removeToast(next.id), 2500);
-        return rest;
-      }
-      return q;
-    });
-  };
+  }, [removeToast]);
 
   // ✅ Fix: Attach to window safely in client-only effect
   useEffect(() => {
     if (typeof window !== "undefined") {
-      (window as any).addToast = addToast;
+      window.addToast = addToast;
     }
-  }, []);
+  }, [addToast]);
 
   const toastData = {
     success: {

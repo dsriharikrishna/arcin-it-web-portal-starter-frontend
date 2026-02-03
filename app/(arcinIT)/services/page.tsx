@@ -1,8 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { PageHero } from "@/components/pages";
-import ServiceCard from "@/components/services/ServiceCard";
 import ServicesSection from "@/components/services/ServicesSection";
 import AboutSolutions from "@/components/about-us/AboutSolutions";
 import HomeDigital from "@/components/home/HomeDigital";
@@ -19,7 +17,9 @@ export default function ServicesPage() {
       />
       <ServicesSection />
       <AboutSolutions />
-      <HomeDigital />
+      <HomeDigital 
+      
+      />
 
     </>
   );

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { MoveLeft } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { motion } from "framer-motion";

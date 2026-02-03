@@ -2,8 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import NavbarBackground from "@/components/ui/NavbarBackground";
-import NavLogo from "@/components/ui/NavLogo";
 import NavLink from "@/components/ui/NavLink";
 import HamburgerButton from "@/components/ui/HamburgerButton";
 
@@ -29,12 +27,12 @@ const DEFAULT_NAV_ITEMS: NavItem[] = [
 interface NavbarProps {
   /** Custom nav items (default: Home, About Us, Services, etc.) */
   navItems?: NavItem[];
-  /** Custom logo props */
-  logoProps?: React.ComponentProps<typeof NavLogo>;
+  /** Navbar variant style */
+  variant?: "default" | "transparent";
 }
 
 
-export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, logoProps, variant = "default" }: NavbarProps & { variant?: "default" | "transparent" }) {
+export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, variant = "default" }: NavbarProps) {
   const pathname = usePathname();
   const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);

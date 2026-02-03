@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Mail, Phone, MapPin, Facebook, Instagram } from "lucide-react";
+import { X, Mail, Phone, MapPin, Facebook, Instagram, LucideIcon } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
 
@@ -12,7 +12,7 @@ interface MobileMenuProps {
 }
 
 /* Social Icon */
-const SocialLink = ({ href, icon: Icon }: { href: string; icon: any }) => (
+const SocialLink = ({ href, icon: Icon }: { href: string; icon: LucideIcon }) => (
   <Link
     href={href}
     className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-blue-500 hover:text-white transition-colors"
@@ -27,7 +27,7 @@ const ContactItem = ({
   title,
   content,
 }: {
-  icon: any;
+  icon: LucideIcon;
   title: string;
   content: React.ReactNode;
 }) => (

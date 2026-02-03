@@ -82,9 +82,18 @@ export default function HomeServices() {
 
   useEffect(() => {
     if (!emblaApi) return;
-    updateButtons();
+
+    // Initial update happens as part of event subscription, not synchronously
     emblaApi.on("select", updateButtons);
     emblaApi.on("reInit", updateButtons);
+
+    // Trigger initial update via reInit event instead of direct call
+    emblaApi.reInit();
+
+    return () => {
+      emblaApi.off("select", updateButtons);
+      emblaApi.off("reInit", updateButtons);
+    };
   }, [emblaApi, updateButtons]);
 
   /* ✅ MOUSE WHEEL → HORIZONTAL SCROLL */

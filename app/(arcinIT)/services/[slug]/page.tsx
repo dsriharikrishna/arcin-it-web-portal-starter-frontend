@@ -1,64 +1,84 @@
 import { notFound } from "next/navigation";
-import ServiceLayout from "@/components/services/ServiceLayout";
-import ServiceIntro from "@/components/services/ServiceIntro";
-import ServiceFeatures from "@/components/services/ServiceFeatures";
-import ServiceWhyChoose from "@/components/services/ServiceWhyChoose";
-import { servicesMap } from "@/data/services/index";
-import { PageHero } from "@/components/pages";
+import ServiceHero from "@/components/services/ServiceHero";
+import ServiceDetails from "@/components/services/ServiceDetails";
+import WhyChooseSection from "@/components/services/WhyChooseSection";
+import IndustriesSection from "@/components/services/IndustriesSection";
 import HomeDigital from "@/components/home/HomeDigital";
 
+// Import all service data
+import bankingData from "@/data/services/banking-financial-services";
+import insuranceData from "@/data/services/insurance-reinsurance";
+import governmentData from "@/data/services/government-digital-services";
+import retailData from "@/data/services/retail-e-commerce";
+import logisticsData from "@/data/services/logistics-transportation";
+import startupsData from "@/data/services/startups-tech-innovators";
+import healthcareData from "@/data/services/healthcare-education";
+
 interface PageProps {
-    params: Promise<{
-        slug: string;
-    }>;
+    params: Promise<{ slug: string }>;
 }
 
-// Generate metadata dynamically
-export async function generateMetadata({ params }: PageProps) {
-    const { slug } = await params;
-    const data = servicesMap[slug];
-
-    if (!data) {
-        return {
-            title: "Service Not Found",
-        };
-    }
-
-    return {
-        title: `${data.hero.title} | Arcin IT Services`,
-        description: data.intro.description,
-    };
-}
-
-// Pre-render common static paths if needed, or rely on ISR/SSR
-export async function generateStaticParams() {
-    return Object.keys(servicesMap).map((slug) => ({
-        slug,
-    }));
-}
+// Map slugs to their data
+const serviceDataMap: Record<string, any> = {
+    "banking-financial-services": bankingData,
+    "insurance-reinsurance": insuranceData,
+    "government-digital-services": governmentData,
+    "retail-e-commerce": retailData,
+    "logistics-transportation": logisticsData,
+    "startups-tech-innovators": startupsData,
+    "healthcare-education": healthcareData,
+};
 
 export default async function ServicePage({ params }: PageProps) {
     const { slug } = await params;
-    const data = servicesMap[slug];
+    const serviceData = serviceDataMap[slug];
 
-    if (!data) {
+    // If service not found, show 404
+    if (!serviceData) {
         notFound();
     }
 
+    const { overview, services, whyChoose, industries, cta } = serviceData;
+
     return (
-        <ServiceLayout>
-            <PageHero
-                title={data.hero.title}
-                subtitle={data.hero.subtitle}
-                description={data.hero.description}
-                backgroundImage={data.hero.backgroundImage}
+        <div className="min-h-screen">
+            {/* Hero Section */}
+            <ServiceHero
+                title={overview.title}
+                description={overview.description}
+                subtitle={overview.subtitle}
+                image="/services/hero-placeholder.png"
             />
-            <ServiceIntro {...data.intro} />
 
-            <ServiceFeatures features={data.features} />
+            {/* Service Details */}
+            <ServiceDetails services={services} />
 
-            <ServiceWhyChoose {...data.whyChoose} />
-            <HomeDigital />
-        </ServiceLayout>
+            {/* Industries We Serve */}
+            {industries && (
+                <IndustriesSection
+                    title={industries.title}
+                    industries={
+                        industries.industries || industries.providers || []
+                    }
+                />
+            )}
+
+            {/* Why Choose Section */}
+            <WhyChooseSection
+                title={whyChoose.title}
+                description={whyChoose.description}
+                points={whyChoose.points}
+            />
+
+            {/* CTA Section */}
+            {cta && (
+                <HomeDigital
+                    heading={cta.title}
+                    description={cta.description}
+                    ctaText={cta.primaryButton?.text}
+                    ctaLink={cta.primaryButton?.href}
+                />
+            )}
+        </div>
     );
 }

@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
+import Image from "next/image";
 
 const SERVICES = [
   {
@@ -116,10 +117,12 @@ export default function ServicesSection() {
               >
                 {/* IMAGE */}
                 <div className="relative rounded-xl overflow-hidden h-40">
-                  <img
+                  <Image
                     src={s.image}
                     alt={s.label}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
                   <div className="absolute top-3 left-3 w-9 h-9 rounded-full bg-white/80 backdrop-blur flex items-center justify-center">
                     <Icon className="w-5 h-5 text-blue-600" />

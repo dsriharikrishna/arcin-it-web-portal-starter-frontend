@@ -3,7 +3,19 @@
 import { SmoothLandingBox } from "@/components/animations/SmoothLandingBox";
 import Button from "@/components/ui/Button";
 
-export default function HomeDigital() {
+interface HomeDigitalProps {
+  heading?: string;
+  description?: string;
+  ctaText?: string;
+  ctaLink?: string;
+}
+
+export default function HomeDigital({
+  heading,
+  description,
+  ctaText,
+  ctaLink,
+}: HomeDigitalProps) {
   return (
     <section className="py-8 sm:py-20 bg-white text-center">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-6">
@@ -11,7 +23,7 @@ export default function HomeDigital() {
         {/* HEADING */}
         <SmoothLandingBox variant="slide-up" distance={16}>
           <h2 className="text-3xl sm:text-4xl font-medium text-slate-900">
-            Ready to Transform{" "}
+            {heading || "Ready to Transform"}
             <span className="font-bold">Your Digital Future?</span>
           </h2>
         </SmoothLandingBox>
@@ -19,8 +31,7 @@ export default function HomeDigital() {
         {/* DESCRIPTION */}
         <SmoothLandingBox variant="slide-up" delay={0.1} distance={16}>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
-            Let&apos;s discuss how ARCIN IT can help you achieve your business goals.
-            Our experts are ready to guide you through every step of your digital journey.
+            {description || "Let&apos;s discuss how ARCIN IT can help you achieve your business goals. Our experts are ready to guide you through every step of your digital journey."}
           </p>
         </SmoothLandingBox>
 
@@ -32,19 +43,19 @@ export default function HomeDigital() {
               variant="primary-blue-gradient"
               size="lg"
               rounded="lg"
-              href="/contact-us"
+              href={ctaLink || "/contact-us"}
               className="shadow-lg shadow-blue-200"
             >
-              Schedule a Consultation
+              {ctaText || "Schedule a Consultation"}
             </Button>
 
             <Button
               variant="outline-blue"
               size="lg"
               rounded="lg"
-              href="/services"
+              href={ctaLink || "/services"}
             >
-              Explore Our Services
+              {ctaText || "Explore Our Services"}
             </Button>
 
           </div>

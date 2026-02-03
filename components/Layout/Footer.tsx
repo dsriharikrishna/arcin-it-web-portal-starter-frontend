@@ -7,7 +7,6 @@ import {
   SmoothLandingContainer,
   SmoothLandingItem,
 } from "@/components/animations/SmoothLandingBox";
-import NavLogo from "@/components/ui/NavLogo";
 import Image from "next/image";
 
 const COMPANY_LINKS = [
@@ -67,13 +66,13 @@ export default function Footer() {
                 <div className="mb-4 w-fit">
                   <div className="p-3 bg-white rounded-lg">
                     <Link href="/">
-                    <Image
-                      src="/Footer_Logo.png"
-                      alt="Logo"
-                      width={100}
-                      height={100}
-                      className="object-contain bg-transparent "
-                    />
+                      <Image
+                        src="/Footer_Logo.png"
+                        alt="Logo"
+                        width={100}
+                        height={100}
+                        className="object-contain bg-transparent "
+                      />
                     </Link>
                   </div>
                 </div>

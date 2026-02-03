@@ -1,6 +1,5 @@
 "use client";
 
-import HomeHeroNavbar from "@/components/home/HomeHeroNavbar";
 import Footer from "@/components/Layout/Footer";
 import Navbar from "@/components/Layout/Navbar";
 import { usePathname } from "next/navigation";

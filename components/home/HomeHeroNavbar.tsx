@@ -117,6 +117,7 @@ const HomeHeroNavbar = () => {
                         <button
                             className="text-white bg-blue-400 rounded-lg p-1"
                             onClick={() => setMenuOpen(true)}
+                            aria-label="Open menu"
                         >
                             <Menu size={26} />
                         </button>

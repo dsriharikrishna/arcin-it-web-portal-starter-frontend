@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque } from "next/font/google"; // Remov
-import "./globals.css";
+import { Bricolage_Grotesque } from "next/font/google";
+import "../styles/globals.css";
+import "../styles/button.css";
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
