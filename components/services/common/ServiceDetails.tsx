@@ -1,24 +1,13 @@
 "use client";
 
-import { EvenServiceCard } from "./EvenServiceCard";
-import { OddServiceCard } from "./OddServiceCard";
-
-interface Service {
-  id: number;
-  title: string;
-  description: string;
-  features?: string[];
-  image?: string;
-  
-}
+import { EvenServiceCard } from "../EvenServiceCard";
+import { OddServiceCard } from "../OddServiceCard";
+import type { ServiceDetailsProps } from "@/types/services";
 
 export default function ServiceDetails({
   services,
   title
-}: {
-  services: Service[];
-  title?: string;
-}) {
+}: ServiceDetailsProps) {
   return (
     <div className="flex flex-col gap-0">
       {title && (

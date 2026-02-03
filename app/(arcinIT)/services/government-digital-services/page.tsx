@@ -1,11 +1,7 @@
-import ServiceHero from "@/components/services/ServiceHero";
-import ServiceDetails from "@/components/services/ServiceDetails";
+import { ServiceHero, ServiceDetails, ServiceHeader } from "@/components/services";
+import { Government } from "@/components/services";
 import HomeDigital from "@/components/home/HomeDigital";
 import governmentData from "@/data/services/government-digital-services";
-import ServiceHeader from "@/components/services/ServiceHeader";
-import EGovernanceServices from "@/components/services/EGovernanceServices";
-import GovernmentApproach from "@/components/services/GovernmentApproach";
-import WhyChooseSectionGovernment from "@/components/services/WhyChooseSectionGovernment";
 
 export default function GovernmentDigitalServicesPage() {
     const {
@@ -35,19 +31,19 @@ export default function GovernmentDigitalServicesPage() {
                 <ServiceDetails services={services} />
 
                 {/* E-Governance Services */}
-                <EGovernanceServices
+                <Government.EGovernanceServices
                     title={eGovernance.title}
                     services={eGovernance.services}
                 />
 
                 {/* Approach Section */}
-                <GovernmentApproach
+                <Government.GovernmentApproach
                     title={approach.title}
                     steps={approach.steps}
                 />
 
                 {/* Why Choose Section */}
-                <WhyChooseSectionGovernment
+                <Government.WhyChooseSection
                     id={whyChoose.id}
                     title={whyChoose.title}
                     description={whyChoose.description}

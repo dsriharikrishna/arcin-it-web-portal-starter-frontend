@@ -1,6 +1,6 @@
 "use client";
 
-import { EvenServiceCard } from "./EvenServiceCard";
+import { EvenServiceCard } from "../EvenServiceCard";
 
 interface WhyChooseProps {
     id?: string;

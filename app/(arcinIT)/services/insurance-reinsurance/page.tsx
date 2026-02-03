@@ -1,11 +1,7 @@
-import ServiceHero from "@/components/services/ServiceHero";
-import ServiceDetails from "@/components/services/ServiceDetails";
+import { ServiceHero, ServiceDetails, ServiceHeader } from "@/components/services";
+import { Insurance } from "@/components/services";
 import HomeDigital from "@/components/home/HomeDigital";
 import insuranceData from "@/data/services/insurance-reinsurance";
-import ServiceHeader from "@/components/services/ServiceHeader";
-import InsuranceWhyChoose from "@/components/services/InsuranceWhyChoose";
-import InsuranceArchitectureBenefits from "@/components/services/InsuranceArchitectureBenefits";
-import InsuranceDeliveryModel from "@/components/services/InsuranceDeliveryModel";
 
 export default function InsuranceReinsurancePage() {
     const {
@@ -35,7 +31,7 @@ export default function InsuranceReinsurancePage() {
                 />
 
                 {/* Why Choose Insurance Intro (Image 1) */}
-                <InsuranceWhyChoose
+                <Insurance.WhyChoose
                     title={whyIntro.title}
                     description={whyIntro.description}
                     points={whyIntro.points}
@@ -45,13 +41,13 @@ export default function InsuranceReinsurancePage() {
                 <ServiceDetails services={services} />
 
                 {/* Architecture & Business Benefits (Image 2) */}
-                <InsuranceArchitectureBenefits
+                <Insurance.ArchitectureBenefits
                     architecture={architecture}
                     benefits={businessBenefits}
                 />
 
                 {/* Why Arcin IT & Delivery Model (Image 3) */}
-                <InsuranceDeliveryModel
+                <Insurance.DeliveryModel
                     whyArcinit={whyArcinit}
                     deliveryModel={deliveryModel}
                 />

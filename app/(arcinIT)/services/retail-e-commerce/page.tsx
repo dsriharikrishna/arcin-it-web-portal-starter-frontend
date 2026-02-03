@@ -1,11 +1,7 @@
-import ServiceHero from "@/components/services/ServiceHero";
-import ServiceDetails from "@/components/services/ServiceDetails";
+import { ServiceHero, ServiceDetails, ServiceHeader } from "@/components/services";
+import { Retail } from "@/components/services";
 import HomeDigital from "@/components/home/HomeDigital";
 import retailData from "@/data/services/retail-e-commerce";
-import ServiceHeader from "@/components/services/ServiceHeader";
-import RetailIndustries from "@/components/services/RetailIndustries";
-import RetailProcess from "@/components/services/RetailProcess";
-import RetailBenefits from "@/components/services/RetailBenefits";
 
 export default function RetailEcommercePage() {
     const {
@@ -39,19 +35,19 @@ export default function RetailEcommercePage() {
                 />
 
                 {/* Industries We Serve (Grid of 6) */}
-                <RetailIndustries
+                <Retail.Industries
                     title={industries.title}
                     industries={industries.industries}
                 />
 
                 {/* Development Process (Grid of 5) */}
-                <RetailProcess
+                <Retail.Process
                     title={process.title}
                     steps={process.steps}
                 />
 
                 {/* Benefits Section (Split Layout) */}
-                <RetailBenefits
+                <Retail.Benefits
                     title={benefits.title}
                     points={benefits.points}
                     image={benefits.image}

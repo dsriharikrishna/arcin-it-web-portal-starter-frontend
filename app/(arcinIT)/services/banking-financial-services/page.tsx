@@ -1,9 +1,7 @@
-import ServiceHero from "@/components/services/ServiceHero";
-import ServiceDetails from "@/components/services/ServiceDetails";
+import { ServiceHero, ServiceDetails, ServiceHeader } from "@/components/services";
+import { Banking } from "@/components/services";
 import HomeDigital from "@/components/home/HomeDigital";
 import bankingData from "@/data/services/banking-financial-services";
-import ServiceHeader from "@/components/services/ServiceHeader";
-import WhyChooseSectionBanking from "@/components/services/WhyChooseSectionBanking";
 
 export default function BankingFinancialServicesPage() {
     const { overview, services, whyChoose, cta, hero } = bankingData;
@@ -27,7 +25,7 @@ export default function BankingFinancialServicesPage() {
                 <ServiceDetails services={services} />
 
                 {/* Why Choose Section */}
-                <WhyChooseSectionBanking
+                <Banking.WhyChooseSection
                     title={whyChoose.title}
                     points={whyChoose.points}
                     description={whyChoose.description}

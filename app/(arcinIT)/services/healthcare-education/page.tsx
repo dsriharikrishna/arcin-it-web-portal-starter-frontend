@@ -1,9 +1,7 @@
-import ServiceHero from "@/components/services/ServiceHero";
+import { ServiceHero, ServiceHeader } from "@/components/services";
+import { Healthcare, Retail } from "@/components/services";
 import HomeDigital from "@/components/home/HomeDigital";
 import healthcareData from "@/data/services/healthcare-education";
-import ServiceHeader from "@/components/services/ServiceHeader";
-import RetailIndustries from "@/components/services/RetailIndustries";
-import HealthServices from "@/components/services/HealthServices";
 
 export default function HealthcareEducationPage() {
     const { overview, services, industries, cta, hero, whyChoose } = healthcareData;
@@ -23,10 +21,10 @@ export default function HealthcareEducationPage() {
                     description={overview.description}
                 />
 
-                <HealthServices services={services} />
+                <Healthcare.HealthServices services={services} />
 
                 {/* Industries We Serve (Grid of 7) */}
-                <RetailIndustries
+                <Retail.Industries
                     title={industries.title}
                     industries={industries.industries}
                 />

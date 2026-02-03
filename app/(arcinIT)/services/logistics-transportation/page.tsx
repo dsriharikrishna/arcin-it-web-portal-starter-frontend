@@ -1,11 +1,7 @@
-import ServiceHero from "@/components/services/ServiceHero";
+import { ServiceHero, ServiceHeader } from "@/components/services";
+import { Logistics, Retail } from "@/components/services";
 import HomeDigital from "@/components/home/HomeDigital";
 import logisticsData from "@/data/services/logistics-transportation";
-import ServiceHeader from "@/components/services/ServiceHeader";
-import RetailIndustries from "@/components/services/RetailIndustries";
-import LogisticsServiceSection from "@/components/services/LogisticsServiceSection";
-import LogisticsWhyChoose from "@/components/services/LogisticsWhyChoose";
-import LogisticsSolutions from "@/components/services/LogisticsSolutions";
 
 export default function LogisticsTransportationPage() {
     const {
@@ -34,26 +30,26 @@ export default function LogisticsTransportationPage() {
                 />
 
                 {/* Logistics Software Development Services (Image 1) */}
-                <LogisticsServiceSection
+                <Logistics.ServiceSection
                     title="Logistics Software Development Services"
                     groups={services}
                 />
 
                 {/* Industries We Serve (Grid of 7) */}
-                <RetailIndustries
+                <Retail.Industries
                     title={industries.title}
                     industries={industries.industries}
                 />
 
                 {/* Why Choose Section (Image 2) */}
-                <LogisticsWhyChoose
+                <Logistics.WhyChoose
                     title={whyChoose.title}
                     points={whyChoose.points}
                     image="/services/logistics/why-choose.png"
                 />
 
                 {/* Logistics Software Solutions We Deliver (Image 3) */}
-                <LogisticsSolutions
+                <Logistics.Solutions
                     title={solutions.title}
                     solutions={solutions.solutions}
                 />

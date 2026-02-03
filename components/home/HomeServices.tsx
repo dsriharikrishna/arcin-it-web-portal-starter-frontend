@@ -14,8 +14,8 @@ import {
   Stethoscope,
 } from "lucide-react";
 import clsx from "clsx";
-import ServiceCard from "../services/ServiceCard";
 import { Button } from "../ui";
+import { ServiceCard } from "@/components/services";
 
 const SERVICES = [
   {

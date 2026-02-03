@@ -1,10 +1,6 @@
-import ServiceHero from "@/components/services/ServiceHero";
+import { ServiceHero, ServiceHeader } from "@/components/services";
+import { Startups } from "@/components/services";
 import startupsData from "@/data/services/startups-tech-innovators";
-import ServiceHeader from "@/components/services/ServiceHeader";
-import BusinessesTrustUs from "@/components/services/BusinessesTrustUs";
-import StartupsServiceSection from "@/components/services/StartupsServiceSection";
-import StartupsCTA from "@/components/services/StartupsCTA";
-import StartupsTechWhyChoose from "@/components/services/StartupsTechWhyChoose";
 
 export default function StartupsTechInnovatorsPage() {
     const { overview, services, whyChoose, cta, hero, businessesTrust } = startupsData;
@@ -25,13 +21,13 @@ export default function StartupsTechInnovatorsPage() {
                 />
 
                 {/* Services Section with alternating images */}
-                <StartupsServiceSection
+                <Startups.ServiceSection
                     title="Our Services"
                     groups={services}
                 />
 
                 {/* Why Choose Section */}
-                <StartupsTechWhyChoose
+                <Startups.WhyChoose
                     title={whyChoose.title}
                     description={whyChoose.description}
                     points={whyChoose.points}
@@ -39,14 +35,14 @@ export default function StartupsTechInnovatorsPage() {
                 />
 
                 {/* Why Businesses Trust Us */}
-                <BusinessesTrustUs
+                <Startups.BusinessesTrustUs
                     title={businessesTrust.title}
                     description={businessesTrust.description}
                 />
 
                 {/* CTA Section */}
                 {cta && (
-                    <StartupsCTA
+                    <Startups.CTA
                         heading={cta.title}
                         description={cta.description}
                         ctaText={cta.primaryButton?.text}
