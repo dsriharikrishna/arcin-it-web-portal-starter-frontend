@@ -14,29 +14,12 @@ export default function StartupsTechInnovatorsPage() {
             <ServiceHero
                 title={overview.title}
                 description={overview.description}
-                subtitle={overview.subtitle}
-                image="/services/hero-placeholder.png"
             />
 
             {/* Service Details */}
             <ServiceDetails services={services} />
 
-            {/* Industries We Serve */}
-            {industries && (
-                <IndustriesSection
-                    title={industries.title}
-                    industries={
-                        industries.industries || industries.providers || []
-                    }
-                />
-            )}
-
-            {/* Why Choose Section */}
-            <WhyChooseSection
-                title={whyChoose.title}
-                description={whyChoose.description}
-                points={whyChoose.points}
-            />
+        
 
             {/* CTA Section */}
             {cta && (
