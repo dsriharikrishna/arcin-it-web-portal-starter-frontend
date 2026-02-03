@@ -25,13 +25,13 @@ export default function ServiceHero({
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-24">
         {/* Go Back */}
-        <CustomButton
+        <button
           onClick={() => router.back()}
           className="absolute top-6 left-6 flex items-center gap-2 rounded-full bg-white/90 px-4 py-1.5 text-sm font-medium text-slate-700 shadow-sm hover:bg-white transition"
         >
           <ArrowLeft className="w-4 h-4" />
           Go Back
-        </CustomButton>
+        </button>
 
         {/* Center Text */}
         <motion.div

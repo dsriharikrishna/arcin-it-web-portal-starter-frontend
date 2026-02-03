@@ -91,7 +91,7 @@ export default function AboutSolutions() {
                     : "border-blue-200"
                 )}
               >
-                <CustomButton
+                <button
                   onClick={() =>
                     setOpenIndex(openIndex === index ? null : index)
                   }
@@ -115,7 +115,7 @@ export default function AboutSolutions() {
                       <Plus className="w-4 h-4" />
                     )}
                   </span>
-                </CustomButton>
+                </button>
 
                 <AnimatePresence initial={false}>
                   {openIndex === index && (
@@ -137,7 +137,7 @@ export default function AboutSolutions() {
             {/* CTA */}
             <div className="pt-2">
               <CustomButton
-                variant="primary-blue"
+                variant="primary"
                 size="sm"
                 className="w-fit rounded-lg"
               >

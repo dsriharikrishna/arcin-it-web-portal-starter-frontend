@@ -3,11 +3,12 @@
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import NavLink from "@/components/ui/NavLink";
-import HamburgerButton from "@/components/ui/HamburgerButton";
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import Menu from "./Menu";
+import Menu from "./Menubar";
+import { Phone, Menu as MenuIcon } from "lucide-react";
+import { CustomButton, ContactModal } from "@/components/ui";
 
 export interface NavItem {
   href: string;
@@ -36,6 +37,7 @@ export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, variant = "defaul
   const pathname = usePathname();
   const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
 
   const isTransparent = variant === "transparent";
 
@@ -46,7 +48,7 @@ export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, variant = "defaul
           }`}
       >
         <nav
-          className="relative mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8 "
+          className="relative mx-auto flex w-full items-center justify-between px-4 py-2 sm:px-6 lg:px-8 "
           aria-label="Global"
         >
           <div className="flex-shrink-0 cursor-pointer" onClick={() => router.push("/")}>
@@ -80,20 +82,30 @@ export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, variant = "defaul
               ))}
             </div>
 
-            <HamburgerButton
-              onClick={() => setMobileOpen((o) => !o)}
-              isOpen={mobileOpen}
-              ariaLabel={mobileOpen ? "Close menu" : "Open menu"}
-              // Assuming HamburgerButton can take styling or we might need to adjust it later
-              // For now simpler is better, usually hamburgers are black/dark. 
-              // If it's SVG, we might need a color prop.
-              className={isTransparent ? "text-white" : "text-slate-900"}
-            />
+            {/* Circular Phone Button */}
+            <CustomButton
+              variant="solid"
+              aria-label="Call us"
+              onClick={() => setContactOpen(true)}
+            >
+              <Phone size={18} />
+            </CustomButton>
+
+            <div className="lg:hidden">
+              <CustomButton
+                variant="solid"
+                onClick={() => setMobileOpen((o) => !o)}
+                aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              >
+                <MenuIcon size={20} />
+              </CustomButton>
+            </div>
           </div>
         </nav>
       </header>
 
       <Menu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} navItems={navItems} />
+      <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
     </>
   );
 }

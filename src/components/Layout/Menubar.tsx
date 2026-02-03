@@ -63,7 +63,7 @@ const InputField = ({
   );
 };
 
-export default function Menu({ isOpen, onClose, navItems }: MobileMenuProps) {
+export default function Menubar({ isOpen, onClose, navItems }: MobileMenuProps) {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -98,15 +98,17 @@ export default function Menu({ isOpen, onClose, navItems }: MobileMenuProps) {
               scrollbarColor: "#CBD5E1 transparent",
             }}
           >
-            <div className="p-5 relative">
+            <div className="p-4 relative">
+              <div className="flex items-center justify-end">
+                {/* Close */}
+                <CustomButton
+                  onClick={onClose}
+                  className="w-7 h-7 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200"
+                >
+                  <X className="w-4 h-4" />
+                </CustomButton>
+              </div>
 
-              {/* Close */}
-              <CustomButton
-                onClick={onClose}
-                className="absolute top-3 right-3 w-7 h-7 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200"
-              >
-                <X className="w-4 h-4" />
-              </CustomButton>
 
               {/* NAV — HIDDEN ON MOBILE */}
               <div className="mb-6 lg:hidden block">

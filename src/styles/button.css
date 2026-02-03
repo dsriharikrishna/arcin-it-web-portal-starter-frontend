@@ -16,6 +16,23 @@
   transition: color 280ms ease, box-shadow 280ms ease, transform 200ms ease;
 }
 
+.custom-btn--circle {
+  padding: 0 !important;
+  width: 44px;
+  height: 44px;
+  aspect-ratio: 1 / 1;
+}
+
+.custom-btn--circle-sm {
+  width: 32px;
+  height: 32px;
+}
+
+.custom-btn--circle-lg {
+  width: 56px;
+  height: 56px;
+}
+
 .custom-btn__text {
   position: relative;
   z-index: 2;
@@ -61,7 +78,7 @@
 }
 
 .custom-btn--outline {
-  color: #5BCAFB;
+  color: #320DE0;
   background: #ffffff;
   border: 1px solid #8bb7ff;
   position: relative;

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import CustomButton from "./CustomButton";
 
 interface FilledTab {
   id: string;

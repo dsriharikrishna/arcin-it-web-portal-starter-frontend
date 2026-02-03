@@ -8,10 +8,16 @@ type CustomButtonVariant =
   | "gradient"
   | "primary"
   | "secondary"
+  | "ghost"
+  | "danger"
+  | "success"
+  | "primary-blue"
+  | "primary-blue-gradient"
+  | "outline-blue"
   | "custom";
 
 interface CustomButtonProps {
-  children: ReactNode;
+  children?: ReactNode;
   label?: string; // Optional for backward compatibility
   href?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -57,21 +63,21 @@ const roundedStyles = {
 };
 
 const variantStyles = {
-  solid:
-    "custom-btn custom-btn--solid",
-  primary:
-    "bg-orange-500 text-white hover:bg-orange-600 focus:ring-1 focus:ring-orange-500 focus:ring-offset-1",
+  solid: "custom-btn custom-btn--solid",
+  primary: "custom-btn custom-btn--solid",
+  "primary-blue": "custom-btn custom-btn--solid",
+  gradient: "custom-btn custom-btn--solid",
+  "primary-blue-gradient": "custom-btn custom-btn--solid",
 
-  secondary:
-    "bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-1 focus:ring-gray-500 focus:ring-offset-1",
+  outline: "custom-btn custom-btn--outline",
 
-  gradient:
-    "bg-gradient-to-r from-orange-500 to-orange-300 text-white hover:opacity-90 focus:ring-1 focus:ring-orange-500 focus:ring-offset-1 shadow-lg shadow-orange-500/30",
+  secondary: "bg-gray-100 text-gray-700 hover:bg-gray-200 focus:ring-1 focus:ring-gray-300",
+  ghost: "text-gray-600 hover:bg-gray-100",
+  danger: "bg-red-500 text-white hover:bg-red-600",
+  success: "bg-green-500 text-white hover:bg-green-600",
+  "outline-blue": "border border-blue-400 text-blue-600 hover:bg-blue-50",
 
-  outline:
-    "custom-btn custom-btn--outline",
   custom: "",
-
 };
 
 export default function CustomButton({
@@ -96,16 +102,24 @@ export default function CustomButton({
   const ariaLabelValue = ariaLabel ?? (typeof children === 'string' ? children : label);
 
   const isIconOnly = !children && !label && (startIcon || endIcon);
-  const isIconVariant = variant.startsWith("icon-");
-  const isCustomCSSVariant = variant === "solid" || variant === "outline";
+  const isCustomCSSVariant =
+    variant === "solid" ||
+    variant === "outline" ||
+    variant === "primary" ||
+    variant === "primary-blue" ||
+    variant === "gradient" ||
+    variant === "primary-blue-gradient";
 
   const classes = clsx(
     // Only apply base Tailwind classes if NOT using custom CSS variants
     !isCustomCSSVariant && "inline-flex items-center justify-center gap-2 transition-colors focus:outline-none cursor-pointer",
     !isCustomCSSVariant && "disabled:opacity-50 disabled:pointer-events-none",
     !isCustomCSSVariant && baseSizeStyles[size],
-    !isCustomCSSVariant && (isIconOnly || isIconVariant ? iconSizeStyles[size] : sizeStyles[size]),
+    !isCustomCSSVariant && (isIconOnly ? iconSizeStyles[size] : sizeStyles[size]),
     !isCustomCSSVariant && roundedStyles[rounded],
+    isIconOnly && isCustomCSSVariant && "custom-btn--circle",
+    isIconOnly && isCustomCSSVariant && size === "sm" && "custom-btn--circle-sm",
+    isIconOnly && isCustomCSSVariant && size === "lg" && "custom-btn--circle-lg",
     variantStyles[variant],
     fullWidth && "w-full",
     disabled && "opacity-50 cursor-not-allowed",

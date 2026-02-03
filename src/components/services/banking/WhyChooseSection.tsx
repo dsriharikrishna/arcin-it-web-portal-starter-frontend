@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
+import CustomButton from "../../ui/CustomButton";
 
 interface WhyChoosePoint {
   title: string;

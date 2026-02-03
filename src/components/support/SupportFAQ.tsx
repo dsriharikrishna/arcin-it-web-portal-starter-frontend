@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 import clsx from "clsx";
+import CustomButton from "@/components/ui/CustomButton";
 
 const FAQS = [
     {

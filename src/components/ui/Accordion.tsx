@@ -15,6 +15,8 @@ interface AccordionProps {
   headerClassName?: string;
 }
 
+import CustomButton from "./CustomButton";
+
 const Accordion: React.FC<AccordionProps> = ({
   title,
   icon,
@@ -39,7 +41,7 @@ const Accordion: React.FC<AccordionProps> = ({
         )}
       >
         <CustomButton
-          type="CustomButton"
+          type="button"
           onClick={onToggle}
           className="flex items-center gap-3 flex-1 cursor-pointer"
         >
@@ -51,13 +53,13 @@ const Accordion: React.FC<AccordionProps> = ({
           {actionCustomButton && (
             <div onClick={(e) => e.stopPropagation()}>{actionCustomButton}</div>
           )}
-          <CustomButton type="CustomButton" onClick={onToggle} className="cursor-pointer">
+          <CustomButton type="button" onClick={onToggle} className="cursor-pointer">
             {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
           </CustomButton>
         </div>
       </div>
 
-      {isExpanded && <div className="p-6">{children}</div>}
+      {isExpanded && <div className="p-6 text-sm text-slate-600">{children}</div>}
     </div>
   );
 };

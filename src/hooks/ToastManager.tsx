@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CheckCircle, WarningCircle, Info, Warning, X } from "phosphor-react";
+import CustomButton from "@/components/ui/CustomButton";
 
 type ToastType = "success" | "error" | "warning" | "info";
 

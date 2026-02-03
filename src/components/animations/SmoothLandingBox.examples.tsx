@@ -10,6 +10,7 @@ import {
   SmoothLandingContainer,
   SmoothLandingItem,
 } from "./SmoothLandingBox";
+import CustomButton from "../ui/CustomButton";
 
 // Example 1: Basic slide-up animation (default)
 export const BasicExample = () => (

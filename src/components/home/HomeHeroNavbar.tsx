@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SmoothLandingBox } from "../animations/SmoothLandingBox";
-import { CustomButton } from "../ui";
+import { CustomButton, ContactModal } from "../ui";
+import Menubar from "../Layout/Menubar";
 
 interface NavItem {
     href: string;
@@ -34,6 +35,7 @@ const BACKGROUND_IMAGES = [
 
 const HomeHeroNavbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [contactOpen, setContactOpen] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     useEffect(() => {
@@ -79,9 +81,8 @@ const HomeHeroNavbar = () => {
             <div className="absolute inset-y-0 left-0 w-[65%] z-0 bg-gradient-to-r from-white via-white/20 to-transparent pointer-events-none" />
 
             {/* ===== HEADER / NAVBAR ===== */}
-            <header className="relative z-20 bg-gradient-to-r from-white via-white/10 to-transparent border-b border-white/20">
+            <header className="w-full relative z-20 bg-gradient-to-r from-white via-white/10 to-transparent border-b border-white/20">
                 <div className="max-w-full px-8 sm:px-10 lg:px-12 h-16 flex items-center justify-between">
-
                     {/* Logo */}
                     <Image
                         src="/Arcin_logo_Name.png"
@@ -113,13 +114,24 @@ const HomeHeroNavbar = () => {
                             ))}
                         </nav>
 
-                        {/* Mobile Hamburger */}
+                        {/* Circular Phone Button (from image) */}
                         <CustomButton
-                            className="text-white bg-blue-400 rounded-lg p-1"
+                            variant="solid"
+                            className=""
+                            aria-label="Call us"
+                            onClick={() => setContactOpen(true)}
+                        >
+                            <Phone size={20} />
+                        </CustomButton>
+
+                        {/* Mobile Hamburger (Now using brand circular style) */}
+                        <CustomButton
+                            variant="solid"
+                            className="md:hidden "
                             onClick={() => setMenuOpen(true)}
                             aria-label="Open menu"
                         >
-                            <Menu size={26} />
+                            <Menu size={22} />
                         </CustomButton>
                     </div>
 
@@ -129,29 +141,12 @@ const HomeHeroNavbar = () => {
             {/* ===== MOBILE MENU POPUP ===== */}
             {menuOpen && (
                 <div className="fixed inset-0 z-50 bg-black/40 ">
-                    <div className="absolute right-4 top-32 w-64 bg-white rounded-xl shadow-xl p-4">
-
-                        <div className="flex items-center justify-between mb-4">
-                            <span className="font-semibold text-slate-800">Menu</span>
-                            <CustomButton onClick={() => setMenuOpen(false)}>
-                                <X size={20} />
-                            </CustomButton>
-                        </div>
-
-                        <nav className="flex flex-col gap-3">
-                            {DEFAULT_NAV_ITEMS.map((item) => (
-                                <Link
-                                    key={item.href}
-                                    href={item.href}
-                                    onClick={() => setMenuOpen(false)}
-                                    className="text-slate-700 hover:text-blue-600 text-sm font-medium"
-                                >
-                                    {item.label}
-                                </Link>
-                            ))}
-                        </nav>
-                    </div>
+                    <Menubar isOpen={menuOpen} onClose={() => setMenuOpen(false)} navItems={DEFAULT_NAV_ITEMS} />
                 </div>
+            )}
+
+            {contactOpen && (
+                <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
             )}
 
             {/* ===== HERO CONTENT ===== */}
@@ -211,7 +206,6 @@ const HomeHeroNavbar = () => {
                     </div>
                 </div>
             </div>
-
         </div>
     );
 };
