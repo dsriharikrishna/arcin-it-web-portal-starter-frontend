@@ -26,7 +26,7 @@ const iconMap: Record<number, any> = {
 
 export default function RetailIndustries({ title, industries }: RetailIndustriesProps) {
     return (
-        <section className="bg-[#f8faff]/50">
+        <section className="bg-[#f8faff]/50 p-6">
             <div className="max-w-7xl mx-auto px-6">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
@@ -37,7 +37,7 @@ export default function RetailIndustries({ title, industries }: RetailIndustries
                     {title}
                 </motion.h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
                     {industries.map((industry, index) => {
                         const Icon = iconMap[index % 6];
                         return (
@@ -47,7 +47,7 @@ export default function RetailIndustries({ title, industries }: RetailIndustries
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="flex items-center gap-4 p-6 rounded-2xl bg-white border border-blue-100/50 shadow-sm hover:shadow-md transition-shadow duration-300"
+                                className="flex items-center gap-4 p-5 rounded-2xl border border-blue-100/50 shadow-sm hover:shadow-md transition-shadow duration-300"
                             >
                                 <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white shrink-0 shadow-lg shadow-blue-500/20">
                                     <Icon className="w-6 h-6" />
