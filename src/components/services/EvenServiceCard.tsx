@@ -15,30 +15,32 @@ interface ServiceCardProps {
 
 export function EvenServiceCard({ service }: ServiceCardProps) {
   return (
-    <section className="bg-slate-50">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-center">
+    <section className="bg-slate-50 py-8 sm:py-12 md:py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="grid grid-cols-1 items-center gap-8 sm:gap-10 md:gap-14 lg:grid-cols-12">
           {/* CONTENT */}
-          <div className="lg:col-span-7 flex flex-col gap-6">
-            <div className="flex gap-4 items-start">
-              {service.id && <span className="w-8 h-8 flex items-center justify-center bg-slate-900 text-white rounded-md text-sm font-semibold">
-                {service.id}
-              </span>}
-              <h3 className="text-2xl font-semibold text-slate-900">
+          <div className="order-1 flex flex-col gap-4 sm:gap-6 lg:col-span-7">
+            <div className="flex items-start gap-3 sm:gap-4">
+              {service.id && (
+                <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md bg-slate-900 text-xs font-semibold text-white sm:h-8 sm:w-8 sm:text-sm">
+                  {service.id}
+                </span>
+              )}
+              <h3 className="text-xl leading-tight font-semibold text-slate-900 sm:text-2xl md:text-3xl">
                 {service.title}
               </h3>
             </div>
 
-            <p className="text-slate-600 leading-relaxed">
+            <p className="text-sm leading-relaxed text-slate-600 sm:text-base">
               {service.description}
             </p>
 
             {service.features && (
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 sm:gap-3">
                 {service.features.map((f, i) => (
-                  <div key={i} className="flex gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-blue-600 mt-1" />
-                    <span className="text-sm text-slate-700">{f}</span>
+                  <div key={i} className="flex gap-2 sm:gap-3">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-blue-600 sm:mt-1 sm:h-5 sm:w-5" />
+                    <span className="text-xs text-slate-700 sm:text-sm">{f}</span>
                   </div>
                 ))}
               </div>
@@ -46,14 +48,15 @@ export function EvenServiceCard({ service }: ServiceCardProps) {
           </div>
 
           {/* IMAGE */}
-          <div className="lg:col-span-5">
-            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden">
+          <div className="order-2 lg:col-span-5">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg sm:rounded-3xl">
               {service.image && (
                 <Image
                   src={service.image}
                   alt={service.title}
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
                 />
               )}
             </div>

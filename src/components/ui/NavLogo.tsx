@@ -2,7 +2,7 @@
 import Image from "next/image";
 
 const NavLogo = () => (
-  <div className="relative w-[100px] h-[100px]">
+  <div className="relative h-[100px] w-[100px]">
     <Image
       src="/Arcin_logo_Name.png"
       alt="ArcinIT Logo"

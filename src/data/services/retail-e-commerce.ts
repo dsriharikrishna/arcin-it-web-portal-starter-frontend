@@ -3,8 +3,7 @@ export const retailHero = {
   subtitle: "Retail Software Solutions",
 };
 export const retailOverview = {
-  title:
-    "Scalable, Secure & Conversion-Driven Digital Solutions for Modern Retail Businesses",
+  title: "Scalable, Secure & Conversion-Driven Digital Solutions for Modern Retail Businesses",
   description:
     "Arcin IT offers complete retail and eCommerce software development services that help businesses improve operations, enhance customer experiences, and drive sustainable revenue growth. We create custom, scalable, and future-ready digital solutions for retailers, brands, and eCommerce startups around the world. Our solutions range from powerful eCommerce platforms to smart retail management systems, all designed to meet changing market demands and customer expectations.",
 };
@@ -40,7 +39,8 @@ export const retailEcommerceServices = [
   {
     id: 3,
     title: "Inventory & Order Management Systems",
-    description: "Automate inventory tracking, order processing, and fulfillment using intelligent retail management solutions. ",
+    description:
+      "Automate inventory tracking, order processing, and fulfillment using intelligent retail management solutions. ",
     features: [
       "Real-time stock visibility",
       "Automated reordering",
@@ -82,32 +82,27 @@ export const retailDevelopmentProcess = {
     {
       id: "01",
       title: "Requirement Analysis & Strategy",
-      description:
-        "We understand your business goals, customer needs, and competitive landscape.",
+      description: "We understand your business goals, customer needs, and competitive landscape.",
     },
     {
       id: "02",
       title: "UI/UX Design",
-      description:
-        "We design intuitive, conversion-focused user experiences.",
+      description: "We design intuitive, conversion-focused user experiences.",
     },
     {
       id: "03",
       title: "Agile Development",
-      description:
-        "We follow agile methodologies for faster, transparent development.",
+      description: "We follow agile methodologies for faster, transparent development.",
     },
     {
       id: "04",
       title: "Quality Assurance & Testing",
-      description:
-        "We ensure performance, security, and reliability across devices.",
+      description: "We ensure performance, security, and reliability across devices.",
     },
     {
       id: "05",
       title: "Deployment & Ongoing Support",
-      description:
-        "We launch, monitor, and continuously optimize your retail solution.",
+      description: "We launch, monitor, and continuously optimize your retail solution.",
     },
   ],
 };
@@ -129,8 +124,7 @@ export const retailCTA = {
   title: "Let’s Build Your Retail & eCommerce Success",
   description:
     "Whether you are launching a new eCommerce platform or upgrading existing retail systems, ArcinIT is your reliable partner for scalable, secure, and future-ready retail solutions.",
-  subtext:
-    "Contact Arcin IT today to transform your retail and eCommerce business.",
+  subtext: "Contact Arcin IT today to transform your retail and eCommerce business.",
   primaryCustomButton: {
     text: "Schedule a Consultation",
     href: "/contact-us",

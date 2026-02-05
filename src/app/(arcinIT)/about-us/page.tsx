@@ -10,7 +10,7 @@ import HomeDigital from "@/components/home/HomeDigital";
 
 export default function AboutUsPage() {
   return (
-    <>
+    <div className="flex flex-col gap-6">
       <PageHero
         title="About Us"
         subtitle="Your Trusted Technology Partner"
@@ -18,11 +18,11 @@ export default function AboutUsPage() {
         backgroundImage="/about-us/about-us-hero.png"
       />
       <HomeAbout />
-      <HomeStats isHome={false}/>
+      <HomeStats isHome={false} />
       <AboutMissionVision />
       <AboutValues />
       <AboutSolutions />
       <HomeDigital />
-    </>
+    </div>
   );
 }

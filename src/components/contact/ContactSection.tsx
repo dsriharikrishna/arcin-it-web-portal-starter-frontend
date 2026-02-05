@@ -4,26 +4,21 @@ import ContactMap from "./ContactMap";
 
 const ContactSection = () => {
   return (
-    <section className="py-12 max-w-7xl mx-auto px-4 flex flex-col gap-4">
-      <div className="grid lg:grid-cols-3 gap-6 items-stretch">
+    <section className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-12">
+      <div className="grid items-stretch gap-6 lg:grid-cols-3">
         {/* Form */}
-        <div className="lg:col-span-2 flex">
+        <div className="flex lg:col-span-2">
           <ContactForm />
         </div>
 
         {/* Info */}
-        <div className="lg:col-span-1 flex">
+        <div className="flex lg:col-span-1">
           <ContactInfo />
         </div>
       </div>
-
-      {/* Map */}
-      <div className="">
-        <ContactMap />
-      </div>
+      <ContactMap />
     </section>
   );
 };
-
 
 export default ContactSection;

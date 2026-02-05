@@ -16,8 +16,8 @@ export default function InsuranceWhyChoose({
 }: InsuranceWhyChooseProps) {
   return (
     <section className="bg-white py-4">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid grid-cols-1 items-start gap-20 lg:grid-cols-2">
           {/* LEFT CONTENT */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
@@ -25,11 +25,11 @@ export default function InsuranceWhyChoose({
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 leading-snug mb-6">
+            <h2 className="mb-6 text-3xl leading-snug font-semibold text-slate-900 md:text-4xl">
               {title}
             </h2>
 
-            <p className="text-slate-600 text-base md:text-lg leading-relaxed max-w-xl">
+            <p className="max-w-xl text-base leading-relaxed text-slate-600 md:text-lg">
               {description}
             </p>
           </motion.div>
@@ -44,13 +44,11 @@ export default function InsuranceWhyChoose({
           >
             {points.map((point, index) => (
               <div key={index} className="flex items-start gap-4">
-                <div className="mt-1 flex h-6 w-6 items-center justify-center rounded-full border border-blue-500 flex-shrink-0">
+                <div className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border border-blue-500">
                   <Check className="h-3.5 w-3.5 text-blue-500" />
                 </div>
 
-                <p className="text-slate-600 text-base leading-relaxed">
-                  {point}
-                </p>
+                <p className="text-base leading-relaxed text-slate-600">{point}</p>
               </div>
             ))}
           </motion.div>
@@ -64,9 +62,9 @@ export default function InsuranceWhyChoose({
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-24 max-w-4xl"
         >
-          <p className="text-slate-400 text-base md:text-lg">
-            We create systems ready for the future that support digital change
-            across the entire insurance value chain.
+          <p className="text-base text-slate-400 md:text-lg">
+            We create systems ready for the future that support digital change across the entire
+            insurance value chain.
           </p>
         </motion.div>
       </div>

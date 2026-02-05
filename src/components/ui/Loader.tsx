@@ -46,13 +46,9 @@ export default function Loader({
   // Spinner variant (rotating circle)
   if (variant === "spinner") {
     return (
-      <div
-        className={`inline-block ${className}`}
-        role="status"
-        aria-label="Loading"
-      >
+      <div className={`inline-block ${className}`} role="status" aria-label="Loading">
         <div
-          className={`${sizeClasses[size]} ${colorClasses[color]} border-4 border-t-transparent rounded-full animate-spin`}
+          className={`${sizeClasses[size]} ${colorClasses[color]} animate-spin rounded-full border-4 border-t-transparent`}
         />
       </div>
     );
@@ -68,21 +64,17 @@ export default function Loader({
     };
 
     return (
-      <div
-        className={`inline-flex gap-1.5 ${className}`}
-        role="status"
-        aria-label="Loading"
-      >
+      <div className={`inline-flex gap-1.5 ${className}`} role="status" aria-label="Loading">
         <div
-          className={`${dotSize[size]} ${dotColorClasses[color]} rounded-full animate-bounce`}
+          className={`${dotSize[size]} ${dotColorClasses[color]} animate-bounce rounded-full`}
           style={{ animationDelay: "0ms" }}
         />
         <div
-          className={`${dotSize[size]} ${dotColorClasses[color]} rounded-full animate-bounce`}
+          className={`${dotSize[size]} ${dotColorClasses[color]} animate-bounce rounded-full`}
           style={{ animationDelay: "150ms" }}
         />
         <div
-          className={`${dotSize[size]} ${dotColorClasses[color]} rounded-full animate-bounce`}
+          className={`${dotSize[size]} ${dotColorClasses[color]} animate-bounce rounded-full`}
           style={{ animationDelay: "300ms" }}
         />
       </div>
@@ -92,13 +84,9 @@ export default function Loader({
   // Pulse variant (pulsing circle)
   if (variant === "pulse") {
     return (
-      <div
-        className={`inline-block ${className}`}
-        role="status"
-        aria-label="Loading"
-      >
+      <div className={`inline-block ${className}`} role="status" aria-label="Loading">
         <div
-          className={`${sizeClasses[size]} ${dotColorClasses[color]} rounded-full animate-pulse`}
+          className={`${sizeClasses[size]} ${dotColorClasses[color]} animate-pulse rounded-full`}
         />
       </div>
     );
@@ -122,20 +110,20 @@ export default function Loader({
 
     return (
       <div
-        className={`inline-flex gap-1 items-center ${className}`}
+        className={`inline-flex items-center gap-1 ${className}`}
         role="status"
         aria-label="Loading"
       >
         <div
-          className={`${barWidth[size]} ${barHeight[size]} ${barColorClasses[color]} rounded-sm animate-pulse`}
+          className={`${barWidth[size]} ${barHeight[size]} ${barColorClasses[color]} animate-pulse rounded-sm`}
           style={{ animationDelay: "0ms", animationDuration: "0.8s" }}
         />
         <div
-          className={`${barWidth[size]} ${barHeight[size]} ${barColorClasses[color]} rounded-sm animate-pulse`}
+          className={`${barWidth[size]} ${barHeight[size]} ${barColorClasses[color]} animate-pulse rounded-sm`}
           style={{ animationDelay: "150ms", animationDuration: "0.8s" }}
         />
         <div
-          className={`${barWidth[size]} ${barHeight[size]} ${barColorClasses[color]} rounded-sm animate-pulse`}
+          className={`${barWidth[size]} ${barHeight[size]} ${barColorClasses[color]} animate-pulse rounded-sm`}
           style={{ animationDelay: "300ms", animationDuration: "0.8s" }}
         />
       </div>

@@ -3,14 +3,11 @@ export const insuranceHero = {
   subtitle: "Automate Insurance Workflows",
 };
 
-
 export const insuranceOverview = {
-  title:
-    "Scalable, Secure and Intelligent Digital Solutions for Insurance Enterprises",
+  title: "Scalable, Secure and Intelligent Digital Solutions for Insurance Enterprises",
   description:
     "Arcinit offers complete insurance and reinsurance software development services. We help insurers, brokers, and reinsurers automate their operations, improve customer experience, manage risk effectively, and boost business growth. Our solutions cater to modern insurance companies that need to replace outdated systems with scalable, cloud-ready platforms.",
 };
-
 
 export const whyChooseInsuranceIntro = {
   title: "Why Choose Arcinit for Insurance Software Development?",
@@ -24,8 +21,6 @@ export const whyChooseInsuranceIntro = {
     "Gaining real-time insights with analytics and reporting",
   ],
 };
-
-
 
 export const insuranceReinsuranceServicesData = [
   {
@@ -108,7 +103,6 @@ export const insuranceReinsuranceServicesData = [
   },
 ];
 
-
 export const insuranceArchitecture = {
   title: "Secure, Scalable, and Cloud-Ready Architecture",
   features: [
@@ -131,17 +125,14 @@ export const insuranceBusinessBenefits = {
   ],
 };
 
-
 export const whyArcinitInsurance = {
   title: "Why Arcin IT?",
   description:
     "Arcin IT blends deep insurance knowledge, modern technology, and custom development skills to deliver solutions that match your business needs. Whether modernizing legacy systems or launching new digital insurance products, we build platforms that grow with you.",
 };
 
-
 export const insuranceDeliveryModel = {
-  title:
-    "A Proven, Secure, and Scalable Delivery Model for Insurance Software",
+  title: "A Proven, Secure, and Scalable Delivery Model for Insurance Software",
   steps: [
     {
       id: "01",
@@ -164,8 +155,7 @@ export const insuranceDeliveryModel = {
     {
       id: "04",
       title: "Testing, Security, and Compliance Validation",
-      description:
-        "Functional, performance, and security testing to ensure audit readiness.",
+      description: "Functional, performance, and security testing to ensure audit readiness.",
     },
     {
       id: "05",
@@ -176,12 +166,10 @@ export const insuranceDeliveryModel = {
     {
       id: "06",
       title: "Ongoing Support and Optimization",
-      description:
-        "Continuous support, enhancements, and performance optimization.",
+      description: "Continuous support, enhancements, and performance optimization.",
     },
   ],
 };
-
 
 export const insuranceCTA = {
   title: "Get Started with Arcin IT",
@@ -197,8 +185,6 @@ export const insuranceCTA = {
   },
 };
 
-
-
 const insuranceData = {
   hero: insuranceHero,
   overview: insuranceOverview,
@@ -212,4 +198,3 @@ const insuranceData = {
 };
 
 export default insuranceData;
-

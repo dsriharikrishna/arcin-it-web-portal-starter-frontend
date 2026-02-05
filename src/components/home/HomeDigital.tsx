@@ -2,6 +2,7 @@
 
 import { SmoothLandingBox } from "@/components/animations/SmoothLandingBox";
 import CustomButton from "@/components/ui/CustomButton";
+import { homeDigitalData } from "@/data/home/home-page";
 
 interface HomeDigitalProps {
   heading?: string;
@@ -11,51 +12,38 @@ interface HomeDigitalProps {
 }
 
 export default function HomeDigital({
-  heading,
-  description,
-  ctaText,
-  ctaLink,
+  heading = homeDigitalData.heading,
+  description = homeDigitalData.description,
+  ctaText = homeDigitalData.ctaText,
+  ctaLink = homeDigitalData.ctaLink,
 }: HomeDigitalProps) {
   return (
-    <section className="py-8 sm:py-20 bg-white text-center">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-6">
-
+    <section className="bg-white py-12 text-center sm:py-16 md:py-20">
+      <div className="mx-auto flex max-w-4xl flex-col gap-4 px-4 sm:gap-6 sm:px-6 lg:px-8">
         {/* HEADING */}
         <SmoothLandingBox variant="slide-up" distance={16}>
-          <h2 className="text-3xl sm:text-4xl font-medium text-slate-900">
-            {heading || "Ready to Transform"}
-            <span className="font-bold">Your Digital Future?</span>
-          </h2>
+          <h2 className="text-2xl font-medium text-slate-900 sm:text-3xl md:text-4xl">{heading}</h2>
         </SmoothLandingBox>
 
         {/* DESCRIPTION */}
         <SmoothLandingBox variant="slide-up" delay={0.1} distance={16}>
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
-            {description || "Let&apos;s discuss how ARCIN IT can help you achieve your business goals. Our experts are ready to guide you through every step of your digital journey."}
+          <p className="mx-auto max-w-3xl px-2 text-sm leading-relaxed text-slate-600 sm:text-base">
+            {description}
           </p>
         </SmoothLandingBox>
 
-        {/* CTA CustomButtonS */}
+        {/* CTA Buttons */}
         <SmoothLandingBox variant="scale" delay={0.2}>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-
-            <CustomButton
-              variant="solid"
-              href={ctaLink || "/contact-us"}
-            >
-              {ctaText || "Schedule a Consultation"}
+          <div className="flex flex-col items-stretch justify-center gap-3 px-4 pt-2 sm:flex-row sm:items-center sm:gap-4 sm:px-0">
+            <CustomButton variant="solid" href={ctaLink} className="w-full sm:w-auto">
+              {ctaText}
             </CustomButton>
 
-            <CustomButton
-              variant="outline"
-              href={ctaLink || "/services"}
-            >
-              {ctaText || "Explore Our Services"}
+            <CustomButton variant="outline" href="/services" className="w-full sm:w-auto">
+              Explore Our Services
             </CustomButton>
-
           </div>
         </SmoothLandingBox>
-
       </div>
     </section>
   );

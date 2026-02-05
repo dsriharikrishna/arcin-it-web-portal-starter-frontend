@@ -28,22 +28,17 @@ const Accordion: React.FC<AccordionProps> = ({
   headerClassName,
 }) => {
   return (
-    <div
-      className={clsx(
-        "bg-white rounded-xl shadow-sm overflow-visible p-2",
-        className
-      )}
-    >
+    <div className={clsx("overflow-visible rounded-xl bg-white p-2 shadow-sm", className)}>
       <div
         className={clsx(
-          "w-full rounded-xl flex items-center justify-between px-6 py-4 transition-colors",
+          "flex w-full items-center justify-between rounded-xl px-6 py-4 transition-colors",
           headerClassName || "bg-gray-800 text-white hover:bg-gray-700"
         )}
       >
         <CustomButton
           type="button"
           onClick={onToggle}
-          className="flex items-center gap-3 flex-1 cursor-pointer"
+          className="flex flex-1 cursor-pointer items-center gap-3"
         >
           {icon}
           <span className="font-semibold">{title}</span>

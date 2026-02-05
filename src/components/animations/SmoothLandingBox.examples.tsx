@@ -5,11 +5,7 @@
  * and its related helpers for creating smooth entrance animations.
  */
 
-import {
-  SmoothLandingBox,
-  SmoothLandingContainer,
-  SmoothLandingItem,
-} from "./SmoothLandingBox";
+import { SmoothLandingBox, SmoothLandingContainer, SmoothLandingItem } from "./SmoothLandingBox";
 import CustomButton from "../ui/CustomButton";
 
 // Example 1: Basic slide-up animation (default)
@@ -103,13 +99,11 @@ export const StaggerExample = () => (
 // Example 7: Navigation menu items with stagger
 export const NavigationExample = () => (
   <SmoothLandingContainer staggerDelay={0.08}>
-    {["Dashboard", "Operations", "Inventory", "Customers", "Settings"].map(
-      (item) => (
-        <SmoothLandingItem key={item} variant="slide-right" distance={20}>
-          <div className="nav-item">{item}</div>
-        </SmoothLandingItem>
-      )
-    )}
+    {["Dashboard", "Operations", "Inventory", "Customers", "Settings"].map((item) => (
+      <SmoothLandingItem key={item} variant="slide-right" distance={20}>
+        <div className="nav-item">{item}</div>
+      </SmoothLandingItem>
+    ))}
   </SmoothLandingContainer>
 );
 

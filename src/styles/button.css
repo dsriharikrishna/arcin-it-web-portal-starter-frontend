@@ -13,7 +13,10 @@
   font-weight: 400;
   letter-spacing: 0.2px;
   overflow: hidden;
-  transition: color 280ms ease, box-shadow 280ms ease, transform 200ms ease;
+  transition:
+    color 280ms ease,
+    box-shadow 280ms ease,
+    transform 200ms ease;
 }
 
 .custom-btn--circle {
@@ -45,7 +48,7 @@
   box-shadow: 0 6px 18px rgba(80, 100, 255, 0.28);
 }
 
-.custom-btn--solid>* {
+.custom-btn--solid > * {
   position: relative;
   z-index: 1;
 }
@@ -54,7 +57,7 @@
   content: "";
   position: absolute;
   inset: -2px;
-  background: linear-gradient(90deg, #5BCAFB 0%, #320DE0 100%);
+  background: linear-gradient(90deg, #5bcafb 0%, #320de0 100%);
   border-radius: inherit;
   transform: scaleX(1);
   transform-origin: 50% 50%;
@@ -65,7 +68,6 @@
 .custom-btn::before {
   content: none;
 }
-
 
 .custom-btn--solid:hover::after {
   transform: scaleX(0);
@@ -78,7 +80,7 @@
 }
 
 .custom-btn--outline {
-  color: #320DE0;
+  color: #320de0;
   background: #ffffff;
   border: 1px solid #8bb7ff;
   position: relative;
@@ -88,7 +90,7 @@
   content: "";
   position: absolute;
   inset: -2px;
-  background: linear-gradient(90deg, #5BCAFB 0%, #320DE0 100%);
+  background: linear-gradient(90deg, #5bcafb 0%, #320de0 100%);
   border-radius: inherit;
   transform: scaleX(0);
   transform-origin: 50% 50%;
@@ -109,7 +111,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   .custom-btn,
   .custom-btn--outline::before {
     transition: none;

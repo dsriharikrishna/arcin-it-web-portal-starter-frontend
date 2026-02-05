@@ -31,22 +31,25 @@ export default function ToastManager() {
     });
   }, []);
 
-  const addToast = useCallback((message: string, type: ToastType = "success") => {
-    const id = ++toastId;
-    const newToast = { id, message, type };
+  const addToast = useCallback(
+    (message: string, type: ToastType = "success") => {
+      const id = ++toastId;
+      const newToast = { id, message, type };
 
-    setToasts((prev) => {
-      if (prev.length === 0) {
-        // Show immediately if no active toast
-        setTimeout(() => removeToast(id), 2500);
-        return [newToast];
-      } else {
-        // Queue it if one is active
-        setQueue((q) => [...q, newToast]);
-        return prev;
-      }
-    });
-  }, [removeToast]);
+      setToasts((prev) => {
+        if (prev.length === 0) {
+          // Show immediately if no active toast
+          setTimeout(() => removeToast(id), 2500);
+          return [newToast];
+        } else {
+          // Queue it if one is active
+          setQueue((q) => [...q, newToast]);
+          return prev;
+        }
+      });
+    },
+    [removeToast]
+  );
 
   // ✅ Fix: Attach to window safely in client-only effect
   useEffect(() => {
@@ -87,7 +90,7 @@ export default function ToastManager() {
   };
 
   return (
-    <div className="fixed top-6 right-6 z-50 flex flex-col gap-4 max-w-xs w-full">
+    <div className="fixed top-6 right-6 z-50 flex w-full max-w-xs flex-col gap-4">
       <AnimatePresence>
         {toasts.map(({ id, message, type }) => {
           const { icon, bg, text, titleClass, messageClass } = toastData[type];
@@ -99,23 +102,19 @@ export default function ToastManager() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 200 }}
               transition={{ duration: 0.3 }}
-              className={`${bg} rounded-lg shadow-lg p-4 flex items-center space-x-3`}
+              className={`${bg} flex items-center space-x-3 rounded-lg p-4 shadow-lg`}
             >
               <div className="shrink-0">{icon}</div>
-              <div className="flex flex-col flex-grow">
-                <div
-                  className={`font-semibold leading-tight mb-1 select-none ${titleClass}`}
-                >
+              <div className="flex flex-grow flex-col">
+                <div className={`mb-1 leading-tight font-semibold select-none ${titleClass}`}>
                   {text}
                 </div>
-                <div className={`text-sm select-text ${messageClass}`}>
-                  {message}
-                </div>
+                <div className={`text-sm select-text ${messageClass}`}>{message}</div>
               </div>
               <CustomButton
                 aria-label="Dismiss toast"
                 onClick={() => removeToast(id)}
-                className="p-1 rounded-md cursor-pointer text-gray-400 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-orange-400"
+                className="cursor-pointer rounded-md p-1 text-gray-400 hover:text-gray-700 focus:ring-2 focus:ring-orange-400 focus:ring-offset-1 focus:outline-none"
               >
                 <X size={18} weight="bold" />
               </CustomButton>

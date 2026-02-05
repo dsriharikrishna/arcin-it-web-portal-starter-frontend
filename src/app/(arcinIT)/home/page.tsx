@@ -14,7 +14,9 @@ export default function HomePage() {
   return (
     <div className="flex flex-col">
       <HomeHeroNavbar />
-      <div className="py-10"><HomeStats isHome={true} /></div>
+      <div className="py-10">
+        <HomeStats isHome={true} />
+      </div>
       <HomeAbout />
       <HomeServices />
       <HomeProcess />

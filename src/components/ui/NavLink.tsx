@@ -45,7 +45,7 @@ export default function NavLink({
       {isActive && showActiveIndicator && (
         <span
           className={clsx(
-            "absolute bottom-0 left-0 right-0 h-0.5 rounded-full",
+            "absolute right-0 bottom-0 left-0 h-0.5 rounded-full",
             activeIndicatorClassName
           )}
         />

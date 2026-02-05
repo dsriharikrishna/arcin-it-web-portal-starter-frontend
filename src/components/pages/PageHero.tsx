@@ -29,7 +29,7 @@ export default function PageHero({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={clsx(
-        "relative py-20 sm:py-32 lg:py-40 overflow-hidden",
+        "relative overflow-hidden py-20 sm:py-32 lg:py-40",
         !backgroundImage && "bg-gradient-to-br from-slate-50 to-slate-100",
         className
       )}
@@ -48,13 +48,13 @@ export default function PageHero({
         </>
       )}
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center gap-4">
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-center gap-4 px-4 text-center sm:px-6 lg:px-8">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className={clsx(
-            "text-lg sm:text-xl font-bold tracking-tight",
+            "text-lg font-bold tracking-tight sm:text-xl",
             backgroundImage ? "text-white" : "text-slate-900",
             titleClassName
           )}
@@ -67,7 +67,7 @@ export default function PageHero({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className={clsx(
-              "text-lg sm:text-2xl max-w-2xl mx-auto",
+              "mx-auto max-w-2xl text-lg sm:text-2xl",
               backgroundImage ? "text-slate-200" : "text-slate-600",
               subtitleClassName
             )}
@@ -81,7 +81,7 @@ export default function PageHero({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className={clsx(
-              "text-sm sm:text-md max-w-2xl mx-auto text-gray-300",
+              "sm:text-md mx-auto max-w-2xl text-sm text-gray-300",
               backgroundImage ? "text-slate-200" : "text-slate-600",
               subtitleClassName
             )}
@@ -93,4 +93,3 @@ export default function PageHero({
     </motion.section>
   );
 }
-

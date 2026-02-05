@@ -1,67 +1,59 @@
+import { useState } from "react";
+import Tabs, { Tab } from "../ui/Tabs";
 import CaseStudyCard from "./CaseStudyCard";
-
-const CASE_STUDIES = [
-  {
-    title: "Pets Care & Training App",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
-    image: "/case-studies/pets-platform.png",
-    tags: ["Mobile App", "E-Commerce", "SaaS Platform"],
-    path: "/case-studies/pets-care-training-app",
-  },
-  {
-    title: "Claims Automation Platform",
-    desc: "We built an AI-first platform combining computer vision, NLP, and machine learning to automate the claims journey.",
-    image: "/case-studies/claims-pro.png",
-    tags: ["Mobile App", "E-Commerce", "SaaS Platform"],
-    path: "/case-studies/claims-automation-platform",
-  },
-  {
-    title: "DriveMech",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
-    image: "/case-studies/drivemech.png",
-    tags: ["Mobile App", "E-Commerce", "SaaS Platform"],
-    path: "/case-studies/drivemech",
-  },
-  {
-    title: "Claims Automation Platform",
-    desc: "We built an AI-first platform combining computer vision, NLP, and machine learning to automate the claims journey.",
-    image: "/case-studies/claims-pro.png",
-    tags: ["Mobile App", "E-Commerce", "SaaS Platform"],
-    path: "/case-studies/claims-automation-platform",
-  },
-  {
-    title: "DriveMech",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
-    image: "/case-studies/drivemech.png",
-    tags: ["Mobile App", "E-Commerce", "SaaS Platform"],
-    path: "/case-studies/drivemech",
-  },
-  {
-    title: "Pets Care & Training App",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
-    image: "/case-studies/pets-platform.png",
-    tags: ["Mobile App", "E-Commerce", "SaaS Platform"],
-    path: "/case-studies/pets-care-training-app",
-  },
-];
+import { caseStudiesData } from "@/data/case-studies/case-studies-data";
 
 export default function CaseStudiesSection() {
+  const [activeCategory, setActiveCategory] = useState("all");
+
+  const tabs: Tab[] = [
+    { id: "all", label: "All" },
+    { id: "Insurance", label: "Insurance" },
+    { id: "Automotive Services", label: "Automotive" },
+    { id: "Pet Care & Wellness", label: "Pet Care" },
+    { id: "Government", label: "Government" },
+    { id: "Healthcare", label: "Healthcare" },
+    { id: "Retail", label: "Retail" },
+  ];
+
+  const filteredStudies =
+    activeCategory === "all"
+      ? caseStudiesData
+      : caseStudiesData.filter((study) => study.industry === activeCategory);
+
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {CASE_STUDIES.map((study, i) => (
+    <section className="bg-white py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-8">
+          <Tabs
+            tabs={tabs}
+            defaultTab="all"
+            variant="pills"
+            onChange={(tabId) => setActiveCategory(tabId)}
+          />
+        </div>
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {filteredStudies.map((study, i) => (
             <CaseStudyCard
-              key={i}
+              key={study.id}
               title={study.title}
-              description={study.desc}
+              description={study.description}
               imageSrc={study.image}
               tags={study.tags}
               index={i}
-              path={study.path}
+              path={`/case-studies/${study.slug}`}
             />
           ))}
         </div>
+
+        {filteredStudies.length === 0 && (
+          <div className="py-20 text-center">
+            <p className="text-lg font-medium text-slate-500">
+              No case studies found in this category.
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );

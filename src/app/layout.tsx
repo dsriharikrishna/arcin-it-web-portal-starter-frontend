@@ -13,8 +13,17 @@ export const metadata: Metadata = {
     default: "Arcin IT | Transforming Business with Intelligent Technology",
     template: "%s | Arcin IT",
   },
-  description: "Arcin IT delivers end-to-end digital solutions, cloud infrastructure, and AI-driven insights to drive growth and efficiency for modern enterprises.",
-  keywords: ["IT Services", "Digital Transformation", "Cloud Computing", "AI Solutions", "Software Development", "Enterprise IT", "Arcin IT"],
+  description:
+    "Arcin IT delivers end-to-end digital solutions, cloud infrastructure, and AI-driven insights to drive growth and efficiency for modern enterprises.",
+  keywords: [
+    "IT Services",
+    "Digital Transformation",
+    "Cloud Computing",
+    "AI Solutions",
+    "Software Development",
+    "Enterprise IT",
+    "Arcin IT",
+  ],
   authors: [{ name: "Arcin IT" }],
   creator: "Arcin IT",
   openGraph: {
@@ -22,7 +31,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://arcin-it.com",
     title: "Arcin IT | Transforming Business with Intelligent Technology",
-    description: "Partner with Arcin IT for scalable digital solutions, mobile apps, and cloud infrastructure.",
+    description:
+      "Partner with Arcin IT for scalable digital solutions, mobile apps, and cloud infrastructure.",
     siteName: "Arcin IT",
     images: [
       {
@@ -52,9 +62,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${bricolage.variable} font-sans antialiased`}
-      >
+      <body className={`${bricolage.variable} font-sans antialiased`}>
         <main>{children}</main>
       </body>
     </html>

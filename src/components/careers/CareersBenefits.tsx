@@ -8,104 +8,67 @@ import {
   GraduationCap,
   Plane,
   Users,
+  Lightbulb,
+  Wrench,
+  LucideIcon,
 } from "lucide-react";
+import { careersBenefitsData } from "@/data/careers/careers-page";
 
-const BENEFITS = [
-  {
-    title: "Competitive Salary",
-    description:
-      "Industry-leading compensation packages with performance bonuses",
-    icon: CircleDollarSign,
-  },
-  {
-    title: "Health & Wellness",
-    description:
-      "Comprehensive health, dental, and vision coverage for you and family",
-    icon: Heart,
-  },
-  {
-    title: "Remote Flexibility",
-    description: "Hybrid work model with flexible remote options",
-    icon: Monitor,
-  },
-  {
-    title: "Learning & Growth",
-    description:
-      "Annual learning budget and access to certifications",
-    icon: GraduationCap,
-  },
-  {
-    title: "Paid Time Off",
-    description:
-      "Generous vacation, sick leave, and parental leave policies",
-    icon: Plane,
-  },
-  {
-    title: "Team Culture",
-    description:
-      "Regular team events, offsites, and wellness programs",
-    icon: Users,
-  },
-];
+const iconMap: Record<string, LucideIcon> = {
+  "Competitive Compensation": CircleDollarSign,
+  "Health & Wellness": Heart,
+  "Flexible Work": Monitor,
+  "Learning & Development": GraduationCap,
+  "Career Growth": GraduationCap,
+  "Innovation Time": Lightbulb,
+  "Team Events": Users,
+  "Modern Tools": Wrench,
+};
 
 export default function CareersBenefits() {
-  return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
+  const { title, subtitle, description, benefits } = careersBenefitsData;
 
+  return (
+    <section className="bg-white py-16">
+      <div className="mx-auto flex max-w-7xl flex-col gap-12 px-4 sm:px-6 lg:px-8">
         {/* HEADER */}
-        <div className="flex flex-col items-center text-center gap-4">
-          <span className="px-4 py-1.5 rounded-full bg-[#EEF3FF] text-blue-600 text-sm font-medium">
-            Why Join Us
+        <div className="flex flex-col items-center gap-4 text-center">
+          <span className="rounded-full bg-[#EEF3FF] px-4 py-1.5 text-sm font-medium text-blue-600">
+            {subtitle}
           </span>
 
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">
-            Benefits & Perks
-          </h2>
+          <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">{title}</h2>
 
-          <p className="text-slate-600 text-sm sm:text-base max-w-2xl">
-            We take care of our people so they can focus on building amazing things
-          </p>
+          <p className="max-w-2xl text-sm text-slate-600 sm:text-base">{description}</p>
         </div>
 
         {/* BENEFITS GRID */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {BENEFITS.map((benefit, i) => {
-            const Icon = benefit.icon;
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {benefits.map((benefit, i) => {
+            const Icon = iconMap[benefit.title] || Heart;
             return (
               <motion.div
-                key={benefit.title}
+                key={benefit.id}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.06 }}
-                className="
-                  flex items-start gap-4
-                  p-4
-                  rounded-xl
-                  bg-[#EEF3FF]
-                  border border-blue-100
-                "
+                className="flex items-start gap-4 rounded-xl border border-blue-100 bg-[#EEF3FF] p-4"
               >
                 {/* ICON */}
-                <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-blue-600 shrink-0">
-                  <Icon className="w-5 h-5" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white text-blue-600">
+                  <Icon className="h-5 w-5" />
                 </div>
 
                 {/* TEXT */}
                 <div className="flex flex-col gap-1">
-                  <h3 className="text-sm font-semibold text-slate-900">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {benefit.description}
-                  </p>
+                  <h3 className="text-sm font-semibold text-slate-900">{benefit.title}</h3>
+                  <p className="text-xs leading-relaxed text-slate-600">{benefit.description}</p>
                 </div>
               </motion.div>
             );
           })}
         </div>
-
       </div>
     </section>
   );

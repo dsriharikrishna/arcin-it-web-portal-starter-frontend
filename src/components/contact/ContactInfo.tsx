@@ -1,67 +1,85 @@
 "use client";
 
-import { Mail, Phone, MapPin } from "lucide-react";
-
-const CONTACT_DETAILS = [
-    {
-        icon: Mail,
-        label: "Email",
-        value: "info@arcinit.com",
-        href: "mailto:info@arcinit.com",
-    },
-    {
-        icon: Phone,
-        label: "Phone",
-        value: "+31 93 123 4567", // Example number from mockup
-        href: "tel:+31931234567",
-    },
-    {
-        icon: MapPin,
-        label: "Address",
-        value: "Hyderabad, India",
-        href: "#",
-    },
-    {
-        icon: MapPin,
-        label: "Address",
-        value: "Kuala Lumpur, Malaysia",
-        href: "#",
-    },
-];
+import { MapPin } from "lucide-react";
+import { FOOTER_DATA } from "@/data/footer/footer";
 
 export default function ContactInfo() {
-  return (
-    <div className="bg-gradient-to from-[#FFFFFF] to-[#D9E5FF] p-4 rounded-xl w-full border border-slate-100 shadow-sm flex flex-col gap-4 h-full">
-      <div>
-        <h3 className="text-lg font-bold text-slate-900">
-          We’re here to help
-        </h3>
-        <p className="text-sm text-slate-500 mt-1">
-          Reach us anytime through the channels below.
-        </p>
-      </div>
+  // Extract contact data from footer
+  const offices = FOOTER_DATA.contact.items.filter((item) => item.type === "address");
+  const email = FOOTER_DATA.contact.items.find((item) => item.type === "email");
+  const phone = FOOTER_DATA.contact.items.find((item) => item.type === "phone");
 
-      <div className="flex flex-col gap-4">
-        {CONTACT_DETAILS.map((item, i) => {
-          const Icon = item.icon;
-          return (
+  return (
+    <div className="flex h-full w-full flex-col gap-8 rounded-2xl border border-slate-200/50 bg-gradient-to-b from-[#EEF2FF] to-[#E0E7FF] p-4 shadow-sm">
+      {/* Our Offices Section */}
+      <div className="flex flex-col gap-3">
+        <h3 className="text-lg font-bold text-slate-900">Our Offices</h3>
+
+        <div className="flex flex-col gap-3">
+          {offices.map((office, i) => (
             <div
               key={i}
-              className="flex gap-4 p-4 rounded-xl bg-[#F0F5FF] border border-[#E1EAFE] hover:border-blue-300 transition"
+              className="flex gap-4 rounded-xl border border-white/60 bg-white/80 p-3 shadow-sm backdrop-blur-sm"
             >
-              <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-blue-600 shadow-sm">
-                <Icon className="w-5 h-5" />
+              {/* Icon */}
+              <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-500 text-white">
+                <MapPin className="h-5 w-5" />
               </div>
 
-              <div className="flex flex-col">
-                <span className="text-xs text-slate-500">{item.label}</span>
-                <span className="text-sm font-semibold text-slate-900">
-                  {item.value}
-                </span>
+              {/* Content */}
+              <div className="flex flex-1 flex-col gap-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-base font-bold text-slate-900">{office.label}</span>
+                  {i === 0 && (
+                    <span className="rounded-md bg-blue-100 px-2.5 py-1 text-xs font-semibold text-blue-700">
+                      Head Office
+                    </span>
+                  )}
+                </div>
+                <p className="text-sm leading-relaxed font-semibold text-slate-600">
+                  {office.address}
+                </p>
               </div>
             </div>
-          );
-        })}
+          ))}
+        </div>
+      </div>
+
+      {/* Contact Us Section */}
+      <div className="flex flex-col gap-3">
+        <h3 className="text-lg font-bold text-slate-900">Contact Us</h3>
+
+        <div className="grid grid-cols-2 gap-2">
+          {/* Email */}
+          {email && (
+            <div className="flex flex-col gap-2 rounded-xl border border-white/60 bg-white/80 p-4 shadow-sm backdrop-blur-sm">
+              <span className="text-xs font-semibold tracking-wide text-slate-500 uppercase">
+                Email
+              </span>
+              <a
+                href={email.href}
+                className="text-sm font-bold break-all text-slate-900 transition hover:text-blue-600"
+              >
+                {email.label}
+              </a>
+            </div>
+          )}
+
+          {/* Phone */}
+          {phone && (
+            <div className="flex flex-col gap-2 rounded-xl border border-white/60 bg-white/80 p-2 shadow-sm backdrop-blur-sm">
+              <span className="text-xs font-semibold tracking-wide text-slate-500 uppercase">
+                Phone
+              </span>
+              <a
+                href={phone.href}
+                className="text-sm font-bold text-slate-900 transition hover:text-blue-600"
+              >
+                {phone.label}
+              </a>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -18,12 +18,7 @@ export default function SimplePage({ title, subtitle, sections }: SimplePageProp
     <>
       <PageHero title={title} subtitle={subtitle} />
       {sections.map((section, i) => (
-        <PageSection
-          key={i}
-          title={section.title}
-          delay={i * 0.1}
-          className={section.className}
-        >
+        <PageSection key={i} title={section.title} delay={i * 0.1} className={section.className}>
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}

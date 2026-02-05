@@ -1,8 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { MouseEvent, useCallback } from "react";
 
 interface Props {
   title: string;
@@ -13,65 +14,68 @@ interface Props {
   index: number;
 }
 
-export default function CaseStudyCard({
-  title,
-  description,
-  imageSrc,
-  tags,
-  path,
-  index,
-}: Props) {
+export default function CaseStudyCard({ title, description, imageSrc, tags, path, index }: Props) {
+  // Motion values for ripple position
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Smooth springs for the ripple movement
+  const springConfig = { damping: 20, stiffness: 150 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  const handleMouseMove = useCallback(
+    (event: MouseEvent<HTMLDivElement>) => {
+      const { currentTarget, clientX, clientY } = event;
+      const { left, top } = currentTarget.getBoundingClientRect();
+      mouseX.set(clientX - left);
+      mouseY.set(clientY - top);
+    },
+    [mouseX, mouseY]
+  );
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay: index * 0.06 }}
-      className="
-        bg-[#F3F6FF]
-        rounded-2xl
-        p-4
-        flex flex-col
-        gap-4
-        border border-blue-100
-        hover:shadow-lg
-        transition
-      "
+      onMouseMove={handleMouseMove}
+      whileHover={{ scale: 1.03, y: -5 }}
+      className="group relative flex cursor-default flex-col gap-4 overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:border-blue-200 hover:shadow-2xl"
     >
+      {/* RIPPLE EFFECT LAYER */}
+      <motion.div
+        className="pointer-events-none absolute -inset-px z-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          background: `radial-gradient(600px circle at ${smoothX}px ${smoothY}px, rgba(59, 130, 246, 0.06), transparent 40%)`,
+        }}
+      />
+
       {/* IMAGE */}
-      <div className="relative h-40 rounded-xl overflow-hidden bg-white">
+      <div className="relative z-10 h-48 overflow-hidden rounded-xl bg-slate-100 shadow-inner">
         <Image
           src={imageSrc}
           alt={title}
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
         />
       </div>
 
       {/* CONTENT */}
-      <div className="flex flex-col gap-2 flex-1">
-        <h3 className="text-sm font-semibold text-slate-900">
+      <div className="relative z-10 flex flex-1 flex-col gap-3">
+        <h3 className="text-lg font-bold text-slate-900 transition-colors group-hover:text-blue-600">
           {title}
         </h3>
 
-        <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
-          {description}
-        </p>
+        <p className="line-clamp-3 text-sm leading-relaxed text-slate-600">{description}</p>
 
         {/* TAGS */}
-        <div className="flex flex-wrap gap-2 pt-1">
+        <div className="flex flex-wrap gap-2 pt-2">
           {tags.map((tag) => (
             <span
               key={tag}
-              className="
-                px-2 py-1
-                rounded-full
-                text-[10px]
-                font-medium
-                bg-white
-                border border-blue-200
-                text-blue-600
-              "
+              className="rounded-full border border-blue-100/50 bg-blue-50/50 px-3 py-1 text-[11px] font-semibold text-blue-600 shadow-sm backdrop-blur-sm"
             >
               {tag}
             </span>
@@ -82,20 +86,9 @@ export default function CaseStudyCard({
       {/* CTA */}
       <Link
         href={path}
-        className="
-          mt-auto
-          w-full
-          text-center
-          text-sm
-          py-2
-          rounded-lg
-          border border-blue-400
-          text-blue-600
-          hover:bg-blue-50
-          transition
-        "
+        className="relative z-10 mt-6 w-full rounded-xl bg-slate-900 py-3 text-center text-sm font-bold text-white shadow-lg transition-all duration-200 hover:bg-blue-600 hover:shadow-blue-500/30 active:scale-95"
       >
-        View More
+        Explore Project
       </Link>
     </motion.div>
   );

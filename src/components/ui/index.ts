@@ -1,6 +1,6 @@
 export { default as Accordion } from "./Accordion";
 export { default as CustomButton } from "./CustomButton";
-export { default as ContactModal } from "./ContactModal";
+export { default as ContactModal } from "./DesktopContactModal";
 export { default as FilledTabs } from "./FilledTabs";
 export { default as HamburgerButton } from "./HamburgerButton";
 export { default as Loader } from "./Loader";

@@ -1,150 +1,91 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Briefcase, MapPin, Clock, History } from "lucide-react";
+import {
+  Code2,
+  Briefcase,
+  MapPin,
+  Clock,
+  History,
+  Cpu,
+  Layout,
+  ShieldCheck,
+  LucideIcon,
+} from "lucide-react";
 import CustomButton from "@/components/ui/CustomButton";
+import { careersPositionsData } from "@/data/careers/careers-page";
 
-const POSITIONS = [
-  {
-    title: "Senior Full Stack Developer",
-    department: "Engineering",
-    type: "Remote / Hybrid",
-    commitment: "Full-time",
-    experience: "5+ years",
-    icon: Code2,
-  },
-  {
-    title: "Senior Full Stack Developer",
-    department: "Engineering",
-    type: "Remote / Hybrid",
-    commitment: "Full-time",
-    experience: "5+ years",
-    icon: Code2,
-  },
-  {
-    title: "Senior Full Stack Developer",
-    department: "Engineering",
-    type: "Remote / Hybrid",
-    commitment: "Full-time",
-    experience: "5+ years",
-    icon: Code2,
-  },
-  {
-    title: "Senior Full Stack Developer",
-    department: "Engineering",
-    type: "Remote / Hybrid",
-    commitment: "Full-time",
-    experience: "5+ years",
-    icon: Code2,
-  },
-  {
-    title: "Senior Full Stack Developer",
-    department: "Engineering",
-    type: "Remote / Hybrid",
-    commitment: "Full-time",
-    experience: "5+ years",
-    icon: Code2,
-  },
-  {
-    title: "Senior Full Stack Developer",
-    department: "Engineering",
-    type: "Remote / Hybrid",
-    commitment: "Full-time",
-    experience: "5+ years",
-    icon: Code2,
-  },
-  {
-    title: "Senior Full Stack Developer",
-    department: "Engineering",
-    type: "Remote / Hybrid",
-    commitment: "Full-time",
-    experience: "5+ years",
-    icon: Code2,
-  },
-  {
-    title: "Senior Full Stack Developer",
-    department: "Engineering",
-    type: "Remote / Hybrid",
-    commitment: "Full-time",
-    experience: "5+ years",
-    icon: Code2,
-  },
-];
+const iconMap: Record<string, LucideIcon> = {
+  Engineering: Code2,
+  Infrastructure: Cpu,
+  Design: Layout,
+  "AI/ML": Cpu,
+  "Quality Assurance": ShieldCheck,
+};
 
 export default function CareersPositions() {
-  return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
+  const { title, subtitle, description, positions } = careersPositionsData;
 
+  return (
+    <section className="bg-white py-16">
+      <div className="mx-auto flex max-w-7xl flex-col gap-12 px-4 sm:px-6 lg:px-8">
         {/* HEADER */}
-        <div className="flex flex-col items-center text-center gap-4">
-          <span className="px-4 py-1.5 rounded-full bg-[#EEF3FF] text-blue-600 text-sm font-medium">
-            Open Positions
+        <div className="flex flex-col items-center gap-4 text-center">
+          <span className="rounded-full bg-[#EEF3FF] px-4 py-1.5 text-sm font-medium text-blue-600">
+            {subtitle}
           </span>
 
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">
-            Find Your Perfect Role
-          </h2>
+          <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">{title}</h2>
 
-          <p className="text-slate-600 text-sm sm:text-base max-w-2xl">
-            Explore opportunities across engineering, design, and delivery
-          </p>
+          <p className="max-w-2xl text-sm text-slate-600 sm:text-base">{description}</p>
         </div>
 
         {/* GRID */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {POSITIONS.map((role, i) => {
-            const Icon = role.icon;
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {positions.map((role, i) => {
+            const Icon = iconMap[role.department] || Briefcase;
             return (
               <motion.div
-                key={i}
+                key={role.id}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.05 }}
-                className="
-                  bg-[#EEF3FF]
-                  rounded-2xl
-                  p-5
-                  flex flex-col
-                  gap-4
-                  border border-blue-100
-                "
+                className="flex flex-col gap-4 rounded-2xl border border-blue-100 bg-[#EEF3FF] p-5 transition-transform hover:-translate-y-1 hover:shadow-lg"
               >
                 {/* ICON */}
-                <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white">
-                  <Icon className="w-4 h-4" />
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white">
+                  <Icon className="h-4 w-4" />
                 </div>
 
                 {/* TITLE */}
-                <h3 className="text-sm font-semibold text-slate-900 leading-snug">
-                  {role.title}
-                </h3>
+                <h3 className="text-sm leading-snug font-semibold text-slate-900">{role.title}</h3>
 
                 {/* META */}
                 <div className="flex flex-col gap-2 text-xs text-slate-600">
                   <div className="flex items-center gap-2">
-                    <Briefcase className="w-4 h-4 text-slate-400" />
+                    <Briefcase className="h-4 w-4 text-slate-400" />
                     {role.department}
                   </div>
                   <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-slate-400" />
+                    <MapPin className="h-4 w-4 text-slate-400" />
+                    {role.location}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Clock className="h-4 w-4 text-slate-400" />
                     {role.type}
                   </div>
                   <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-slate-400" />
-                    {role.commitment}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <History className="w-4 h-4 text-slate-400" />
+                    <History className="h-4 w-4 text-slate-400" />
                     {role.experience}
                   </div>
                 </div>
 
                 {/* CTA */}
                 <CustomButton
+                  href={`/careers/${role.slug}`}
                   size="sm"
-                  className="text-blue-600 hover:text-blue-900"
+                  className="mt-auto text-blue-600 hover:text-blue-900"
                   variant="outline"
                 >
                   Apply Now
@@ -153,7 +94,6 @@ export default function CareersPositions() {
             );
           })}
         </div>
-
       </div>
     </section>
   );

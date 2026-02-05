@@ -1,29 +1,21 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import NavLink from "@/components/ui/NavLink";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import Menu from "./Menubar";
 import { Phone, Menu as MenuIcon } from "lucide-react";
-import { CustomButton, ContactModal } from "@/components/ui";
+import MobileMenubar from "./MobileMenubar";
+import DesktopContactModal from "../ui/DesktopContactModal";
+import { NAVIGATION_ITEMS, CONTACT_INFO, COMPANY_INFO } from "@/constants/app-constants";
 
 export interface NavItem {
   href: string;
   label: string;
 }
-
-const DEFAULT_NAV_ITEMS: NavItem[] = [
-  { href: "/", label: "Home" },
-  { href: "/about-us", label: "About Us" },
-  { href: "/services", label: "Services" },
-  { href: "/support", label: "Support" },
-  { href: "/careers", label: "Careers" },
-  { href: "/case-studies", label: "Case Studies" },
-  { href: "/contact-us", label: "Contact Us" },
-];
 
 interface NavbarProps {
   /** Custom nav items (default: Home, About Us, Services, etc.) */
@@ -32,29 +24,48 @@ interface NavbarProps {
   variant?: "default" | "transparent";
 }
 
-
-export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, variant = "default" }: NavbarProps) {
+export default function Navbar({ navItems = NAVIGATION_ITEMS, variant = "default" }: NavbarProps) {
   const pathname = usePathname();
   const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [contactOpen, setContactOpen] = useState(false);
+  const [isDesktopContactOpen, setIsDesktopContactOpen] = useState(false);
+
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   const isTransparent = variant === "transparent";
+
+  // Phone button - Opens WhatsApp
+  const handleWhatsAppClick = useCallback(() => {
+    const whatsappUrl = `https://wa.me/${CONTACT_INFO.phone.whatsapp}`;
+    window.open(whatsappUrl, "_blank");
+  }, []);
+
+  // Menu button - Opens MobileMenubar on mobile, DesktopContactModal on desktop
+  const handleMenuClick = useCallback(() => {
+    if (isMobile) {
+      setMobileOpen((prev) => !prev);
+    } else {
+      setIsDesktopContactOpen((prev) => !prev);
+    }
+  }, [isMobile]);
 
   return (
     <>
       <header
-        className={`fixed w-full top-0 z-50 transition-colors duration-300 ${isTransparent ? "bg-transparent border-none" : "bg-white/80 backdrop-blur-md border-b border-gray-200"
-          }`}
+        className={`fixed top-0 z-50 w-full transition-colors duration-300 ${
+          isTransparent
+            ? "border-none bg-transparent"
+            : "border-b border-gray-200 bg-white/80 backdrop-blur-md"
+        }`}
       >
         <nav
-          className="relative mx-auto flex w-full items-center justify-between px-4 py-2 sm:px-6 lg:px-8 "
+          className="relative mx-auto flex w-full items-center justify-between px-4 py-2 sm:px-6 lg:px-8"
           aria-label="Global"
         >
           <div className="flex-shrink-0 cursor-pointer" onClick={() => router.push("/")}>
             <Image
               src="/Arcin_logo_Name.png"
-              alt="ArcinIT Logo"
+              alt={`${COMPANY_INFO.name} Logo`}
               width={140}
               height={140}
               className="object-contain"
@@ -63,14 +74,16 @@ export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, variant = "defaul
 
           {/* Desktop nav links */}
           <div className="flex items-end gap-4">
-            <div className="hidden lg:flex items-end gap-8">
+            <div className="hidden items-end gap-8 lg:flex">
               {navItems.map(({ href, label }) => (
                 <NavLink
                   key={href}
                   href={href}
                   isActive={pathname === href}
                   activeIndicatorClassName={isTransparent ? "bg-white" : "bg-blue-800"}
-                  activeClassName={isTransparent ? "text-white font-bold" : "text-slate-900 font-bold"}
+                  activeClassName={
+                    isTransparent ? "text-white font-bold" : "text-slate-900 font-bold"
+                  }
                   inactiveClassName={
                     isTransparent
                       ? "text-slate-200 hover:text-white font-medium"
@@ -82,30 +95,51 @@ export default function Navbar({ navItems = DEFAULT_NAV_ITEMS, variant = "defaul
               ))}
             </div>
 
-            {/* Circular Phone Button */}
-            <CustomButton
-              variant="solid"
-              aria-label="Call us"
-              onClick={() => setContactOpen(true)}
-            >
-              <Phone size={18} />
-            </CustomButton>
-
-            <div className="lg:hidden">
-              <CustomButton
-                variant="solid"
-                onClick={() => setMobileOpen((o) => !o)}
-                aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            {/* Action Buttons */}
+            <div className="flex items-center gap-3">
+              {/* WhatsApp Button */}
+              <button
+                onClick={handleWhatsAppClick}
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-green-500 shadow-md transition-colors hover:bg-green-600"
+                aria-label="Chat on WhatsApp"
               >
-                <MenuIcon size={20} />
-              </CustomButton>
+                <Phone size={18} className="text-white" />
+              </button>
+
+              {/* Menu/Contact Button */}
+              <button
+                onClick={handleMenuClick}
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl bg-blue-600 shadow-md transition-colors hover:bg-blue-700"
+                aria-label={
+                  isMobile
+                    ? mobileOpen
+                      ? "Close menu"
+                      : "Open menu"
+                    : isDesktopContactOpen
+                      ? "Close contact"
+                      : "Open contact"
+                }
+              >
+                <MenuIcon size={18} className="text-white" />
+              </button>
             </div>
           </div>
         </nav>
       </header>
 
-      <Menu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} navItems={navItems} />
-      <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+      {isMobile && (
+        <MobileMenubar
+          isOpen={mobileOpen}
+          onClose={() => setMobileOpen(false)}
+          navItems={navItems}
+        />
+      )}
+      {!isMobile && (
+        <DesktopContactModal
+          isOpen={isDesktopContactOpen}
+          onClose={() => setIsDesktopContactOpen(false)}
+        />
+      )}
     </>
   );
 }

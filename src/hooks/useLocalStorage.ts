@@ -5,10 +5,7 @@ import { useState } from "react";
 /**
  * Custom hook for managing localStorage state
  */
-export function useLocalStorage<T>(
-  key: string,
-  initialValue: T
-): [T, (value: T) => void] {
+export function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => void] {
   // State to store our value
   const [storedValue, setStoredValue] = useState<T>(() => {
     if (typeof window === "undefined") {

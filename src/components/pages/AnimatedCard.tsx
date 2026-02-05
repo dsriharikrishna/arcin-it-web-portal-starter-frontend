@@ -28,14 +28,12 @@ function AnimatedCard({
   const content = (
     <>
       {icon && (
-        <div className="mb-4 w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600">
+        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
           {icon}
         </div>
       )}
       <h3 className="text-xl font-semibold text-slate-900">{title}</h3>
-      {description && (
-        <p className="mt-2 text-slate-600 line-clamp-2">{description}</p>
-      )}
+      {description && <p className="mt-2 line-clamp-2 text-slate-600">{description}</p>}
       {children}
     </>
   );

@@ -4,17 +4,12 @@ import { EvenServiceCard } from "../EvenServiceCard";
 import { OddServiceCard } from "../OddServiceCard";
 import type { ServiceDetailsProps } from "@/types/services";
 
-export default function ServiceDetails({
-  services,
-  title
-}: ServiceDetailsProps) {
+export default function ServiceDetails({ services, title }: ServiceDetailsProps) {
   return (
     <div className="flex flex-col gap-0">
       {title && (
-        <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-slate-900">
-            {title}
-          </h2>
+        <div className="mx-auto mb-16 max-w-7xl px-6 text-center">
+          <h2 className="text-3xl font-bold text-slate-900 md:text-5xl">{title}</h2>
         </div>
       )}
       {services.map((service, index) =>

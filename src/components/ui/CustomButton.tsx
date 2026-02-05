@@ -99,7 +99,7 @@ export default function CustomButton({
 }: CustomButtonProps) {
   // Use children if provided, otherwise fall back to label
   const content = children || (label && <span className="custom-btn__text">{label}</span>);
-  const ariaLabelValue = ariaLabel ?? (typeof children === 'string' ? children : label);
+  const ariaLabelValue = ariaLabel ?? (typeof children === "string" ? children : label);
 
   const isIconOnly = !children && !label && (startIcon || endIcon);
   const isCustomCSSVariant =
@@ -112,7 +112,8 @@ export default function CustomButton({
 
   const classes = clsx(
     // Only apply base Tailwind classes if NOT using custom CSS variants
-    !isCustomCSSVariant && "inline-flex items-center justify-center gap-2 transition-colors focus:outline-none cursor-pointer",
+    !isCustomCSSVariant &&
+      "inline-flex items-center justify-center gap-2 transition-colors focus:outline-none cursor-pointer",
     !isCustomCSSVariant && "disabled:opacity-50 disabled:pointer-events-none",
     !isCustomCSSVariant && baseSizeStyles[size],
     !isCustomCSSVariant && (isIconOnly ? iconSizeStyles[size] : sizeStyles[size]),
@@ -130,9 +131,7 @@ export default function CustomButton({
     return (
       <Link href={href} className={classes} aria-label={ariaLabelValue}>
         {startIcon && !isIconOnly && <span className="me-2">{startIcon}</span>}
-        <span className="custom-btn__text">
-          {isIconOnly ? startIcon || endIcon : content}
-        </span>
+        <span className="custom-btn__text">{isIconOnly ? startIcon || endIcon : content}</span>
         {endIcon && !isIconOnly && <span className="ms-2">{endIcon}</span>}
       </Link>
     );
@@ -148,9 +147,7 @@ export default function CustomButton({
       aria-label={ariaLabelValue}
     >
       {startIcon && !isIconOnly && <span className="me-2">{startIcon}</span>}
-      <span className="custom-btn__text">
-        {isIconOnly ? startIcon || endIcon : content}
-      </span>
+      <span className="custom-btn__text">{isIconOnly ? startIcon || endIcon : content}</span>
       {endIcon && !isIconOnly && <span className="ms-2">{endIcon}</span>}
     </button>
   );

@@ -2,92 +2,80 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-const INDUSTRIES = [
-    { name: "Real estate", iconSrc: "/svgs/Real- Estate.svg" },
-    { name: "Tours & Travels", iconSrc: "/svgs/Tours-and-Travel.svg" },
-    { name: "Education", iconSrc: "/svgs/Eduaction.svg" },
-    { name: "Transport", iconSrc: "/svgs/Transport.svg" },
-    { name: "Event", iconSrc: "/svgs/Event.svg" },
-    { name: "eCommerce", iconSrc: "/svgs/E-Commerse.svg" },
-    { name: "Game", iconSrc: "/svgs/Game.svg" },
-    { name: "Healthcare", iconSrc: "/svgs/Health Care.svg" },
-    { name: "Finance", iconSrc: "/svgs/Finance.svg" },
-    { name: "Restaurant", iconSrc: "/svgs/Restraaunt.svg" },
-    { name: "On-Demand", iconSrc: "/svgs/On Demand.svg" },
-    { name: "Grocery", iconSrc: "/svgs/Grocery.svg" },
-];
+import { homeIndustriesData } from "@/data/home/home-page";
 
 const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.05,
-        },
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
     },
+  },
 };
 
 const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            type: "spring",
-            stiffness: 100,
-            damping: 15,
-        },
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
     },
+  },
 };
 
 export default function HomeIndustries() {
-    return (
-        <section className="py-8 bg-[#F8FAFF]">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className="text-center mb-12"
-                >
-                    <span className="inline-block px-6 py-2 rounded-full text-sm font-medium bg-[#E0E7FF] text-[#1E1B4B]">
-                        We Have Worked Across Multiple Industries
-                    </span>
-                    <h2 className="mt-4 text-3xl sm:text-4xl font-normal text-slate-900 tracking-tight">
-                        Industries <span className="font-extrabold">We Serve</span>
-                    </h2>
-                </motion.div>
-                <motion.div
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-50px" }}
-                >
-                    {INDUSTRIES.map((industry) => {
-                        return (
-                            <motion.div
-                                key={industry.name}
-                                variants={itemVariants}
-                                className="flex items-center gap-4 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 hover:shadow-md transition-all duration-300"
-                            >
-                                <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0">
-                                    <Image
-                                        src={industry.iconSrc}
-                                        alt={industry.name}
-                                        width={48}
-                                        height={48}
-                                        className="object-contain p-1"
-                                    />
-                                </div>
-                                <span className="font-medium text-lg text-slate-800">{industry.name}</span>
-                            </motion.div>
-                        );
-                    })}
-                </motion.div>
-            </div>
-        </section>
-    );
+  const { badge, title, industries } = homeIndustriesData;
+
+  return (
+    <section className="bg-[#F8FAFF] py-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="mb-12 text-center"
+        >
+          <span className="inline-block rounded-full bg-[#E0E7FF] px-6 py-2 text-sm font-medium text-[#1E1B4B]">
+            {badge}
+          </span>
+          <h2 className="mt-4 text-3xl font-normal tracking-tight text-slate-900 sm:text-4xl">
+            {title.main} <span className="font-extrabold">{title.highlighted}</span>
+          </h2>
+        </motion.div>
+        <motion.div
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          {industries.map((industry) => {
+            return (
+              <motion.div
+                key={industry.name}
+                variants={itemVariants}
+                className="flex items-center gap-4 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50 to-indigo-50 p-4 transition-all duration-300 hover:shadow-md sm:p-5"
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl">
+                  <Image
+                    src={industry.iconSrc}
+                    alt={industry.name}
+                    width={48}
+                    height={48}
+                    className="object-contain p-1"
+                  />
+                </div>
+                <span className="text-lg font-medium text-slate-800">{industry.name}</span>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </div>
+    </section>
+  );
 }

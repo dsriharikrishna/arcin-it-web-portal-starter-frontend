@@ -6,4 +6,3 @@ export { default as retailData } from "./retail-e-commerce";
 export { default as logisticsData } from "./logistics-transportation";
 export { default as startupsData } from "./startups-tech-innovators";
 export { default as healthcareData } from "./healthcare-education";
-

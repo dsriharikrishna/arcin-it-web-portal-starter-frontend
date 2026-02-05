@@ -110,23 +110,19 @@ export const governmentApproach = {
   steps: [
     {
       title: "Discovery & Planning",
-      description:
-        "Understanding institutional goals, regulatory requirements, and citizen needs.",
+      description: "Understanding institutional goals, regulatory requirements, and citizen needs.",
     },
     {
       title: "Design & Development",
-      description:
-        "Creating intuitive, accessible, and secure digital solutions.",
+      description: "Creating intuitive, accessible, and secure digital solutions.",
     },
     {
       title: "Deployment & Integration",
-      description:
-        "Smooth rollout with existing systems and infrastructure.",
+      description: "Smooth rollout with existing systems and infrastructure.",
     },
     {
       title: "Support & Optimization",
-      description:
-        "Ongoing maintenance, performance monitoring, and continuous improvements.",
+      description: "Ongoing maintenance, performance monitoring, and continuous improvements.",
     },
   ],
 };
@@ -134,7 +130,8 @@ export const governmentApproach = {
 export const whyChooseGovernment = {
   id: "1",
   title: "Why Choose Arcinit as Your Digital Government Technology Partner",
-  description: "Arcinit is a trusted partner for government digital transformation, delivering secure, scalable, and citizen-centric solutions that improve public trust and service efficiency.",
+  description:
+    "Arcinit is a trusted partner for government digital transformation, delivering secure, scalable, and citizen-centric solutions that improve public trust and service efficiency.",
   points: [
     "Expertise in delivering digital solutions for government organizations",
     "Strong focus on security, compliance, and reliability",

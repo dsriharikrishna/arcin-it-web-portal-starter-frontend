@@ -3,27 +3,27 @@
 import { EvenServiceCard } from "../EvenServiceCard";
 
 interface WhyChooseProps {
-    id?: string;
-    title: string;
-    points: string[];
-    image: string;
-    description: string;
+  id?: string;
+  title: string;
+  points: string[];
+  image: string;
+  description: string;
 }
 
 export default function WhyChooseSectionGovernment({
-    title,
-    points,
-    image,
-    description,
+  title,
+  points,
+  image,
+  description,
 }: WhyChooseProps) {
-    return (
-        <EvenServiceCard
-            service={{
-                title,
-                description,
-                features: points,
-                image,
-            }}
-        />
-    );
+  return (
+    <EvenServiceCard
+      service={{
+        title,
+        description,
+        features: points,
+        image,
+      }}
+    />
+  );
 }

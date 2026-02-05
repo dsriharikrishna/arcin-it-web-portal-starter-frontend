@@ -19,17 +19,12 @@ export default function InsuranceArchitectureBenefits({
   benefits,
 }: InsuranceArchitectureBenefitsProps) {
   return (
-    <section className="relative bg-slate-50 p-6 overflow-hidden">
+    <section className="relative overflow-hidden bg-slate-50 p-6">
       {/* Subtle background dots */}
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
         <svg width="100%" height="100%">
           <defs>
-            <pattern
-              id="grid"
-              width="40"
-              height="40"
-              patternUnits="userSpaceOnUse"
-            >
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
               <circle cx="2" cy="2" r="1" fill="#6366f1" />
             </pattern>
           </defs>
@@ -37,21 +32,21 @@ export default function InsuranceArchitectureBenefits({
         </svg>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           {/* Architecture */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-3xl p-10 bg-gradient-to-br from-blue-50 to-indigo-50 border border-slate-200"
+            className="rounded-3xl border border-slate-200 bg-gradient-to-br from-blue-50 to-indigo-50 p-10"
           >
-            <h3 className="text-xl md:text-2xl font-semibold text-slate-900 mb-4">
+            <h3 className="mb-4 text-xl font-semibold text-slate-900 md:text-2xl">
               {architecture.title}
             </h3>
 
-            <p className="text-slate-600 text-base mb-8">
+            <p className="mb-8 text-base text-slate-600">
               All our platforms for insurance and reinsurance come with:
             </p>
 
@@ -61,9 +56,7 @@ export default function InsuranceArchitectureBenefits({
                   <div className="mt-1 flex h-6 w-6 items-center justify-center rounded-full border border-blue-500">
                     <Check className="h-4 w-4 text-blue-600" />
                   </div>
-                  <p className="text-slate-700 text-base leading-relaxed">
-                    {feature}
-                  </p>
+                  <p className="text-base leading-relaxed text-slate-700">{feature}</p>
                 </div>
               ))}
             </div>
@@ -75,9 +68,9 @@ export default function InsuranceArchitectureBenefits({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="rounded-3xl p-10 bg-gradient-to-br from-indigo-50 to-blue-50 border border-slate-200"
+            className="rounded-3xl border border-slate-200 bg-gradient-to-br from-indigo-50 to-blue-50 p-10"
           >
-            <h3 className="text-xl md:text-2xl font-semibold text-slate-900 mb-8">
+            <h3 className="mb-8 text-xl font-semibold text-slate-900 md:text-2xl">
               {benefits.title}
             </h3>
 
@@ -87,9 +80,7 @@ export default function InsuranceArchitectureBenefits({
                   <div className="mt-1 flex h-6 w-6 items-center justify-center rounded-full border border-blue-500">
                     <Check className="h-4 w-4 text-blue-600" />
                   </div>
-                  <p className="text-slate-700 text-base leading-relaxed">
-                    {benefit}
-                  </p>
+                  <p className="text-base leading-relaxed text-slate-700">{benefit}</p>
                 </div>
               ))}
             </div>

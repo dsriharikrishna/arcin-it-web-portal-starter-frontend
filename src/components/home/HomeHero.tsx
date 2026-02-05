@@ -2,37 +2,59 @@
 
 import { SmoothLandingBox } from "@/components/animations/SmoothLandingBox";
 import CustomButton from "@/components/ui/CustomButton";
+import { homeHeroData } from "@/data/home/home-page";
 
 export default function HomeHero() {
+  const { title, subtitle, cta } = homeHeroData;
+
+  const renderTitle = () => {
     return (
-        <div className="relative py-20 sm:py-32 lg:py-48 overflow-hidden min-h-[90vh] flex items-center bg-hero">
-
-            <div className="absolute inset-0 bg-black/40" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
-                <SmoothLandingBox variant="fade" delay={0} duration={0.8}>
-                    <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white tracking-tight mb-6">
-                        Transforming Business <br className="hidden sm:block" />
-                        with <span className="text-blue-400">Intelligent Technology</span>
-                    </h1>
-                </SmoothLandingBox>
-                <SmoothLandingBox variant="slide-up" delay={0.2} distance={30}>
-                    <p className="mt-6 text-xl text-slate-200 max-w-2xl font-light leading-relaxed">
-                        We deliver end-to-end digital solutions that drive growth, efficiency, and innovation. From cloud infrastructure to AI-driven insights, we are your partner in the digital age.
-                    </p>
-                </SmoothLandingBox>
-                <SmoothLandingBox variant="scale" delay={0.4}>
-                    <div className="mt-10 flex flex-wrap gap-4 justify-center sm:justify-start">
-                        <CustomButton variant="gradient" size="lg" rounded="lg" href="/contact-us" className="px-8 py-4 text-lg">
-                            Get Started
-                        </CustomButton>
-                        <CustomButton variant="outline" size="lg" rounded="lg" href="/services" className="px-8 py-4 text-lg bg-white/10 border-white/20 text-white hover:bg-white/20 hover:text-white backdrop-blur-sm">
-                            Our Solutions
-                        </CustomButton>
-                    </div>
-                </SmoothLandingBox>
-            </div>
-        </div>
+      <>
+        {title.main} <span className="text-blue-400">{title.highlighted.join(" ")}</span>{" "}
+        {title.suffix}
+      </>
     );
+  };
+
+  return (
+    <div className="bg-hero relative flex min-h-[90vh] items-center overflow-hidden py-20 sm:py-32 lg:py-48">
+      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6 sm:text-left lg:px-8">
+        <SmoothLandingBox variant="fade" delay={0} duration={0.8}>
+          <h1 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-7xl">
+            {renderTitle()}
+          </h1>
+        </SmoothLandingBox>
+        <SmoothLandingBox variant="slide-up" delay={0.2} distance={30}>
+          <p className="mt-6 max-w-2xl text-xl leading-relaxed font-light text-slate-200">
+            {subtitle}
+          </p>
+        </SmoothLandingBox>
+        <SmoothLandingBox variant="scale" delay={0.4}>
+          <div className="mt-10 flex flex-wrap justify-center gap-4 sm:justify-start">
+            <CustomButton
+              variant="gradient"
+              size="lg"
+              rounded="lg"
+              href={cta.primary.href}
+              className="px-8 py-4 text-lg"
+            >
+              {cta.primary.text}
+            </CustomButton>
+            <CustomButton
+              variant="outline"
+              size="lg"
+              rounded="lg"
+              href={cta.secondary.href}
+              className="border-white/20 bg-white/10 px-8 py-4 text-lg text-white backdrop-blur-sm hover:bg-white/20 hover:text-white"
+            >
+              {cta.secondary.text}
+            </CustomButton>
+          </div>
+        </SmoothLandingBox>
+      </div>
+    </div>
+  );
 }

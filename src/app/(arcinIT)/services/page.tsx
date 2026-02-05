@@ -17,10 +17,7 @@ export default function ServicesPage() {
       />
       <ServicesSection />
       <AboutSolutions />
-      <HomeDigital 
-      
-      />
-
+      <HomeDigital />
     </>
   );
 }

@@ -21,8 +21,7 @@ const FilledTabs: React.FC<FilledTabsProps> = ({
 }) => {
   const [internalActiveTab, setInternalActiveTab] = useState(tabs[0]?.id || "");
 
-  const activeTab =
-    controlledActiveTab !== undefined ? controlledActiveTab : internalActiveTab;
+  const activeTab = controlledActiveTab !== undefined ? controlledActiveTab : internalActiveTab;
 
   const handleTabClick = (tabId: string) => {
     if (controlledActiveTab === undefined) {
@@ -32,8 +31,8 @@ const FilledTabs: React.FC<FilledTabsProps> = ({
   };
 
   return (
-    <div className="w-full overflow-x-auto scrollbar-hide">
-      <div className="bg-gray-50 p-1 rounded-lg inline-flex gap-1 min-w-full sm:min-w-0">
+    <div className="scrollbar-hide w-full overflow-x-auto">
+      <div className="inline-flex min-w-full gap-1 rounded-lg bg-gray-50 p-1 sm:min-w-0">
         {tabs.map((tab) => {
           const isActive = tab.id === activeTab;
 
@@ -41,15 +40,9 @@ const FilledTabs: React.FC<FilledTabsProps> = ({
             <CustomButton
               key={tab.id}
               onClick={() => handleTabClick(tab.id)}
-              className={`
-                                px-3 sm:px-6 py-2 sm:py-2.5 cursor-pointer rounded-lg 
-                                text-xs sm:text-sm font-medium transition-all duration-200
-                                whitespace-nowrap flex-shrink-0
-                                ${isActive
-                  ? "bg-white text-blue-600 shadow-sm"
-                  : "text-gray-600 hover:text-gray-900"
-                }
-                            `}
+              className={`flex-shrink-0 cursor-pointer rounded-lg px-3 py-2 text-xs font-medium whitespace-nowrap transition-all duration-200 sm:px-6 sm:py-2.5 sm:text-sm ${
+                isActive ? "bg-white text-blue-600 shadow-sm" : "text-gray-600 hover:text-gray-900"
+              } `}
             >
               {tab.label}
             </CustomButton>

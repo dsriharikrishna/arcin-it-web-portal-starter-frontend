@@ -11,13 +11,7 @@ interface StatCardProps {
   className?: string;
 }
 
-export default function StatCard({
-  icon,
-  value,
-  label,
-  index = 0,
-  className,
-}: StatCardProps) {
+export default function StatCard({ icon, value, label, index = 0, className }: StatCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -29,22 +23,21 @@ export default function StatCard({
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
       className={clsx(
-        "p-4 rounded-2xl bg-white border border-slate-200/80 shadow-sm",
-        "flex flex-col md:flex-row gap-4",
+        "rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm",
+        "flex flex-col gap-4 md:flex-row",
         className
       )}
     >
-      <div className="flex-1 w-full h-full rounded-xl bg-slate-100 flex items-center justify-center text-blue-600 shrink-0">
+      <div className="flex h-full w-full flex-1 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-blue-600">
         {icon}
-        
       </div>
-     <div className="flex-1 flex flex-col gap-1">
-      <p className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-        {value}
-        <span className="text-blue-600"> +</span>
-      </p>
-      <p className="text-slate-600 font-medium">{label}</p>
-     </div>
+      <div className="flex flex-1 flex-col gap-1">
+        <p className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
+          {value}
+          <span className="text-blue-600"> +</span>
+        </p>
+        <p className="font-medium text-slate-600">{label}</p>
+      </div>
     </motion.div>
   );
 }

@@ -25,40 +25,27 @@ function MissionCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay }}
-      className={`
-        flex flex-col gap-2
-        ${className}
-        rounded-2xl
-        p-4
-        bg-gradient-to-br from-slate-50 to-slate-100
-        border border-slate-200
-      `}
+      className={`flex flex-col gap-2 ${className} rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 p-4`}
     >
-      <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-slate-700 shadow-sm">
-        <Icon className="w-5 h-5" />
+      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white text-slate-700 shadow-sm">
+        <Icon className="h-5 w-5" />
       </div>
 
-      <h3 className="text-lg font-semibold text-slate-900">
-        {title}
-      </h3>
+      <h3 className="text-lg font-semibold text-slate-900">{title}</h3>
 
-      <p className="text-slate-600 text-sm leading-relaxed">
-        {description}
-      </p>
+      <p className="text-sm leading-relaxed text-slate-600">{description}</p>
     </motion.div>
   );
 }
 
 export default function AboutMissionVision() {
   return (
-    <section className="py-12 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+    <section className="bg-slate-50 py-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* FLEX CONTAINER */}
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
-
+        <div className="flex flex-col items-stretch gap-8 lg:flex-row lg:gap-12">
           {/* LEFT */}
-          <div className="flex flex-col gap-4 flex-1">
+          <div className="flex flex-1 flex-col gap-4">
             <MissionCard
               className="flex-1"
               title="Our Mission"
@@ -84,7 +71,7 @@ export default function AboutMissionVision() {
             transition={{ duration: 0.5 }}
             className="flex-1"
           >
-            <div className="relative h-full min-h-[280px] rounded-2xl overflow-hidden shadow-lg">
+            <div className="relative h-full min-h-[280px] overflow-hidden rounded-2xl shadow-lg">
               <Image
                 src="/about-us/mission-show.png"
                 alt="Team collaboration"
@@ -94,7 +81,6 @@ export default function AboutMissionVision() {
               />
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>

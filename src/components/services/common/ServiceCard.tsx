@@ -34,34 +34,14 @@ function ServiceCard({
         delay: index * 0.06,
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
-      className="
-        rounded-3xl
-        bg-[#F3F6FF]
-        border border-blue-100
-        overflow-hidden
-        hover:shadow-xl
-        transition-all
-      "
+      className="overflow-hidden rounded-3xl border border-blue-100 bg-[#F3F6FF] transition-all hover:shadow-xl"
     >
       {/* IMAGE */}
-      <div className="relative h-[190px] m-4 rounded-2xl overflow-hidden">
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          fill
-          className="object-cover"
-          sizes="360px"
-        />
+      <div className="relative m-4 h-[190px] overflow-hidden rounded-2xl">
+        <Image src={imageSrc} alt={imageAlt} fill className="object-cover" sizes="360px" />
 
         {icon && (
-          <div className="
-            absolute top-4 left-4
-            w-11 h-11
-            rounded-full
-            bg-white/80 backdrop-blur
-            flex items-center justify-center
-            text-blue-600
-          ">
+          <div className="absolute top-4 left-4 flex h-11 w-11 items-center justify-center rounded-full bg-white/80 text-blue-600 backdrop-blur">
             {icon}
           </div>
         )}
@@ -69,20 +49,11 @@ function ServiceCard({
 
       {/* CONTENT */}
       <div className="px-6 pb-6">
-        <h3 className="text-lg font-semibold text-slate-900">
-          {title}
-        </h3>
+        <h3 className="text-lg font-semibold text-slate-900">{title}</h3>
 
-        <p className="mt-2 text-sm text-slate-600 leading-relaxed line-clamp-3">
-          {description}
-        </p>
+        <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-slate-600">{description}</p>
 
-        <CustomButton
-          variant="outline"
-          size="md"
-          href={href}
-          className="mt-5 w-full"
-        >
+        <CustomButton variant="outline" size="md" href={href} className="mt-5 w-full">
           Know More
         </CustomButton>
       </div>

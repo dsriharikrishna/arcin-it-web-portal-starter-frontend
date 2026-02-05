@@ -19,13 +19,11 @@ export const startupsServices = [
     items: [
       {
         title: "Ideation & Strategy:",
-        description:
-          "Validate concepts and build a roadmap that matches your business goals.",
+        description: "Validate concepts and build a roadmap that matches your business goals.",
       },
       {
         title: "UI/UX Design:",
-        description:
-          "Create intuitive and engaging digital experiences for your users.",
+        description: "Create intuitive and engaging digital experiences for your users.",
       },
       {
         title: "MVP Development:",
@@ -34,13 +32,11 @@ export const startupsServices = [
       },
       {
         title: "Full-Scale Product Development:",
-        description:
-          "Turn MVPs into solid, market-ready products.",
+        description: "Turn MVPs into solid, market-ready products.",
       },
       {
         title: "Post-Launch Support:",
-        description:
-          "Ongoing improvements, updates, and technical support for long-term success.",
+        description: "Ongoing improvements, updates, and technical support for long-term success.",
       },
     ],
   },
@@ -53,23 +49,19 @@ export const startupsServices = [
     items: [
       {
         title: "Custom Software Development:",
-        description:
-          "Solutions designed to fit your unique business needs.",
+        description: "Solutions designed to fit your unique business needs.",
       },
       {
         title: "Dedicated Development Teams:",
-        description:
-          "Skilled developers who fit smoothly into your processes.",
+        description: "Skilled developers who fit smoothly into your processes.",
       },
       {
         title: "Agile Delivery:",
-        description:
-          "Flexible, step-by-step development for quick market entry.",
+        description: "Flexible, step-by-step development for quick market entry.",
       },
       {
         title: "Technology Expertise:",
-        description:
-          "Strong skills in AI, ML, cloud, IoT, web, and mobile platforms.",
+        description: "Strong skills in AI, ML, cloud, IoT, web, and mobile platforms.",
       },
     ],
     benefits: [
@@ -87,23 +79,19 @@ export const startupsServices = [
     items: [
       {
         title: "Application Maintenance & Support:",
-        description:
-          "Keep your software running well with proactive monitoring.",
+        description: "Keep your software running well with proactive monitoring.",
       },
       {
         title: "Cloud & DevOps Management:",
-        description:
-          "Optimize infrastructure, minimize downtime, and boost scalability.",
+        description: "Optimize infrastructure, minimize downtime, and boost scalability.",
       },
       {
         title: "QA & Testing Services:",
-        description:
-          "Provide reliable, bug-free, and high-performing software.",
+        description: "Provide reliable, bug-free, and high-performing software.",
       },
       {
         title: "Data Security & Compliance:",
-        description:
-          "Safeguard your digital assets with strong security standards.",
+        description: "Safeguard your digital assets with strong security standards.",
       },
     ],
   },
@@ -121,8 +109,7 @@ export const whyChooseStartupsServices = {
     },
     {
       title: "Client-Centric Approach",
-      description:
-        "Solutions tailored to your business goals and unique challenges.",
+      description: "Solutions tailored to your business goals and unique challenges.",
     },
     {
       title: "Cutting-Edge Technologies",
@@ -136,8 +123,7 @@ export const whyChooseStartupsServices = {
     },
     {
       title: "Transparent Processes",
-      description:
-        "Regular updates, agile methodologies, and complete project visibility.",
+      description: "Regular updates, agile methodologies, and complete project visibility.",
     },
   ],
 };
@@ -175,4 +161,3 @@ const startupsData = {
 };
 
 export default startupsData;
-

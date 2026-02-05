@@ -2,103 +2,77 @@
 
 import CustomButton from "@/components/ui/CustomButton";
 import Image from "next/image";
-
-const PROJECTS = [
-  {
-    id: "01",
-    title: "Project 01",
-    image: "/Project-Section.png",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
-    tags: ["Mobile App", "E-Commerce", "SaaS Platform"],
-  },
-  {
-    id: "02",
-    title: "Project 02",
-    image: "/Project-Section.png",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
-    tags: ["Mobile App", "E-Commerce", "SaaS Platform"],
-  },
-  {
-    id: "03",
-    title: "Project 03",
-    image: "/Project-Section.png",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.",
-    tags: ["Mobile App", "E-Commerce", "SaaS Platform"],
-  },
-];
+import { homeProjectsData } from "@/data/home/home-page";
 
 export default function HomeProjects() {
   return (
     <section className="bg-slate-50 py-8">
-      <div className="max-w-7xl mx-auto px-6">
-
+      <div className="mx-auto max-w-7xl px-6">
         {/* HEADER */}
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-slate-200 text-slate-700">
-            Our Project
+        <div className="mb-16 text-center">
+          <span className="inline-block rounded-full bg-slate-200 px-4 py-1.5 text-sm font-medium text-slate-700">
+            {homeProjectsData.badge}
           </span>
-          <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-slate-900">
-            Showcase of Our <span className="text-blue-600">Recognized Work</span>
+          <h2 className="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl">
+            {homeProjectsData.title.main}{" "}
+            <span className="text-blue-600">{homeProjectsData.title.highlighted}</span>
           </h2>
         </div>
 
         {/* STACK */}
-        <div className="space-y-16">
-          {PROJECTS.map((project, index) => (
-            <div
-              key={project.id}
-              className="sticky top-24 rounded-2xl bg-white border border-slate-200 shadow-xl overflow-hidden"
-            >
-              <div className="grid lg:grid-cols-2 min-h-[520px]">
+        <div className="space-y-2">
+          {homeProjectsData.projects.map((project, index) => (
+            <div key={project.slug} className="sticky" style={{ top: `${96 + index * 52}px` }}>
+              {/* VISIBLE HEADER TAB */}
+              <div className="rounded-t-2xl bg-white px-8 py-4 shadow-md">
+                <h3 className="text-2xl font-bold text-slate-900">
+                  {String(index + 1).padStart(2, "0")} {project.title}
+                </h3>
+              </div>
 
-                {/* CONTENT */}
-                <div className="p-10 flex flex-col gap-5">
-                  <h3 className="text-2xl font-bold text-slate-900">
-                    {project.id} · {project.title}
-                  </h3>
+              {/* MAIN CARD CONTENT */}
+              <div className="overflow-hidden rounded-b-2xl bg-white shadow-xl">
+                <div className="grid min-h-[520px] lg:grid-cols-2">
+                  {/* CONTENT */}
+                  <div className="flex flex-col gap-5 p-10">
+                    <p className="leading-relaxed text-slate-600">{project.description}</p>
 
-                  <p className="text-slate-600 leading-relaxed">
-                    {project.description}
-                  </p>
+                    <p className="leading-relaxed text-slate-600">{project.description}</p>
 
-                  <p className="text-slate-600 leading-relaxed">
-                    {project.description}
-                  </p>
+                    <div>
+                      <CustomButton
+                        variant="primary-blue-gradient"
+                        size="lg"
+                        rounded="lg"
+                        href="/case-studies"
+                      >
+                        Know More
+                      </CustomButton>
+                    </div>
 
-                  <div>
-                    <CustomButton
-                      variant="primary-blue-gradient"
-                      size="lg"
-                      rounded="lg"
-                      href="/case-studies"
-                    >
-                      Know More
-                    </CustomButton>
+                    {/* TAGS */}
+                    <div className="flex flex-wrap gap-2 pt-4">
+                      {project.tags.map((tag, tagIdx) => (
+                        <span
+                          key={tagIdx}
+                          className="rounded-lg bg-amber-100 px-3 py-1.5 text-xs font-medium text-amber-800"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
-                  {/* TAGS */}
-                  <div className="flex flex-wrap gap-2 pt-4">
-                    <span className="px-3 py-1.5 rounded-lg text-xs font-medium bg-amber-100 text-amber-800">
-                      Mobile App
-                    </span>
-                    <span className="px-3 py-1.5 rounded-lg text-xs font-medium bg-green-100 text-green-800">
-                      E-Commerce
-                    </span>
-                    <span className="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-700">
-                      SaaS Platform
-                    </span>
+                  {/* IMAGE */}
+                  <div className="relative">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover"
+                      priority={index === 0}
+                    />
                   </div>
-                </div>
-
-                {/* IMAGE */}
-                <div className="relative">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                    priority={index === 0}
-                  />
                 </div>
               </div>
             </div>
@@ -107,12 +81,7 @@ export default function HomeProjects() {
 
         {/* FOOTER CTA */}
         <div className="mt-24 text-center">
-          <CustomButton
-            variant="primary-blue-gradient"
-            size="lg"
-            rounded="lg"
-            href="/case-studies"
-          >
+          <CustomButton variant="primary-blue-gradient" size="lg" rounded="lg" href="/case-studies">
             View All Projects
           </CustomButton>
         </div>

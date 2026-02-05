@@ -59,23 +59,12 @@ function PageSection({
       }}
       className={clsx("py-12 sm:py-16", className)}
     >
-      <div
-        className={clsx(
-          "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
-          contentClassName
-        )}
-      >
+      <div className={clsx("mx-auto max-w-7xl px-4 sm:px-6 lg:px-8", contentClassName)}>
         {(title || subtitle) && (
-          <div className="text-center mb-12">
-            {title && (
-              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">
-                {title}
-              </h2>
-            )}
+          <div className="mb-12 text-center">
+            {title && <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">{title}</h2>}
             {subtitle && (
-              <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-                {subtitle}
-              </p>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">{subtitle}</p>
             )}
           </div>
         )}

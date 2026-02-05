@@ -2,13 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-const STATS = [
-  { value: "450+", label: "Happy Clients", Image: "/stats/HappyClients.png" },
-  { value: "10+", label: "Team Members", Image: "/stats/TeamMembers.png" },
-  { value: "10+", label: "Years in Business", Image: "/stats/Bussiness.png" },
-  { value: "24/7+", label: "Customer Support", Image: "/stats/CustomerSupport.png" },
-];
+import { homeStatsData } from "@/data/home/home-page";
 
 const containerVariants = {
   hidden: { opacity: 0, scale: 0.96 },
@@ -32,69 +26,40 @@ const itemVariants = {
   },
 };
 
-export default function HomeStats({isHome}: {isHome: boolean}) {
+export default function HomeStats({ isHome }: { isHome: boolean }) {
   return (
-    <section className={`py-6 bg-[#E9EFFF] ${isHome ? "max-w-7xl mx-auto px-4 rounded-xl" : ""}`} >
-      <div className="max-w-7xl mx-auto px-4">
+    <section className={`bg-[#E9EFFF] py-6 ${isHome ? "mx-auto max-w-7xl rounded-xl px-4" : ""}`}>
+      <div className="mx-auto max-w-7xl px-4">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="
-            grid
-            grid-cols-2
-            sm:grid-cols-2
-            md:grid-cols-4
-            gap-4
-            sm:gap-6
-            bg-[#E9EFFF]
-          "
+          className="grid grid-cols-2 gap-4 bg-[#E9EFFF] sm:grid-cols-2 sm:gap-6 md:grid-cols-4"
         >
-          {STATS.map((stat) => (
+          {homeStatsData.map((stat) => (
             <motion.div
               key={stat.label}
               variants={itemVariants}
-              className="
-                flex flex-col sm:flex-row
-                items-center
-                sm:items-start
-                gap-3
-                sm:gap-4
-                bg-transparent
-                p-4
-                rounded-xl
-                text-center sm:text-left
-              "
+              className="flex flex-col items-center gap-3 rounded-xl bg-transparent p-4 text-center sm:flex-row sm:items-start sm:gap-4 sm:text-left"
             >
               {/* Icon */}
-              <div
-                className="
-                  w-12 h-12
-                  sm:w-14 sm:h-14
-                  rounded-xl
-                  bg-white
-                  flex items-center justify-center
-                  shadow-sm
-                "
-              >
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white shadow-sm sm:h-14 sm:w-14">
                 <Image
-                  src={stat.Image}
+                  src={stat.image}
                   alt={stat.label}
                   width={46}
                   height={46}
-                  className="sm:w-12 sm:h-12"
+                  className="sm:h-12 sm:w-12"
                 />
               </div>
 
               {/* Text */}
               <div>
-                <p className="text-xl sm:text-2xl font-bold text-slate-900 leading-tight">
+                <p className="text-xl leading-tight font-bold text-slate-900 sm:text-2xl">
                   {stat.value}
                 </p>
-                <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
-                  {stat.label}
-                </p>
+                <p className="mt-0.5 text-xs text-slate-600 sm:text-sm">{stat.label}</p>
               </div>
             </motion.div>
           ))}

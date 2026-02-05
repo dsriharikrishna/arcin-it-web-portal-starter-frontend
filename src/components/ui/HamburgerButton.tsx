@@ -23,9 +23,9 @@ export default function HamburgerButton({
       aria-label={ariaLabel}
       aria-expanded={isOpen}
       className={clsx(
-        "flex items-center justify-center w-10 h-10 rounded-lg",
+        "flex h-10 w-10 items-center justify-center rounded-lg",
         "bg-gradient-to-b from-blue-500 to-indigo-600 shadow-md",
-        "hover:from-blue-600 hover:to-indigo-700 transition-all",
+        "transition-all hover:from-blue-600 hover:to-indigo-700",
         className
       )}
     >
