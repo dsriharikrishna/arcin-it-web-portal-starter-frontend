@@ -6,7 +6,7 @@ import { homeProjectsData } from "@/data/home/home-page";
 
 export default function HomeProjects() {
   return (
-    <section className="bg-slate-50 py-8">
+    <section className="py-8 bg-mesh-gradient-color">
       <div className="mx-auto max-w-7xl px-6">
         {/* HEADER */}
         <div className="mb-16 text-center">
@@ -36,9 +36,7 @@ export default function HomeProjects() {
                   {/* CONTENT */}
                   <div className="flex flex-col gap-5 p-10">
                     <p className="leading-relaxed text-slate-600">{project.description}</p>
-
                     <p className="leading-relaxed text-slate-600">{project.description}</p>
-
                     <div>
                       <CustomButton
                         variant="primary-blue-gradient"
@@ -49,7 +47,7 @@ export default function HomeProjects() {
                         Know More
                       </CustomButton>
                     </div>
-
+            
                     {/* TAGS */}
                     <div className="flex flex-wrap gap-2 pt-4">
                       {project.tags.map((tag, tagIdx) => (

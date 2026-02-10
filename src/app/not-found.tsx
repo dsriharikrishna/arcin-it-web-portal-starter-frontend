@@ -1,6 +1,5 @@
 "use client";
 
-import { MoveLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import CustomButton from "@/components/ui/CustomButton";
 
@@ -41,8 +40,7 @@ export default function NotFound() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <CustomButton href="/" variant="solid" className="w-full">
-            <MoveLeft className="mr-2 h-5 w-5" />
+          <CustomButton href="/" variant="solid" className="w-full flex items-center gap-2">
             Back to Home
           </CustomButton>
         </motion.div>

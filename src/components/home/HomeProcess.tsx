@@ -30,7 +30,7 @@ export default function HomeProcess() {
   const { badge, title, subtitle, steps } = homeProcessData;
 
   return (
-    <section className="bg-white py-16 sm:py-24">
+    <section className="bg-white py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -61,20 +61,19 @@ export default function HomeProcess() {
               <motion.div
                 key={step.title}
                 variants={itemVariants}
-                className="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white bg-gradient-to-b from-white to-slate-50/80 p-4 shadow-sm"
+                className="group flex flex-col gap-4 rounded-3xl border border-blue-100/50 bg-mesh-gradient-color p-8 transition-all duration-300 hover:-translate-y-2 hover:bg-white hover:shadow-2xl hover:shadow-blue-500/10"
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white p-2 shadow-sm transition-transform group-hover:scale-110">
                   <Image
                     src={step.iconSrc}
                     alt={step.title}
-                    width={48}
-                    height={48}
+                    width={38}
+                    height={38}
                     className="h-full w-full object-contain"
                   />
                 </div>
-                <h3 className="text-lg font-semibold text-blue-600">{step.title}</h3>
-
-                <p className="text-sm leading-relaxed text-slate-600">{step.description}</p>
+                <h3 className="text-lg font-bold tracking-tight text-blue-600 transition-colors uppercase text-[15px]">{step.title}</h3>
+                <p className="text-sm font-bold leading-relaxed text-slate-800/80">{step.description}</p>
               </motion.div>
             );
           })}

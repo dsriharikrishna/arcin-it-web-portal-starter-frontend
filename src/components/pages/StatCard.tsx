@@ -23,20 +23,20 @@ export default function StatCard({ icon, value, label, index = 0, className }: S
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
       className={clsx(
-        "rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm",
-        "flex flex-col gap-4 md:flex-row",
+        "group rounded-3xl border border-blue-100/50 bg-mesh-gradient-color p-8 transition-all duration-300 hover:-translate-y-2 hover:bg-white hover:shadow-2xl hover:shadow-blue-500/10 shadow-sm",
+        "flex flex-col gap-6 md:flex-row items-center",
         className
       )}
     >
-      <div className="flex h-full w-full flex-1 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-blue-600">
+      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white text-blue-600 shadow-sm transition-transform group-hover:scale-110">
         {icon}
       </div>
-      <div className="flex flex-1 flex-col gap-1">
-        <p className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
+      <div className="flex flex-1 flex-col gap-1 text-center md:text-left">
+        <p className="text-3xl font-extrabold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
           {value}
           <span className="text-blue-600"> +</span>
         </p>
-        <p className="font-medium text-slate-600">{label}</p>
+        <p className="text-sm font-bold tracking-tight text-slate-800/80 uppercase">{label}</p>
       </div>
     </motion.div>
   );

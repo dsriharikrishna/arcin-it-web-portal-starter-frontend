@@ -15,7 +15,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           required={required}
           placeholder=" "
           className={clsx(
-            "peer block w-full rounded-xl border border-slate-200 bg-white px-4 pt-5 pb-2 text-sm text-slate-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none",
+            "peer block w-full rounded-xl border border-slate-200 bg-mesh-gradient-color px-4 pt-5 pb-2 text-sm text-slate-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none",
             className
           )}
         />

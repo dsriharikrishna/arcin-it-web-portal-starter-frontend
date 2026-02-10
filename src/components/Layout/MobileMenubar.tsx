@@ -4,7 +4,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Mail, Phone, MapPin, Facebook, Instagram, LucideIcon } from "lucide-react";
 import CustomButton from "@/components/ui/CustomButton";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 import { CONTACT_INFO, COMPANY_INFO } from "@/constants/app-constants";
+import { useScrollLock } from "@/hooks/useScrollLock";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -65,6 +68,8 @@ const InputField = ({
 };
 
 export default function MobileMenubar({ isOpen, onClose, navItems }: MobileMenuProps) {
+  const pathname = usePathname();
+  useScrollLock(isOpen);
   return (
     <AnimatePresence>
       {isOpen && (
@@ -99,19 +104,36 @@ export default function MobileMenubar({ isOpen, onClose, navItems }: MobileMenuP
               <div className="mb-6 block lg:hidden">
                 <h2 className="mb-4 text-lg font-bold text-slate-900">Menu</h2>
                 <nav className="flex flex-col gap-2">
-                  {navItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={onClose}
-                      className="group flex items-center justify-between rounded-xl bg-white px-4 py-3 text-sm font-medium text-slate-700 transition-colors hover:bg-blue-500 hover:text-white"
-                    >
-                      {item.label}
-                      <span className="opacity-0 transition-opacity group-hover:opacity-100">
-                        →
-                      </span>
-                    </Link>
-                  ))}
+                  {navItems.map((item) => {
+                    const isActive =
+                      item.href === "/"
+                        ? pathname === item.href
+                        : pathname.startsWith(item.href);
+
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={onClose}
+                        className={clsx(
+                          "group flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition-colors",
+                          isActive
+                            ? "bg-blue-600 text-white"
+                            : "bg-white text-slate-700 hover:bg-blue-500 hover:text-white"
+                        )}
+                      >
+                        {item.label}
+                        <span
+                          className={clsx(
+                            "transition-opacity",
+                            isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                          )}
+                        >
+                          →
+                        </span>
+                      </Link>
+                    );
+                  })}
                 </nav>
               </div>
 

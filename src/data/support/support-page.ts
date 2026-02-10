@@ -333,10 +333,12 @@ export const supportResourcesData = {
 };
 
 // Combined export
-export default {
+const SupportPageData = {
   page: supportPageData,
   helpTopics: supportHelpTopicsData,
   faq: supportFAQData,
   contactOptions: supportContactOptionsData,
   resources: supportResourcesData,
 };
+
+export default SupportPageData;

@@ -4,12 +4,16 @@ import { motion } from "framer-motion";
 import CustomButton from "@/components/ui/CustomButton";
 import Image from "next/image";
 import { homeAboutData } from "@/data/home/home-page";
+import { usePathname } from "next/navigation";
 
 export default function HomeAbout() {
   const { badge, title, image, badgeInfo, description, cta } = homeAboutData;
 
+  const path = usePathname()
+  const isAboutPage = path === "/about-us"
+
   return (
-    <section className="mx-auto max-w-7xl py-16">
+    <section className="mx-auto max-w-7xl">
       <div className="flex flex-col items-center justify-center gap-10 p-6 lg:flex-row">
         <motion.div
           transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -63,11 +67,13 @@ export default function HomeAbout() {
               {para}
             </p>
           ))}
-          <div className="mt-4">
-            <CustomButton variant="primary-blue-gradient" size="lg" rounded="lg" href={cta.href}>
-              {cta.text}
-            </CustomButton>
-          </div>
+          {!isAboutPage && cta && (
+            <div className="mt-4">
+              <CustomButton variant="primary-blue-gradient" size="lg" rounded="lg" href={cta.href}>
+                {cta.text}
+              </CustomButton>
+            </div>
+          )}
         </motion.div>
       </div>
     </section>

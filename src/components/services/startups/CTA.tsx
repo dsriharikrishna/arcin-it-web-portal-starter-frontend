@@ -1,7 +1,7 @@
 "use client";
 
+import { CustomButton } from "@/components/ui";
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 interface StartupsCTAProps {
   readonly heading: string;
@@ -17,7 +17,7 @@ export default function StartupsCTA({
   ctaLink = "/contact-us",
 }: StartupsCTAProps) {
   return (
-    <section className="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-16 md:py-20">
+    <section className="bg-mesh-gradient-color py-16 md:py-20">
       <div className="mx-auto max-w-5xl px-6 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -49,12 +49,14 @@ export default function StartupsCTA({
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <Link
+          <CustomButton
             href={ctaLink}
-            className="inline-block rounded-lg bg-blue-600 px-8 py-4 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:bg-blue-700 hover:shadow-xl md:text-base"
+            variant="solid"
+            size="lg"
+            className="rounded-lg px-8 py-4 text-sm font-semibold shadow-lg transition-all duration-300 hover:bg-blue-700 hover:shadow-xl md:text-base"
           >
             {ctaText}
-          </Link>
+          </CustomButton>
         </motion.div>
       </div>
     </section>

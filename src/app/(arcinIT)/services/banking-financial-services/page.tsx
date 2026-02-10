@@ -10,7 +10,7 @@ export default function BankingFinancialServicesPage() {
     <div className="flex min-h-screen flex-col">
       {/* Hero Section */}
       <ServiceHero title={hero?.title} subtitle={hero?.subtitle} />
-      <div className="flex flex-col gap-8 sm:gap-10 md:gap-12">
+      <div className="flex flex-col gap-8">
         <ServiceHeader
           title={overview.title}
           description={overview.description}

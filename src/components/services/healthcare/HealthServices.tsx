@@ -25,9 +25,9 @@ interface HealthServicesProps {
 
 export default function HealthServices({ services }: HealthServicesProps) {
   return (
-    <section className="bg-white py-8 sm:py-12 md:py-16">
+    <section className="bg-white py-8 sm:py-12 ">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="flex flex-col gap-8 sm:gap-10 md:gap-12">
+        <div className="flex flex-col gap-8 sm:gap-10 ">
           {services.map((service, serviceIndex) => (
             <div key={serviceIndex}>
               {/* First Service - Simple Text + Image */}

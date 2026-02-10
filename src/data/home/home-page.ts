@@ -57,7 +57,7 @@ export const homeStatsData = [
   {
     value: "450+",
     label: "Happy Clients",
-    image: "/stats/HappyClients.png",
+    image: "/stats/happyClients.png",
   },
   {
     value: "10+",
@@ -121,18 +121,18 @@ export const homeIndustriesData = {
     highlighted: "We Serve",
   },
   industries: [
-    { name: "Real estate", iconSrc: "/svgs/Real- Estate.svg" },
-    { name: "Tours & Travels", iconSrc: "/svgs/Tours-and-Travel.svg" },
-    { name: "Education", iconSrc: "/svgs/Eduaction.svg" },
-    { name: "Transport", iconSrc: "/svgs/Transport.svg" },
-    { name: "Event", iconSrc: "/svgs/Event.svg" },
-    { name: "eCommerce", iconSrc: "/svgs/E-Commerse.svg" },
-    { name: "Game", iconSrc: "/svgs/Game.svg" },
-    { name: "Healthcare", iconSrc: "/svgs/Health Care.svg" },
-    { name: "Finance", iconSrc: "/svgs/Finance.svg" },
-    { name: "Restaurant", iconSrc: "/svgs/Restraaunt.svg" },
-    { name: "On-Demand", iconSrc: "/svgs/On Demand.svg" },
-    { name: "Grocery", iconSrc: "/svgs/Grocery.svg" },
+    { name: "Real estate", iconSrc: "/Icons Gif/buy-a-house.gif" },
+    { name: "Tours & Travels", iconSrc: "/Icons Gif/airport.gif" },
+    { name: "Education", iconSrc: "/Icons Gif/education.gif" },
+    { name: "Transport", iconSrc: "/Icons Gif/truck.gif" },
+    { name: "Event", iconSrc: "/Icons Gif/event.gif" },
+    { name: "eCommerce", iconSrc: "/Icons Gif/online-supermarket.gif" },
+    { name: "Game", iconSrc: "/Icons Gif/game-controller.gif" },
+    { name: "Healthcare", iconSrc: "/Icons Gif/heart.gif" },
+    { name: "Finance", iconSrc: "/Icons Gif/money.gif" },
+    { name: "Restaurant", iconSrc: "/Icons Gif/restaurant.gif" },
+    { name: "On-Demand", iconSrc: "/Icons Gif/download.gif" },
+    { name: "Grocery", iconSrc: "/Icons Gif/grocery-basket.gif" },
   ],
 };
 
@@ -240,7 +240,7 @@ export const homeDigitalData = {
 };
 
 // Combined export for easy import
-export default {
+const HomePageData = {
   hero: homeHeroData,
   about: homeAboutData,
   stats: homeStatsData,
@@ -250,3 +250,5 @@ export default {
   projects: homeProjectsData,
   digital: homeDigitalData,
 };
+
+export default HomePageData;

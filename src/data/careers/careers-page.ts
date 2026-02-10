@@ -11,66 +11,52 @@ export const careersPageData = {
 };
 
 export const careersBenefitsData = {
-  title: "Why Work With Us",
-  subtitle: "Benefits that matter",
+  title: "Benefits & Perks", // Updated to match image
+  subtitle: "Why Join Us", // Updated to match image
   description:
-    "We believe in taking care of our team members and providing an environment where they can thrive both professionally and personally.",
+    "We take care of our people so they can focus on building amazing things", // Updated to match image
   benefits: [
     {
       id: 1,
-      title: "Competitive Compensation",
+      title: "Competitive Salary",
       description:
-        "Industry-leading salaries with performance bonuses and equity options for key roles.",
-      icon: "/svgs/compensation-icon.svg",
+        "Industry-leading compensation packages with performance bonuses",
+      icon: "/svgs/services/dollar-circle.svg",
     },
     {
       id: 2,
       title: "Health & Wellness",
       description:
-        "Comprehensive health insurance, wellness programs, and mental health support for you and your family.",
-      icon: "/svgs/health-icon.svg",
+        "Comprehensive health, dental, and vision coverage for you and family",
+      icon: "/svgs/services/heart.svg",
     },
     {
       id: 3,
-      title: "Flexible Work",
+      title: "Remote Flexibility",
       description:
-        "Remote-friendly culture with flexible hours and work-from-anywhere options to support work-life balance.",
-      icon: "/svgs/flexible-icon.svg",
+        "Hybrid work model with flexible remote options",
+      icon: "/svgs/services/monitor.svg",
     },
     {
       id: 4,
-      title: "Learning & Development",
+      title: "Learning & Growth",
       description:
-        "Continuous learning opportunities including courses, certifications, conferences, and workshops.",
-      icon: "/svgs/learning-icon.svg",
+        "Annual learning budget and access to certifications",
+      icon: "/svgs/services/graduation-cap-fill.svg",
     },
     {
       id: 5,
-      title: "Career Growth",
+      title: "Paid Time Off",
       description:
-        "Clear career progression paths with mentorship programs and opportunities to lead projects.",
-      icon: "/svgs/growth-icon.svg",
+        "Generous vacation, sick leave, and parental leave policies",
+      icon: "/svgs/services/airplane-square.svg",
     },
     {
       id: 6,
-      title: "Innovation Time",
+      title: "Team Culture",
       description:
-        "20% time for personal projects and exploring new technologies that interest you.",
-      icon: "/svgs/innovation-icon.svg",
-    },
-    {
-      id: 7,
-      title: "Team Events",
-      description:
-        "Regular team building activities, hackathons, and social events to foster collaboration.",
-      icon: "/svgs/team-icon.svg",
-    },
-    {
-      id: 8,
-      title: "Modern Tools",
-      description:
-        "Latest hardware, software, and tools to ensure you have everything you need to succeed.",
-      icon: "/svgs/tools-icon.svg",
+        "Regular team events, offsites, and wellness programs",
+      icon: "/svgs/services/team-fill.svg",
     },
   ],
 };
@@ -345,10 +331,12 @@ export const careersTestimonialsData = {
 };
 
 // Combined export
-export default {
+const CareersPageData = {
   page: careersPageData,
   benefits: careersBenefitsData,
   positions: careersPositionsData,
   process: careersApplicationProcessData,
   testimonials: careersTestimonialsData,
 };
+
+export default CareersPageData;

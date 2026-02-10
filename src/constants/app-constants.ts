@@ -13,7 +13,8 @@ export const COMPANY_INFO = {
     city: "Hyderabad",
     state: "Telangana",
     country: "India",
-    address: "123 Tech Park, Hyderabad, Telangana, India",
+    address1: "E111, Block E, Phileo Damansara I, 9, Jalan 16/11, Pusat Perdagangan Phileo Damansara, 46350 Petaling Jaya, Selangor, Malaysia",
+    address2: "P. No:8-3-293/82/B/98, G Hills, Banjara Hills, Hyderabad, Telangana, India, 500034",
     mapUrl: "https://maps.google.com/?q=Hyderabad,India",
     embedMapUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3802.336397854825!2d78.3938610150515!3d17.447442703969174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93c7fe1a4daf%3A0xea86d6e6d7fc9658!2sHITEC%20City%2C%20Hyderabad%2C%20Telangana%20500085!5e0!3m2!1sen!2sin!4v1710000000000",
@@ -22,15 +23,15 @@ export const COMPANY_INFO = {
 
 export const CONTACT_INFO = {
   phone: {
-    primary: "+60-1181106263",
-    whatsapp: "601181106263", // Without + and - for WhatsApp URL
-    display: "+60 118 110 6263",
+    primary: "+60-1151106263",
+    whatsapp: "601151106263", // Without + and - for WhatsApp URL
+    display: "+60 115 110 6263",
   },
   email: {
     primary: "info@arcinit.com",
-    support: "support@arcinit.com",
-    sales: "sales@arcinit.com",
-    careers: "careers@arcinit.com",
+    support: "info@arcinit.com",
+    sales: "info@arcinit.com",
+    careers: "info@arcinit.com",
   },
   social: {
     facebook: "https://facebook.com/arcinit",
@@ -157,7 +158,7 @@ export const THEME_CONFIG = {
 };
 
 // Export all constants as a single object for convenience
-export default {
+const AppConstants = {
   company: COMPANY_INFO,
   contact: CONTACT_INFO,
   navigation: NAVIGATION_ITEMS,
@@ -167,3 +168,5 @@ export default {
   seo: SEO_CONFIG,
   theme: THEME_CONFIG,
 };
+
+export default AppConstants;

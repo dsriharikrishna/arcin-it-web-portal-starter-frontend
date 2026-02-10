@@ -11,7 +11,7 @@ export default function RetailEcommercePage() {
       {/* Hero Section */}
       <ServiceHero title={hero.title} subtitle={hero.subtitle} />
 
-      <div className="flex flex-col gap-8 sm:gap-10 md:gap-12">
+      <div className="flex flex-col gap-8 ">
         {/* Overview Header */}
         <ServiceHeader title={overview.title} description={overview.description} />
 

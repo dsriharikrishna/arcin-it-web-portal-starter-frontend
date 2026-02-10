@@ -26,7 +26,7 @@ interface StartupsServiceSectionProps {
 
 export default function StartupsServiceSection({ title, groups }: StartupsServiceSectionProps) {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white py-10">
       <div className="mx-auto max-w-7xl px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -37,7 +37,7 @@ export default function StartupsServiceSection({ title, groups }: StartupsServic
           {title}
         </motion.h2>
 
-        <div className="flex flex-col gap-20">
+        <div className="flex flex-col gap-8">
           {groups.map((group, groupIndex) => (
             <div
               key={groupIndex}

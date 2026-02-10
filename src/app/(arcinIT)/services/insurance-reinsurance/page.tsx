@@ -21,7 +21,7 @@ export default function InsuranceReinsurancePage() {
       {/* Hero Section */}
       <ServiceHero title={hero.title} subtitle={hero.subtitle} />
 
-      <div className="flex flex-col gap-8 sm:gap-10 md:gap-12">
+      <div className="flex flex-col gap-8 ">
         <ServiceHeader title={overview.title} description={overview.description} />
 
         {/* Why Choose Insurance Intro (Image 1) */}

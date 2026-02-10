@@ -11,7 +11,7 @@ export default function HealthcareEducationPage() {
       {/* Hero Section */}
       <ServiceHero title={hero.title} subtitle={hero.subtitle} />
 
-      <div className="flex flex-col gap-6 sm:gap-8 md:gap-10">
+      <div className="flex flex-col gap-6 sm:gap-8 ">
         {/* Introduction Section */}
         <ServiceHeader title={overview.title} description={overview.description} />
 

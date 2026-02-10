@@ -61,7 +61,7 @@ export default function ClaimsAutomationPage() {
       </section>
 
       {/* ================= OVERVIEW ================= */}
-      <section className="py-14">
+      <section className="border border-slate-200 hover:shadow-sm py-14">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4">
           <h2 className="text-2xl font-bold text-slate-900">Overview</h2>
           <p className="max-w-4xl text-slate-600">
@@ -78,7 +78,7 @@ export default function ClaimsAutomationPage() {
           {/* Image */}
           <div className="relative h-[320px] overflow-hidden rounded-2xl">
             <Image
-              src="/case-studies/clamins-challenges.png"
+              src="/case-studies/claims-automation.png"
               alt="Challenges"
               fill
               className="object-cover"

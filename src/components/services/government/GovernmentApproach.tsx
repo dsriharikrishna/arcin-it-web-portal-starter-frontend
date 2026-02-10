@@ -15,7 +15,7 @@ interface GovernmentApproachProps {
 
 export default function GovernmentApproach({ title, steps }: GovernmentApproachProps) {
   return (
-    <section className="bg-white py-12 sm:py-16 md:py-20">
+    <section className="bg-white py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

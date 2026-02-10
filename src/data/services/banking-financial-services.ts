@@ -151,10 +151,12 @@ export const heroSection = {
 };
 
 // Combined export for easy import
-export default {
+const BankingServicesData = {
   overview: bankingOverview,
   services: bankingFinancialServicesData,
   whyChoose: whyChooseBankingServices,
   cta: bankingCTA,
   hero: heroSection,
 };
+
+export default BankingServicesData;

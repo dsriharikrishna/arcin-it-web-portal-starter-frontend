@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "Arcin IT",
     images: [
       {
-        url: "/home-hero.png", // Fallback image, ideally an OG specific image
+        url: "/Arcin_logo_Name.png", 
         width: 1200,
         height: 630,
         alt: "Arcin IT - Digital Solutions",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Arcin IT | Transforming Business with Intelligent Technology",
     description: "Enterprise IT, Cloud, and AI solutions for the future.",
-    images: ["/home-hero.png"],
+    images: ["/Arcin_logo_Name.png"],
   },
   robots: {
     index: true,

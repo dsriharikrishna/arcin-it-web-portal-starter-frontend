@@ -7,6 +7,7 @@ import CustomButton from "./CustomButton";
 import Input from "./Input";
 import TextAreaInput from "./TextAreaInput";
 import { CONTACT_INFO, COMPANY_INFO } from "@/constants/app-constants";
+import { useScrollLock } from "@/hooks/useScrollLock";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -14,6 +15,8 @@ interface ContactModalProps {
 }
 
 const DesktopContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
+  useScrollLock(isOpen);
+
   // Outside click listener
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -66,7 +69,7 @@ const DesktopContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
               {/* LEFT SIDE: FORM */}
               <div className="custom-scrollbar flex-1 overflow-y-auto p-8">
-                <h2 className="mb-8 text-2xl font-bold text-slate-800">
+                <h2 className="mb-6 text-2xl font-bold text-slate-800">
                   Request A{" "}
                   <span className="underline decoration-blue-600 underline-offset-4">Q</span>uote
                 </h2>
@@ -90,9 +93,9 @@ const DesktopContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               </div>
 
               {/* RIGHT SIDE: INFO */}
-              <div className="custom-scrollbar flex-1 overflow-y-auto border-l border-blue-50 bg-white p-8">
-                <h2 className="mb-4 text-2xl font-bold text-slate-800">Get In Touch</h2>
-                <p className="mb-10 text-sm leading-relaxed text-slate-500">
+              <div className="custom-scrollbar flex-1 overflow-y-auto border-l border-blue-50 bg-mesh-gradient-color p-5">
+                <h2 className="mb-2 text-2xl font-bold text-slate-800">Get In Touch</h2>
+                <p className="mb-6 text-sm leading-relaxed text-slate-500">
                   Please fill out the form below if you have a plan or project in mind that
                   you&apos;d like to share with us.
                 </p>
@@ -133,15 +136,30 @@ const DesktopContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                         </span>
                       </div>
                       <p className="text-sm leading-relaxed font-bold text-slate-900">
-                        {COMPANY_INFO.location.address}
+                        {COMPANY_INFO.location.address1}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Address Branch Office */}
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 text-blue-600 shadow-sm">
+                      <MapPin size={22} />
+                    </div>
+                    <div className="flex-1">
+                      <div className="mb-2 flex items-center gap-3">
+                        <p className="text-sm font-medium text-slate-400">Address</p>
+                      </div>
+                      <p className="text-sm leading-relaxed font-bold text-slate-900">
+                        {COMPANY_INFO.location.address2}
                       </p>
                     </div>
                   </div>
                 </div>
 
                 {/* SOCIALS */}
-                <div className="mt-8">
-                  <p className="mb-4 font-bold text-slate-800">Follow Us On</p>
+                <div className="mt-4">
+                  <p className="mb-2 font-bold text-slate-800">Follow Us On</p>
                   <div className="flex gap-4">
                     <a
                       href={CONTACT_INFO.social.instagram}

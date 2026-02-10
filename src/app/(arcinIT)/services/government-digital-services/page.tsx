@@ -11,7 +11,7 @@ export default function GovernmentDigitalServicesPage() {
       {/* Hero Section */}
       <ServiceHero title={overview.title} subtitle={overview.subtitle} />
 
-      <div className="flex flex-col gap-8 sm:gap-10 md:gap-12">
+      <div className="flex flex-col gap-8">
         <ServiceHeader title={overview.title} description={overview.description} />
 
         {/* Service Details */}

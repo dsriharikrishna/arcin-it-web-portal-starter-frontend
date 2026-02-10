@@ -236,7 +236,7 @@ export const aboutTimelineData = {
 };
 
 // Combined export
-export default {
+const AboutPageData = {
   page: aboutPageData,
   missionVision: aboutMissionVisionData,
   values: aboutValuesData,
@@ -245,3 +245,5 @@ export default {
   culture: aboutCultureData,
   timeline: aboutTimelineData,
 };
+
+export default AboutPageData;

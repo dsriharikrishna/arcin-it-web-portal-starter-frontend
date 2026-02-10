@@ -59,18 +59,19 @@ export default function HomeIndustries() {
               <motion.div
                 key={industry.name}
                 variants={itemVariants}
-                className="flex items-center gap-4 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50 to-indigo-50 p-4 transition-all duration-300 hover:shadow-md sm:p-5"
+                className="group flex items-center gap-4 rounded-2xl border border-blue-100/50 bg-mesh-gradient-color p-4 transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl hover:shadow-blue-500/5 sm:p-5"
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm transition-transform group-hover:scale-110">
                   <Image
                     src={industry.iconSrc}
                     alt={industry.name}
-                    width={48}
-                    height={48}
-                    className="object-contain p-1"
+                    width={40}
+                    height={40}
+                    unoptimized
+                    className="object-contain"
                   />
                 </div>
-                <span className="text-lg font-medium text-slate-800">{industry.name}</span>
+                <span className="text-lg font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors capitalize text-[15px]">{industry.name}</span>
               </motion.div>
             );
           })}

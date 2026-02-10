@@ -12,6 +12,7 @@ interface PageHeroProps {
   subtitleClassName?: string;
   backgroundImage?: string;
   description?: string;
+  descriptionClassName?: string;
 }
 
 export default function PageHero({
@@ -22,6 +23,7 @@ export default function PageHero({
   subtitleClassName,
   backgroundImage,
   description,
+  descriptionClassName,
 }: PageHeroProps) {
   return (
     <motion.section
@@ -54,7 +56,7 @@ export default function PageHero({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className={clsx(
-            "text-lg font-bold tracking-tight sm:text-xl",
+            "text-[16px] font-medium leading-none text-center",
             backgroundImage ? "text-white" : "text-slate-900",
             titleClassName
           )}
@@ -67,7 +69,7 @@ export default function PageHero({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className={clsx(
-              "mx-auto max-w-2xl text-lg sm:text-2xl",
+              "mx-auto max-w-2xl text-[36px] font-extrabold leading-none text-center",
               backgroundImage ? "text-slate-200" : "text-slate-600",
               subtitleClassName
             )}
@@ -81,9 +83,9 @@ export default function PageHero({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className={clsx(
-              "sm:text-md mx-auto max-w-2xl text-sm text-gray-300",
+              "mx-auto max-w-2xl text-[16px] font-normal leading-[21px] tracking-[0.01em] text-center",
               backgroundImage ? "text-slate-200" : "text-slate-600",
-              subtitleClassName
+              descriptionClassName
             )}
           >
             {description}

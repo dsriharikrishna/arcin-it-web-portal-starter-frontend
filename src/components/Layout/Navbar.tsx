@@ -29,14 +29,14 @@ export default function Navbar({ navItems = NAVIGATION_ITEMS, variant = "default
   const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isDesktopContactOpen, setIsDesktopContactOpen] = useState(false);
-
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const isTransparent = variant === "transparent";
 
   // Phone button - Opens WhatsApp
   const handleWhatsAppClick = useCallback(() => {
-    const whatsappUrl = `https://wa.me/${CONTACT_INFO.phone.whatsapp}`;
+    const message = "Hi Arcin IT, I am interested in your mobile app development services!";
+    const whatsappUrl = `https://wa.me/${CONTACT_INFO.phone.whatsapp}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   }, []);
 
@@ -52,11 +52,10 @@ export default function Navbar({ navItems = NAVIGATION_ITEMS, variant = "default
   return (
     <>
       <header
-        className={`fixed top-0 z-50 w-full transition-colors duration-300 ${
-          isTransparent
-            ? "border-none bg-transparent"
-            : "border-b border-gray-200 bg-white/80 backdrop-blur-md"
-        }`}
+        className={`fixed top-0 z-50 w-full transition-colors duration-300 ${isTransparent
+          ? "border-none bg-transparent"
+          : "border-b border-gray-200 bg-white/80 backdrop-blur-md"
+          }`}
       >
         <nav
           className="relative mx-auto flex w-full items-center justify-between px-4 py-2 sm:px-6 lg:px-8"
@@ -79,7 +78,7 @@ export default function Navbar({ navItems = NAVIGATION_ITEMS, variant = "default
                 <NavLink
                   key={href}
                   href={href}
-                  isActive={pathname === href}
+                  isActive={href === "/" ? pathname === href : pathname.startsWith(href)}
                   activeIndicatorClassName={isTransparent ? "bg-white" : "bg-blue-800"}
                   activeClassName={
                     isTransparent ? "text-white font-bold" : "text-slate-900 font-bold"

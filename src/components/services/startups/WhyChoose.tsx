@@ -22,7 +22,7 @@ export default function StartupsTechWhyChoose({
   image,
 }: StartupsTechWhyChooseProps) {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white py-10">
       <div className="mx-auto max-w-7xl px-6">
         {/* Title */}
         <motion.h2

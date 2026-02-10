@@ -1,5 +1,7 @@
 "use client";
 
+import { motion } from "framer-motion";
+import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
 import {
@@ -16,7 +18,6 @@ import {
 } from "lucide-react";
 import clsx from "clsx";
 import { CustomButton } from "../ui";
-import { ServiceCard } from "@/components/services";
 import { homeServicesData } from "@/data/home/home-page";
 
 // Icon mapper to convert string names to Lucide components
@@ -86,7 +87,7 @@ export default function HomeServices() {
   );
 
   return (
-    <section className="w-full bg-gradient-to-b from-[#F8FAFF] to-[#EEF3FF] py-16">
+    <section className="w-full bg-mesh-gradient-color p-6">
       <div className="mx-auto max-w-7xl px-4">
         {/* HEADER */}
         <div className="mb-14 grid grid-cols-1 gap-12 lg:grid-cols-2">
@@ -109,18 +110,18 @@ export default function HomeServices() {
 
             <div className="flex gap-3">
               <CustomButton
-                variant="custom"
+                variant="outline"
                 rounded="full"
                 onClick={scrollPrev}
                 disabled={!canScrollPrev}
                 startIcon={
                   <ArrowLeft
-                    className={clsx("h-5 w-5", canScrollPrev ? "text-white" : "text-slate-400")}
+                    className={clsx("h-5 w-5", !canScrollPrev ? "text-white hover:text-white" : "text-slate-800")}
                   />
                 }
                 className={clsx(
-                  "flex h-11 w-11 items-center justify-center border transition-all",
-                  canScrollPrev
+                  "flex h-11 w-11 items-center justify-center border transition-all hover:bg-blue-600 hover:text-white",
+                  !canScrollPrev
                     ? "border-blue-600 bg-blue-600 shadow-md shadow-blue-200 hover:bg-blue-700"
                     : "border-slate-200 bg-white"
                 )}
@@ -155,17 +156,56 @@ export default function HomeServices() {
         >
           <div className="flex gap-8">
             {homeServicesData.services.map((service, i) => {
-              const Icon = iconMap[service.icon];
+              const Icon = iconMap[service.icon] || Landmark;
               return (
-                <div key={service.label} className="flex-[0_0_88%] sm:flex-[0_0_360px]">
-                  <ServiceCard
-                    title={service.label}
-                    description={service.desc}
-                    imageSrc={service.image}
-                    imageAlt={service.label}
-                    icon={Icon ? <Icon className="h-5 w-5" /> : null}
-                    index={i}
-                  />
+                <div key={service.label} className="flex-[0_0_88%] sm:flex-[0_0_380px] py-4">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
+                    className="group relative flex cursor-pointer flex-col gap-5 overflow-hidden rounded-[1rem] border border-blue-100/50 bg-white p-4 transition-all duration-500 ease-in-out hover:-translate-y-2 hover:shadow-2xl"
+                  >
+                    {/* SMOOTH GRADIENT OVERLAY expanding from center */}
+                    <div className="absolute inset-0 z-0 origin-center scale-x-0 bg-gradient-to-r from-[#5BCAFB] to-[#320DE0] opacity-0 transition-all duration-500 ease-in-out group-hover:scale-x-100 group-hover:opacity-100" />
+
+                    {/* IMAGE */}
+                    <div className="relative z-10 h-48 overflow-hidden rounded-[1.5rem] shadow-md">
+                      <Image
+                        src={service.image}
+                        alt={service.label}
+                        fill
+                        className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
+                        sizes="380px"
+                      />
+                      <div className="absolute top-4 left-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-white/30 backdrop-blur-md">
+                        <Icon className="h-5 w-5 text-white" />
+                      </div>
+                    </div>
+
+                    {/* CONTENT */}
+                    <div className="relative z-10 flex flex-1 flex-col gap-3 px-1">
+                      <h3 className="text-xl font-bold tracking-tight text-slate-900 transition-colors duration-300 group-hover:text-white">
+                        {service.label}
+                      </h3>
+                      <p className="flex-1 text-sm font-medium leading-relaxed text-slate-600 transition-colors duration-300 group-hover:text-white/90">
+                        {service.desc}
+                      </p>
+                    </div>
+
+                    {/* CTA */}
+                    <div className="relative z-10 px-1">
+                      <CustomButton
+                        href={`/services/${service.slug}`}
+                        variant="outline"
+                        size="lg"
+                        className="w-full border-blue-600/20 bg-blue-50/50 font-bold text-blue-600 transition-all duration-300 group-hover:border-transparent group-hover:bg-white group-hover:text-[#320DE0]"
+                        rounded="lg"
+                      >
+                        Know More
+                      </CustomButton>
+                    </div>
+                  </motion.div>
                 </div>
               );
             })}

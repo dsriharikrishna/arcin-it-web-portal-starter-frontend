@@ -49,25 +49,25 @@ export default function IndustriesSection({ title, industries }: IndustriesProps
           <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">{title}</h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {industries.map((industry, index) => {
             const IconComponent = iconMap[industry.icon] || Building2;
 
             return (
               <motion.div
                 key={industry.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="rounded-xl border border-blue-100 bg-gradient-to-br from-blue-50 to-purple-50 p-6 transition-all duration-300 hover:border-blue-300 hover:shadow-lg"
+                className="group flex items-center gap-4 rounded-3xl border border-blue-100/50 bg-mesh-gradient-color p-5 transition-all duration-300 hover:-translate-y-2 hover:bg-white hover:shadow-2xl hover:shadow-blue-500/10"
               >
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-blue-600">
-                    <IconComponent className="h-6 w-6 text-white" />
-                  </div>
-                  <h3 className="text-base font-semibold text-slate-900">{industry.name}</h3>
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm transition-transform group-hover:scale-110">
+                  <IconComponent className="h-6 w-6 text-blue-600" />
                 </div>
+                <h3 className="text-[15px] font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors uppercase">
+                  {industry.name}
+                </h3>
               </motion.div>
             );
           })}

@@ -135,7 +135,7 @@ export const caseStudiesData = [
     industry: "Government",
     description:
       "Modernized citizen services with a unified digital portal enabling online applications, document verification, and service tracking for 5 million+ citizens.",
-    image: "/case-studies/government-portal.png",
+    image: "/case-studies/approach.png",
     tags: ["Government", "Digital Services", "Security", "Accessibility"],
     metrics: {
       citizensServed: "5M+",
@@ -180,10 +180,12 @@ export const getCaseStudiesByTag = (tag: string) => {
 };
 
 // Combined export
-export default {
+const CaseStudiesData = {
   page: caseStudiesPageData,
   caseStudies: caseStudiesData,
   getCaseStudyBySlug,
   getCaseStudiesByIndustry,
   getCaseStudiesByTag,
 };
+
+export default CaseStudiesData;

@@ -1,13 +1,13 @@
 export const FOOTER_DATA = {
   brand: {
-    logo: "/Footer_Logo.png",
+    logo: "/Arcin_logo_Name.png",
     description:
       "Arcin IT is a Brand Development Company, provides Web Design, Web Development, Digital Marketing, APP Development, IT Support & Web Hosting Services.",
     socialLinks: [
-      { href: "https://facebook.com/arcinit", icon: "facebook", label: "Facebook" },
-      { href: "https://twitter.com/arcinit", icon: "twitter", label: "Twitter" },
-      { href: "https://instagram.com/arcinit", icon: "instagram", label: "Instagram" },
-      { href: "https://youtube.com/arcinit", icon: "youtube", label: "YouTube" },
+      { href: "https://www.facebook.com/infinitechsoft", icon: "facebook", label: "Facebook" },
+      { href: "https://www.instagram.com/infinitechsoft", icon: "instagram", label: "Instagram" },
+      { href: "https://www.linkedin.com/company/infini-tech-soft", icon: "linkedin", label: "LinkedIn" },
+      { href: "https://x.com/infinitechsoft", icon: "twitter", label: "Twitter" },
     ],
   },
   company: {

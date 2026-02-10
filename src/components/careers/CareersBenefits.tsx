@@ -1,69 +1,61 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  CircleDollarSign,
-  Heart,
-  Monitor,
-  GraduationCap,
-  Plane,
-  Users,
-  Lightbulb,
-  Wrench,
-  LucideIcon,
-} from "lucide-react";
 import { careersBenefitsData } from "@/data/careers/careers-page";
-
-const iconMap: Record<string, LucideIcon> = {
-  "Competitive Compensation": CircleDollarSign,
-  "Health & Wellness": Heart,
-  "Flexible Work": Monitor,
-  "Learning & Development": GraduationCap,
-  "Career Growth": GraduationCap,
-  "Innovation Time": Lightbulb,
-  "Team Events": Users,
-  "Modern Tools": Wrench,
-};
+import Image from "next/image";
 
 export default function CareersBenefits() {
   const { title, subtitle, description, benefits } = careersBenefitsData;
 
   return (
-    <section className="bg-white py-16">
-      <div className="mx-auto flex max-w-7xl flex-col gap-12 px-4 sm:px-6 lg:px-8">
+    <section className="bg-white py-12 pb-12">
+      <div className="mx-auto flex max-w-7xl flex-col gap-16 px-6 sm:px-8">
         {/* HEADER */}
         <div className="flex flex-col items-center gap-4 text-center">
-          <span className="rounded-full bg-[#EEF3FF] px-4 py-1.5 text-sm font-medium text-blue-600">
+          <span className="rounded-full bg-[#F1F4FF] px-5 py-1.5 text-[13px] font-bold text-slate-900 shadow-sm">
             {subtitle}
           </span>
 
-          <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">{title}</h2>
+          <h2 className="text-4xl font-extrabold tracking-tight text-black md:text-4xl">
+            {title}
+          </h2>
 
-          <p className="max-w-2xl text-sm text-slate-600 sm:text-base">{description}</p>
+          <p className="max-w-2xl text-[15px] font-bold leading-relaxed text-slate-900/70">
+            {description}
+          </p>
         </div>
 
         {/* BENEFITS GRID */}
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {benefits.map((benefit, i) => {
-            const Icon = iconMap[benefit.title] || Heart;
             return (
               <motion.div
                 key={benefit.id}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.06 }}
-                className="flex items-start gap-4 rounded-xl border border-blue-100 bg-[#EEF3FF] p-4"
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="flex items-center gap-4 rounded-xl border border-blue-100/50 bg-[#F1F4FF] p-4 transition-all duration-300 hover:bg-white hover:shadow-xl hover:shadow-blue-500/5"
               >
-                {/* ICON */}
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white text-blue-600">
-                  <Icon className="h-5 w-5" />
+                {/* ICON CONTAINER */}
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm">
+                  <Image
+                    src={benefit.icon}
+                    alt={benefit.title}
+                    width={32}
+                    height={32}
+                    className="object-contain"
+                  />
                 </div>
 
                 {/* TEXT */}
-                <div className="flex flex-col gap-1">
-                  <h3 className="text-sm font-semibold text-slate-900">{benefit.title}</h3>
-                  <p className="text-xs leading-relaxed text-slate-600">{benefit.description}</p>
+                <div className="flex flex-col gap-1.5">
+                  <h3 className="text-[17px] font-bold tracking-tight text-black">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-[13px] font-bold leading-relaxed text-slate-800/80">
+                    {benefit.description}
+                  </p>
                 </div>
               </motion.div>
             );

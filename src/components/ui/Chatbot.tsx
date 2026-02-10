@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Bot } from "lucide-react";
 import Image from "next/image";
-import { CHATBOT_CONFIG, CONTACT_INFO, COMPANY_INFO } from "@/constants/app-constants";
+import { CHATBOT_CONFIG, COMPANY_INFO } from "@/constants/app-constants";
 
 interface Message {
   id: string;
@@ -80,7 +80,7 @@ export default function Chatbot() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(true)}
-            className="fixed right-6 bottom-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-blue-800 text-white shadow-2xl transition-shadow hover:shadow-blue-500/50"
+            className="fixed right-4 bottom-4 z-50 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-blue-800 text-white shadow-2xl transition-shadow hover:shadow-blue-500/50 sm:right-6 sm:bottom-6 sm:h-16 sm:w-16"
             aria-label="Open chat"
           >
             <Image
@@ -102,7 +102,7 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 100, scale: 0.8 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed right-6 bottom-6 z-50 flex h-[600px] w-[380px] flex-col overflow-hidden rounded-2xl bg-white shadow-2xl"
+            className="fixed inset-0 z-[60] flex flex-col overflow-hidden bg-white shadow-2xl sm:inset-auto sm:right-6 sm:bottom-6 sm:h-[600px] sm:w-[380px] sm:rounded-2xl"
           >
             {/* Header */}
             <div className="flex items-center justify-between bg-gradient-to-r from-blue-600 to-blue-800 p-4">
@@ -125,7 +125,7 @@ export default function Chatbot() {
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="rounded-lg p-1.5 text-white transition-colors hover:bg-white/20"
+                className="cursor-pointer rounded-lg p-1.5 text-white transition-colors hover:bg-white/20"
                 aria-label="Close chat"
               >
                 <X size={20} />
@@ -153,11 +153,10 @@ export default function Chatbot() {
 
                     {/* Message Bubble */}
                     <div
-                      className={`rounded-2xl px-4 py-2.5 ${
-                        message.sender === "user"
-                          ? "rounded-tr-sm bg-blue-600 text-white"
-                          : "rounded-tl-sm bg-white text-slate-800 shadow-sm"
-                      }`}
+                      className={`rounded-2xl px-4 py-2.5 ${message.sender === "user"
+                        ? "rounded-tr-sm bg-blue-600 text-white"
+                        : "rounded-tl-sm bg-white text-slate-800 shadow-sm"
+                        }`}
                     >
                       <p className="text-sm leading-relaxed">{message.text}</p>
                     </div>
@@ -190,7 +189,7 @@ export default function Chatbot() {
             )}
 
             {/* Input Area */}
-            <div className="border-t border-slate-200 bg-white p-4">
+            <div className="border-t border-slate-200 bg-white p-4 pb-[calc(1rem+env(safe-area-inset-bottom,0px))] sm:pb-4">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -208,7 +207,7 @@ export default function Chatbot() {
                 <button
                   type="submit"
                   disabled={!inputValue.trim()}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-blue-800 text-white transition-shadow hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50"
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-blue-800 text-white transition-shadow hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50"
                   aria-label="Send message"
                 >
                   <Send size={18} />

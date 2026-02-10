@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Target, Eye } from "lucide-react";
+
 
 interface MissionCardProps {
   title: string;
   description: string;
-  icon: React.ElementType<{ className?: string }>;
+  icon: React.ReactNode;
   delay?: number;
   className?: string;
 }
@@ -15,7 +15,7 @@ interface MissionCardProps {
 function MissionCard({
   title,
   description,
-  icon: Icon,
+  icon,
   delay = 0,
   className = "",
 }: MissionCardProps) {
@@ -25,10 +25,12 @@ function MissionCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay }}
-      className={`flex flex-col gap-2 ${className} rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 p-4`}
+      className={`flex flex-col gap-2 ${className} rounded-2xl border border-slate-200 bg-mesh-gradient-color p-4`}
     >
       <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white text-slate-700 shadow-sm">
-        <Icon className="h-5 w-5" />
+        <div className="flex h-5 w-5 items-center justify-center">
+          {icon}
+        </div>
       </div>
 
       <h3 className="text-lg font-semibold text-slate-900">{title}</h3>
@@ -40,7 +42,7 @@ function MissionCard({
 
 export default function AboutMissionVision() {
   return (
-    <section className="bg-slate-50 py-12">
+    <section className="bg-white py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* FLEX CONTAINER */}
         <div className="flex flex-col items-stretch gap-8 lg:flex-row lg:gap-12">
@@ -50,7 +52,7 @@ export default function AboutMissionVision() {
               className="flex-1"
               title="Our Mission"
               description="To empower organizations with innovative technology solutions that drive sustainable growth, operational excellence, and competitive advantage in an increasingly digital world."
-              icon={Target}
+              icon={<Image src="/svgs/target.svg" alt="Target" width={20} height={20} />}
               delay={0.05}
             />
 
@@ -58,7 +60,7 @@ export default function AboutMissionVision() {
               className="flex-1"
               title="Our Vision"
               description="To be the most trusted technology partner for enterprises worldwide, recognized for delivering transformational outcomes and building long-lasting client relationships."
-              icon={Eye}
+              icon={<Image src="/svgs/eye.svg" alt="Eye" width={20} height={20} />}
               delay={0.1}
             />
           </div>

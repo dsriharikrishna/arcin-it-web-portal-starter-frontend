@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
+import clsx from "clsx";
 import Image from "next/image";
 import { Menu, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -13,25 +15,20 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { homeHeroData } from "@/data/home/home-page";
 import { NAVIGATION_ITEMS, CONTACT_INFO } from "@/constants/app-constants";
 
-interface NavItem {
-  href: string;
-  label: string;
-}
-
 const HomeHeroNavbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const pathname = usePathname();
 
   const isMobile = useMediaQuery("(max-width: 768px)");
 
-  // Phone button - Opens WhatsApp
   const handleWhatsAppClick = useCallback(() => {
-    const whatsappUrl = `https://wa.me/${CONTACT_INFO.phone.whatsapp}`;
+    const message = "Hi Arcin IT, I am interested in your mobile app development services!";
+    const whatsappUrl = `https://wa.me/${CONTACT_INFO.phone.whatsapp}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   }, []);
 
-  // Menu button - Opens MobileMenubar on mobile, DesktopContactModal on desktop
   const handleMenuClick = useCallback(() => {
     if (isMobile) {
       setMenuOpen((prev) => !prev);
@@ -40,7 +37,6 @@ const HomeHeroNavbar = () => {
     }
   }, [isMobile]);
 
-  // Preload all background images for faster transitions
   useEffect(() => {
     homeHeroData.backgroundImages.forEach((src) => {
       const img = new window.Image();
@@ -49,7 +45,6 @@ const HomeHeroNavbar = () => {
   }, []);
 
   useEffect(() => {
-    // Fast switch (approx 0.8s transition) + 1.2s wait = 2s total interval
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % homeHeroData.backgroundImages.length);
     }, 5000);
@@ -59,7 +54,7 @@ const HomeHeroNavbar = () => {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* ===== BACKGROUND SLIDESHOW (Left to Right) ===== */}
+      {/* ===== BACKGROUND SLIDESHOW ===== */}
       <div className="absolute inset-0 z-0">
         <AnimatePresence initial={false}>
           <motion.div
@@ -83,20 +78,13 @@ const HomeHeroNavbar = () => {
         </AnimatePresence>
       </div>
 
-      {/* ===== BACKGROUND OVERLAYS ===== */}
-      {/* Stronger left-side white gradient for better logo/content visibility */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-[70%] bg-gradient-to-r from-white/95 via-white/20 to-transparent" />
-
-      {/* Subtle dark overlay on right side */}
-      <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-transparent via-black/5 to-black/30" />
-
-      {/* Bottom gradient for depth */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-[100%] bg-gradient-to-r from-white/95 via-white/20 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-transparent via-black/5 to-black/30 md:from-white/50" />
       <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/20 via-transparent to-transparent" />
 
       {/* ===== HEADER / NAVBAR ===== */}
       <header className="group relative z-20 w-full bg-gradient-to-r from-white/90 via-white/40 to-transparent backdrop-blur-sm transition-all duration-300 hover:bg-white/100">
         <div className="flex h-16 max-w-full items-center justify-between px-8 sm:px-10 lg:px-12">
-          {/* Logo - Enhanced visibility */}
           <Link href="/" className="flex-shrink-0">
             <Image
               src="/Arcin_logo_Name.png"
@@ -110,43 +98,37 @@ const HomeHeroNavbar = () => {
           </Link>
 
           <div className="flex items-center gap-4">
-            {/* Desktop Nav */}
             <nav className="hidden items-center justify-end gap-6 md:flex">
-              {NAVIGATION_ITEMS.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="border-b-2 border-transparent text-sm font-medium text-white transition-all duration-300 group-hover:text-slate-900 hover:scale-105 hover:border-blue-600"
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {NAVIGATION_ITEMS.map((item) => {
+                const isActive = item.href === "/" ? pathname === item.href : pathname.startsWith(item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={clsx(
+                      "border-b-2 text-sm font-medium transition-all duration-300 hover:scale-105",
+                      isActive
+                        ? "border-blue-600 text-blue-600"
+                        : "border-transparent text-white group-hover:text-slate-900 hover:border-blue-600"
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
             </nav>
 
-            {/* Action Buttons */}
             <div className="flex items-center gap-3">
-              {/* WhatsApp Button */}
               <button
                 onClick={handleWhatsAppClick}
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500 shadow-md transition-colors hover:bg-green-600"
-                aria-label="Chat on WhatsApp"
               >
                 <Phone size={18} className="text-white" />
               </button>
 
-              {/* Menu/Contact Button */}
               <button
                 onClick={handleMenuClick}
                 className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 shadow-md transition-colors hover:bg-blue-700"
-                aria-label={
-                  isMobile
-                    ? menuOpen
-                      ? "Close menu"
-                      : "Open menu"
-                    : contactOpen
-                      ? "Close contact"
-                      : "Open contact"
-                }
               >
                 <Menu size={18} className="text-white" />
               </button>
@@ -155,68 +137,65 @@ const HomeHeroNavbar = () => {
         </div>
       </header>
 
-      {/* ===== MODALS ===== */}
       <Menubar isOpen={menuOpen} onClose={() => setMenuOpen(false)} navItems={NAVIGATION_ITEMS} />
       <DesktopContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
 
       {/* ===== HERO CONTENT ===== */}
-      <div className="relative z-10 flex min-h-[calc(90vh-4rem)] items-center">
-        <div className="flex w-full px-8 sm:px-10 lg:px-12">
-          <div className="flex flex-1 flex-col gap-6">
+      <div className="relative z-10 flex min-h-[calc(100vh-4rem)] items-center justify-center pt-8 md:pt-0">
+        <div className="flex w-full px-6 sm:px-10 lg:px-12">
+          <div className="flex flex-1 flex-col items-center gap-6 text-center md:items-start md:text-left">
             <SmoothLandingBox variant="fade" delay={0} duration={0.8}>
-              <div
-                className={`inline-flex items-center rounded-full ${homeHeroData.badge.bgColor} px-4 py-2`}
-              >
-                <p className={`text-sm font-medium ${homeHeroData.badge.textColor}`}>
+              <div className="inline-flex items-center rounded-full bg-gradient-to-r from-blue-400 to-blue-600 px-5 py-1.5 shadow-lg shadow-blue-500/20 md:px-6 md:py-2">
+                <p className="text-[12px] font-semibold text-white md:text-sm">
                   {homeHeroData.badge.text}
                 </p>
               </div>
             </SmoothLandingBox>
 
-            <SmoothLandingBox variant="fade" delay={0} duration={0.8}>
-              <h1 className="text-xl font-medium tracking-tight text-blue-600 md:text-5xl">
-                {homeHeroData.title.main}{" "}
-                {homeHeroData.title.highlighted.map((word, i) => (
-                  <span key={i} className="font-bold text-blue-800">
-                    {word}
-                  </span>
-                ))}
-                <br className="hidden sm:block" />
-                {homeHeroData.title.suffix}
-              </h1>
-            </SmoothLandingBox>
+            <div className="relative w-full">
+              <SmoothLandingBox variant="fade" delay={0.1} duration={0.8}>
+                <h1 className="text-[32px] font-normal tracking-normal text-blue-700 leading-[1.2] sm:text-5xl md:text-[50px] md:leading-[1.1]">
+                  Building <br className="md:hidden" />
+                  Scalable <span className="font-extrabold text-blue-900">Digital</span>
+                  <br />
+                  <span className="font-extrabold text-blue-900 text-[40px] md:text-[60px]">Solutions</span> for the <br className="md:hidden" />
+                  Future
+                </h1>
+              </SmoothLandingBox>
+
+            </div>
 
             <SmoothLandingBox variant="slide-up" delay={0.2} distance={30}>
-              <p className="text-lg leading-relaxed font-medium text-gray-800">
+              <p className="max-w-2xl px-2 text-sm font-medium leading-relaxed text-gray-800 md:px-0 md:text-lg lg:text-xl">
                 {homeHeroData.subtitle}
               </p>
             </SmoothLandingBox>
 
-            <SmoothLandingBox variant="scale" delay={0.4}>
-              <div className="flex flex-wrap gap-4">
+            <SmoothLandingBox variant="scale" delay={0.4} className="w-full">
+              <div className="flex w-full items-center justify-center gap-3 pt-2 md:justify-start md:gap-4">
                 <CustomButton
                   variant="solid"
-                  size="lg"
+                  size="md"
                   rounded="lg"
                   href={homeHeroData.cta.primary.href}
-                  className="px-8 py-4 text-lg"
+                  className="flex-1 max-w-[160px] bg-gradient-to-r from-blue-400 to-blue-700 px-4 py-3 text-center text-[13px] font-semibold text-white shadow-xl transition-all hover:scale-105 md:max-w-none md:min-w-[180px] md:px-8 md:py-4 md:text-lg"
                 >
                   {homeHeroData.cta.primary.text}
                 </CustomButton>
 
                 <CustomButton
                   variant="outline"
-                  size="lg"
+                  size="md"
                   rounded="lg"
                   href={homeHeroData.cta.secondary.href}
-                  className="px-8 py-4 text-lg"
+                  className="flex-1 max-w-[160px] border border-blue-400 bg-white px-4 py-3 text-center text-[13px] font-semibold text-blue-600 shadow-sm md:max-w-none md:min-w-[180px] md:px-8 md:py-4 md:text-lg"
                 >
                   {homeHeroData.cta.secondary.text}
                 </CustomButton>
               </div>
             </SmoothLandingBox>
           </div>
-          <div className="flex-1"></div>
+          <div className="hidden md:flex md:flex-1" />
         </div>
       </div>
     </div>

@@ -26,7 +26,7 @@ export default function WhyChooseSectionBanking({
   onCtaClick,
 }: WhyChooseProps) {
   return (
-    <section className="bg-[#f8faff] py-12 sm:py-16 md:py-20">
+    <section className="bg-[#f8faff] py-12">
       <div className="mx-auto px-4 text-center sm:px-6">
         {/* Badge */}
         <motion.div

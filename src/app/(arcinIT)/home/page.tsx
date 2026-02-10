@@ -14,7 +14,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col">
       <HomeHeroNavbar />
-      <div className="py-10">
+      <div className="pt-8 pb-4 px-4">
         <HomeStats isHome={true} />
       </div>
       <HomeAbout />

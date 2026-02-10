@@ -28,19 +28,19 @@ function AnimatedCard({
   const content = (
     <>
       {icon && (
-        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600/90 text-white shadow-lg shadow-blue-500/20">
           {icon}
         </div>
       )}
-      <h3 className="text-xl font-semibold text-slate-900">{title}</h3>
-      {description && <p className="mt-2 line-clamp-2 text-slate-600">{description}</p>}
+      <h3 className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors uppercase text-[15px]">{title}</h3>
+      {description && <p className="mt-2 text-sm font-bold leading-relaxed text-slate-800/80">{description}</p>}
       {children}
     </>
   );
 
   const cardClasses = clsx(
-    "block p-6 rounded-2xl bg-white border border-slate-200 shadow-sm",
-    "hover:shadow-lg hover:border-blue-200 transition-shadow duration-300",
+    "group block p-8 rounded-3xl bg-mesh-gradient-color border border-blue-100/50 shadow-sm",
+    "hover:shadow-2xl hover:shadow-blue-500/10 hover:bg-white hover:-translate-y-2 transition-all duration-300",
     className
   );
 
